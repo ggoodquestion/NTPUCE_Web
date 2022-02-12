@@ -18,24 +18,27 @@
 	</noscript>
 </head>
 
-<?php //include "./editor/connect.php"; ?>
+<?php //include "./editor/connect.php"; 
+?>
 
 <body class="">
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
 
 		<div id="top">
-			<a><img src="./images/logo-3.png" class="image fit px-1 pt-1"></a>
-			<div>
-				<ul id="ul-top">
-					<li><a>English</a></li>
-					<li><a>聯絡我們</a></li>
-					<li><a>臺北大學</a></li>
-				</ul>
+			<div class="px-1 pt-1">
+				<a><img src="./images/logo-3.png" class="image fit "></a>
+				<div>
+					<ul id="ul-top" align="right">
+						<li><a>English</a></li>
+						<li><a>聯絡我們</a></li>
+						<li><a>臺北大學</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
-		<?php include("./templates/navbar.php");?>
+		<?php include("./templates/navbar.php"); ?>
 
 		<!-- Main -->
 		<div id="main">
@@ -46,35 +49,35 @@
 					<div class="row">
 						<!-- Left -->
 						<div class="col-3">
-						<ul>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">新生專區</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">競賽資訊</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">專題製作</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">學分學程/微學程</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">獎學金</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">系友專區</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">通訊系學會</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">相片集錦</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">大學程式能力檢定</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">榮譽榜</a></li>
-						<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">問與答</a></li>
-						</ul>
+							<ul>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">新生專區</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">競賽資訊</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">專題製作</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">學分學程/微學程</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">獎學金</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">系友專區</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">通訊系學會</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">相片集錦</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">大學程式能力檢定</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">榮譽榜</a></li>
+								<li><a href="http://www.ce.ntpu.edu.tw/files/2019.pdf" target="_blank">問與答</a></li>
+							</ul>
 						</div>
 						<!-- Middle -->
 						<div class="col-6">
-						
-						<div id="announcement"></div>
-						<div id="student"></div>
-						<div id="academic"></div>
-						<div id="lesson"></div>
+
+							<div id="announcement"></div>
+							<div id="student"></div>
+							<div id="academic"></div>
+							<div id="lesson"></div>
 						</div>
 
 						<!-- Right -->
 						<div class="col-3">
-						<p>hello</p>
-						<p>title</p>
-						<p>index</p>
-						
+							<p>hello</p>
+							<p>title</p>
+							<p>index</p>
+
 						</div>
 					</div>
 				</div>
@@ -103,7 +106,7 @@
 //         global $json;
 //         $index = $json['index'];
 //         echo $index[$item];
-        
+
 //     }else{
 //         echo $zh;
 //     }

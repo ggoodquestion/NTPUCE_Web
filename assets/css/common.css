@@ -204,5 +204,6 @@
 #ul-top li{
     display: inline-block;
     align-items: right;
+    font-size: 0.65rem;
 }
 
