@@ -24,7 +24,18 @@
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
 
-		<?php //include("./templates/navbar.php");?>
+		<div id="top">
+			<a><img src="./images/logo-3.png" class="image fit px-1 pt-1"></a>
+			<div>
+				<ul id="ul-top">
+					<li><a>English</a></li>
+					<li><a>聯絡我們</a></li>
+					<li><a>臺北大學</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<?php include("./templates/navbar.php");?>
 
 		<!-- Main -->
 		<div id="main">
@@ -70,7 +81,7 @@
 			</section>
 		</div>
 
-		<?php //include './templates/footer.php'; ?>
+		<?php include './templates/footer.php'; ?>
 		<!-- Scripts -->
 		<script src="./bootstrap-5.1.0-dist/js/popper.min.js"></script>
 		<script src="./bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>

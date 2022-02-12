@@ -116,7 +116,7 @@ input, select, textarea {
 /* Type */
 
 	html {
-		font-size: 16pt;
+		font-size: 18pt;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -3234,7 +3234,7 @@ input, select, textarea {
 			width: 100%;
 			height: 100%;
 			background-color: #212931;
-			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://cie.ntpu.edu.tw/images/bg.jpg");
+			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://cie.ntpu.edu.tw/images/pic05.jpg");
 			background-size: auto,								auto,														100% auto;
 			background-position: center,								center,														top center;
 			background-repeat: repeat,								no-repeat,													no-repeat;
@@ -3605,6 +3605,25 @@ input, select, textarea {
 
 		}
 
+/* top */
+	#top {
+		color: #ffffff;
+		-moz-transition: -moz-transform 1s ease, opacity 1s ease;
+		-webkit-transition: -webkit-transform 1s ease, opacity 1s ease;
+		-ms-transition: -ms-transform 1s ease, opacity 1s ease;
+		transition: transform 1s ease, opacity 1s ease;
+		background: rgba(0, 0, 0, 0.65);
+		height: auto;
+		line-height: auto;
+		margin: 1rem auto 0 auto;
+		overflow: visible;
+		padding: 0 0rem 0 0;
+		position: relative;
+		width: calc(100% - 4rem);
+		max-width: 54rem;
+		z-index: 3;
+	}
+
 /* Nav */
 
 	#nav {
@@ -3618,14 +3637,14 @@ input, select, textarea {
 		-ms-transition: -ms-transform 1s ease, opacity 1s ease;
 		transition: transform 1s ease, opacity 1s ease;
 		background: rgba(0, 0, 0, 0.65);
-		height: 4rem;
-		line-height: 4rem;
+		height: 3rem;
+		line-height: 3rem;
 		margin: 1rem auto 0 auto;
 		overflow: visible;
-		padding: 0 2rem 0 0;
+		padding: 0 0rem 0 0;
 		position: relative;
 		width: calc(100% - 4rem);
-		max-width: 144rem;
+		max-width: 54rem;
 		z-index: 3;
 	}
 
@@ -3695,7 +3714,7 @@ input, select, textarea {
 			flex-shrink: 1;
 			font-family: "Source Sans Pro", Helvetica, sans-serif;
 			font-weight: 500;
-			letter-spacing: 0.1em;
+			letter-spacing: 0em;
 			list-style: none;
 			margin-bottom: 0;
 			padding-left: 0;
@@ -3716,9 +3735,9 @@ input, select, textarea {
 					-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 					transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 					display: block;
-					font-size: 0.85rem;
+					font-size: 0.75rem;
 					outline: none;
-					padding: 0 2rem;
+					padding: 0 0.75rem;
 				}
 
 					#nav ul.links li a:hover,
@@ -3773,7 +3792,7 @@ input, select, textarea {
 		position: relative;
 		margin: 0 auto;
 		width: calc(100% - 4rem);
-		max-width: 144rem;
+		max-width: 54rem;
 		z-index: 2;
 	}
 
@@ -3972,7 +3991,7 @@ input, select, textarea {
 		position: relative;
 		margin: 0 auto;
 		width: calc(100% - 4rem);
-		max-width: 144rem;
+		max-width: 54rem;
 		z-index: 2;
 	}
 
