@@ -207,3 +207,6 @@
     font-size: 0.65rem;
 }
 
+#ul-top li > a {
+    color: #ffffff;
+}

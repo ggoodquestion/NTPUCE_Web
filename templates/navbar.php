@@ -5,9 +5,9 @@ $file = file_get_contents("./eng/config.json");
 if(empty($file)) $file = file_get_contents("../eng/config.json");
 $json = json_decode($file, true);
 ?>
-<header id="header">
-    <!-- <a href="/index.php" class="logo"><img src="/images/banner_logo.png" class="logo-banner"></a> -->
-</header>
+<!-- <header id="header">
+    <a href="/index.php" class="logo"><img src="/images/banner_logo.png" class="logo-banner"></a>
+</header> -->
 
 <nav id="nav">
     <ul class="links" align="center" valign="center" style="display: flex; justify-content: center;align-items: center;">
