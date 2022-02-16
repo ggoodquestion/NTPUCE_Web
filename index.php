@@ -48,17 +48,17 @@
 						<!-- Left -->
 						<div class="col-3">
 							<div class="list group">
-								<a href="#" class="list-group-item list-group-item-action">新生專區</a>
-								<a href="#" class="list-group-item list-group-item-action">競賽資訊</a>
-								<a href="#" class="list-group-item list-group-item-action">專題製作</a>
-								<a href="#" class="list-group-item list-group-item-action">學分學程/微學程</a>
-								<a href="#" class="list-group-item list-group-item-action">獎學金</a>
-								<a href="#" class="list-group-item list-group-item-action">系友專區</a>
-								<a href="#" class="list-group-item list-group-item-action">通訊系學會</a>
-								<a href="#" class="list-group-item list-group-item-action">相片集錦</a>
-								<a href="#" class="list-group-item list-group-item-action">大學程式能力檢定</a>
-								<a href="#" class="list-group-item list-group-item-action">榮譽榜</a>
-								<a href="#" class="list-group-item list-group-item-action">問與答</a>
+								<a href="#" class="list-group-item ">新生專區</a>
+								<a href="#" class="list-group-item ">競賽資訊</a>
+								<a href="#" class="list-group-item ">專題製作</a>
+								<a href="#" class="list-group-item ">學分學程/微學程</a>
+								<a href="#" class="list-group-item ">獎學金</a>
+								<a href="#" class="list-group-item ">系友專區</a>
+								<a href="#" class="list-group-item ">通訊系學會</a>
+								<a href="#" class="list-group-item ">相片集錦</a>
+								<a href="#" class="list-group-item ">大學程式能力檢定</a>
+								<a href="#" class="list-group-item ">榮譽榜</a>
+								<a href="#" class="list-group-item ">問與答</a>
 							</div>
 						</div>
 						<!-- Middle -->
@@ -75,10 +75,10 @@
 									</div>
 								</div>
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item "><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
+									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
 								</ul>
 							</div>
 							<!--招生快訊  -->
@@ -87,10 +87,10 @@
 									招生快訊 <a href="#" class="alert-link">more</a>.
 								</div>
 								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
 								</div>
 							</div>
 							<!-- 學術活動 -->
@@ -99,10 +99,10 @@
 									學術活動 <a href="#" class="alert-link">more</a>.
 								</div>
 								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
 								</div>
 							</div>
 							<!-- 課務訊息 -->
@@ -111,10 +111,10 @@
 									課務訊息 <a href="#" class="alert-link">more</a>.
 								</div>
 								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
+									<a href="#" class="list-group-item ">A third link item</a>
 								</div>
 							</div>
 						</div>
