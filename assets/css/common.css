@@ -210,3 +210,7 @@
 #ul-top li > a {
     color: #ffffff;
 }
+
+.list-group > li > a{
+    border: 0;
+}

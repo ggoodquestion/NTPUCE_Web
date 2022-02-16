@@ -101,7 +101,7 @@
 						<!-- Middle -->
 						<div class="col-6">
 							<!--系辦公告 -->
-							<div id="announcement" class="container-fluid" >
+							<div id="announcement" class="container-fluid"  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
 									<div>
 										系辦公告
@@ -111,48 +111,69 @@
 										<a href="#" class="alert-link">more</a>
 									</div>
 								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-								</div>
+								<ul class="list-group list-group-flush container-fluid">
+									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								</ul>
 							</div>
+							<br/>
 							<!--招生快訊  -->
-							<div id="student">
-								<div class="alert alert-primary" role="alert">
-									招生快訊 <a href="#" class="alert-link">more</a>.
+							<div id="student" class="container-fluid"  >
+								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
+									<div>
+										系辦公告
+									</div>
+									<div></div>
+									<div>
+										<a href="#" class="alert-link">more</a>
+									</div>
 								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-								</div>
+								<ul class="list-group list-group-flush container-fluid">
+									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								</ul>
 							</div>
+							<br/>
 							<!-- 學術活動 -->
-							<div id="academic">
-								<div class="alert alert-primary" role="alert">
-									學術活動 <a href="#" class="alert-link">more</a>.
+							<div id="academic" class="container-fluid"  >
+								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
+									<div>
+										系辦公告
+									</div>
+									<div></div>
+									<div>
+										<a href="#" class="alert-link">more</a>
+									</div>
 								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-								</div>
+								<ul class="list-group list-group-flush container-fluid">
+									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								</ul>
 							</div>
+							<br/>
 							<!-- 課務訊息 -->
-							<div id="lesson">
-								<div class="alert alert-primary" role="alert">
-									課務訊息 <a href="#" class="alert-link">more</a>.
+							<div id="lesson" class="container-fluid"  >
+								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
+									<div>
+										系辦公告
+									</div>
+									<div></div>
+									<div>
+										<a href="#" class="alert-link">more</a>
+									</div>
 								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-								</div>
+								<ul class="list-group list-group-flush container-fluid">
+									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								</ul>
 							</div>
 						</div>
 
