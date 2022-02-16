@@ -46,13 +46,13 @@
 		<div id="main">
 
 			<!-- Carousel -->
-			<div id="carouselExampleIndicators" class="carousel slide home-banner" data-bs-ride="carousel">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<div id="carouselBanner" class="carousel slide" data-bs-ride="carousel" style="padding: 0rem">
+				<div class="carousel-indicators" style="margin-bottom: -0.3rem">
+					<button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 				</div>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="./images/logo-3.png" class="d-block w-100" alt="...">
+						<img src="./images/ntpu.gif" class="d-block w-100" alt="...">
 					</div>
 				</div>
 				<a class="carousel-control-prev" data-bs-target="#carouselIndicators" data-bs-slide="prev" role="button" id="carousel-prev">
@@ -66,8 +66,8 @@
 			</div>
 
 			<!-- Block the area in 3:6:3 -->
-			<section id="main-infomation">
-				<div class="container">
+			<section id="main-infomation" style="padding-top: 1rem">
+				<div class="container-fluid">
 					<div class="row">
 						<!-- Left -->
 						<div class="col-3">
