@@ -50,8 +50,19 @@
 			font-size: 0.65rem;
 			line-height: 0.8rem;
 		}
-	</style>
 
+		.mid-col{
+			font-size: 0.65rem;;
+			padding:0.2rem 0.25rem;
+			background-color:#f5f5f5;
+		}
+
+		.mid-col > li {
+			padding: 0.1rem 0.1rem;
+			background-color: inherit;
+		}
+	</style>
+	
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
 
@@ -119,7 +130,7 @@
 							<iframe width="96%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							
 							<!--系辦公告 -->
-							<div id="announcement" class="container-fluid"  >
+							<div id="announcement" class="container-fluid mid-col " >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
 									<div>
 										系辦公告
@@ -129,16 +140,16 @@
 										<a href="#" class="alert-link">more</a>
 									</div>
 								</div>
-								<ul class="list-group list-group-flush container-fluid">
-									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								<ul class="list-group list-group-flush container-fluid mid-col">
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
 								</ul>
 							</div>
 							<br/>
 							<!--招生快訊  -->
-							<div id="student" class="container-fluid"  >
+							<div id="student" class="container-fluid mid-col "  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
 									<div>
 										系辦公告
@@ -148,16 +159,16 @@
 										<a href="#" class="alert-link">more</a>
 									</div>
 								</div>
-								<ul class="list-group list-group-flush container-fluid">
-									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								<ul class="list-group list-group-flush container-fluid mid-col">
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
 								</ul>
 							</div>
 							<br/>
 							<!-- 學術活動 -->
-							<div id="academic" class="container-fluid"  >
+							<div id="academic" class="container-fluid mid-col "  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
 									<div>
 										系辦公告
@@ -167,16 +178,16 @@
 										<a href="#" class="alert-link">more</a>
 									</div>
 								</div>
-								<ul class="list-group list-group-flush container-fluid">
-									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								<ul class="list-group list-group-flush container-fluid mid-col">
+								<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
 								</ul>
 							</div>
 							<br/>
 							<!-- 課務訊息 -->
-							<div id="lesson" class="container-fluid"  >
+							<div id="lesson" class="container-fluid mid-col "  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
 									<div>
 										系辦公告
@@ -186,11 +197,11 @@
 										<a href="#" class="alert-link">more</a>
 									</div>
 								</div>
-								<ul class="list-group list-group-flush container-fluid">
-									<li class="list-group-item "><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
-  									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
+								<ul class="list-group list-group-flush mid-col">
+								<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
 								</ul>
 							</div>
 						</div>
