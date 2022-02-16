@@ -4364,9 +4364,18 @@ input, select, textarea {
 			font-size: 0.8rem;
 		}
 
+		@media screen and (max-width: 1280px) {
+
+			#footer {
+				max-width: 85%;
+			}
+		}
+		
 		@media screen and (max-width: 980px) {
 
 			#footer {
+				max-width: 100%;
+				width: 100%;
 				display: block;
 			}
 

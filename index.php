@@ -24,6 +24,19 @@
 <body class="">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+	<style>
+		.left-col{
+			font-size: 0.65rem;
+			padding: 0.2rem 0.25rem;
+			background-color: #f5f5f5f5;
+		}
+
+		.left-col > a{
+			padding: 0.1rem 0 0 1rem;
+			background-color: inherit;
+		}
+	</style>
+
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
 
@@ -71,7 +84,7 @@
 					<div class="row">
 						<!-- Left -->
 						<div class="col-3">
-							<div class="list group">
+							<div class="list-group list-group-flush left-col">
 								<a href="#" class="list-group-item list-group-item-action">新生專區</a>
 								<a href="#" class="list-group-item list-group-item-action">競賽資訊</a>
 								<a href="#" class="list-group-item list-group-item-action">專題製作</a>
