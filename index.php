@@ -28,7 +28,7 @@
 		.left-col{
 			font-size: 0.65rem;
 			padding: 0.2rem 0.25rem;
-			background-color: #f5f5f5f5;
+			background-color: #f5f5f5;
 		}
 
 		.left-col > a{
