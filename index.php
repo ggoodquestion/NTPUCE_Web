@@ -116,12 +116,8 @@
 						<!-- Middle -->
 						<div class="col-6">
 							<!--形象影片 -->
-							<p>
-							<video>
-									<source src="https://www.youtube.com/watch?v=zxJTcWSAjiY"></source>
-								</vedio>
-							</p>
-
+							<iframe width="96%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							
 							<!--系辦公告 -->
 							<div id="announcement" class="container-fluid"  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
@@ -214,15 +210,6 @@
 									近年積極參與工程科技教育認證(IEET)，並於2010年通過認證。
 									目前設有通訊工程學士班、碩士班、資通科技產業碩士專班、及國際學生碩士班。</p>
 							</div>
-							<div>
-								<p><video controls>
-									<source src="https://www.youtube.com/watch?v=zxJTcWSAjiY"></source>
-								</vedio></p>
-							</div>
-							<div>
-								<p>hello</p>
-							</div>
-
 						</div>
 					</div>
 				</div>
