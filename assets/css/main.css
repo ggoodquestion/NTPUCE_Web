@@ -3623,6 +3623,22 @@ input, select, textarea {
 		max-width: 44rem;
 		z-index: 3;
 	}
+	@media screen and (max-width: 1280px) {
+
+		#top {
+			max-width: 85%;
+		}
+	}
+
+	@media screen and (max-width: 980px) {
+
+		#top {
+			max-width: 100%;
+			width: 100%;
+			padding: 0.5rem 0.4rem 0 0.4rem;
+			margin-top: 3.5rem;
+		}
+	}
 
 /* Nav */
 
@@ -3778,6 +3794,19 @@ input, select, textarea {
 			margin-bottom: 0;
 		}
 
+		@media screen and (max-width: 1280px) {
+
+			#nav {
+				max-width: 85%;
+			}
+
+			#nav ul.links li a,
+			#nav ul.links li ul li a,
+			#nav ul.links li.active ul li a {
+				font-size: 1rem;
+			}
+		}
+
 		@media screen and (max-width: 980px) {
 
 			#nav {
@@ -3797,7 +3826,7 @@ input, select, textarea {
 	}
 
 		#main > * {
-			padding: 4rem 4rem 2rem 4rem ;
+			padding: 0rem 0rem 2rem 0rem ;
 			border-top: solid 2px #eeeeee;
 			margin: 0;
 		}
@@ -3829,6 +3858,10 @@ input, select, textarea {
 			}
 
 			@media screen and (max-width: 1280px) {
+
+				#main {
+					max-width: 85%;
+				}
 
 				#main > .post {
 					padding: 6rem 4rem 4rem 4rem ;
@@ -3914,6 +3947,11 @@ input, select, textarea {
 				}
 
 			@media screen and (max-width: 980px) {
+
+				#main {
+					max-width: 100%;
+					width: 100%;
+				}
 
 				#main > .posts > * {
 					width: 50%;
