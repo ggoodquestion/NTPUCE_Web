@@ -81,7 +81,7 @@
   									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
 								</ul>
 							</div>
-							<div></div>
+							<br/>
 							<!--招生快訊  -->
 							<div id="student" class="container-fluid"  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
@@ -100,6 +100,7 @@
   									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
 								</ul>
 							</div>
+							<br/>
 							<!-- 學術活動 -->
 							<div id="academic" class="container-fluid"  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
@@ -118,6 +119,7 @@
   									<li class="list-group-item"><a href="#" class="list-group-item ">A third link item</a></li>
 								</ul>
 							</div>
+							<br/>
 							<!-- 課務訊息 -->
 							<div id="lesson" class="container-fluid"  >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
