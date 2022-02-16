@@ -64,7 +64,7 @@
 						<!-- Middle -->
 						<div class="col-6">
 							<!--系辦公告 -->
-							<div id="announcement" class="container-fluid" >
+							<div id="announcement" class="container-fluid" style="border:2px black solid" >
 								<div class="alert alert-primary d-flex justify-content-between container-fluid"  role="alert">
 									<div>
 										系辦公告
@@ -74,12 +74,12 @@
 										<a href="#" class="alert-link">more</a>
 									</div>
 								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-									<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-								</div>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item "><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
+  									<li class="list-group-item"><a href="#" class="list-group-item list-group-item-action">A third link item</a></li>
+								</ul>
 							</div>
 							<!--招生快訊  -->
 							<div id="student">
