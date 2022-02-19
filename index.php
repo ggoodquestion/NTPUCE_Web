@@ -25,35 +25,40 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 	<style>
-		.left-col{
+		.right-col {
+			padding: 0.5rem;
+		}
+
+		.left-col {
 			font-size: 0.65rem;
 			padding: 0.2rem 0.25rem;
 			background-color: #f5f5f5;
 		}
 
-		.left-col > a{
+		.left-col>a {
 			padding: 0.1rem 0 0 1rem;
 			background-color: inherit;
 		}
 
-		.mid-col{
-			font-size: 0.65rem;;
-			padding:0.2rem 0.25rem;
-			background-color:#f5f5f5;
+		.mid-col {
+			font-size: 0.65rem;
+			;
+			padding: 0.2rem 0.25rem;
+			background-color: #f5f5f5;
 			margin-bottom: 0.9rem;
 		}
 
-		.mid-col > li {
+		.mid-col>li {
 			padding: 0.1rem 0.1rem;
 			background-color: inherit;
 		}
 
-		.alert{
+		.alert {
 			padding: 0.33rem;
 			margin: 0.2rem 0;
 		}
 	</style>
-	
+
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
 		<?php include "./mods/basic/top_banner.php"; ?>
@@ -90,10 +95,10 @@
 						<div class="col-6">
 							<!--形象影片 -->
 							<iframe width="100%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							
+
 							<!--系辦公告 -->
-							<div id="announcement" class="container-fluid mid-col " >
-								<div class="alert alert-light d-flex justify-content-between"  role="alert">
+							<div id="announcement" class="container-fluid mid-col ">
+								<div class="alert alert-light d-flex justify-content-between" role="alert">
 									<div>
 										系辦公告
 									</div>
@@ -110,8 +115,8 @@
 								</ul>
 							</div>
 							<!--招生快訊  -->
-							<div id="student" class="container-fluid mid-col "  >
-								<div class="alert alert-light d-flex justify-content-between"  role="alert">
+							<div id="student" class="container-fluid mid-col ">
+								<div class="alert alert-light d-flex justify-content-between" role="alert">
 									<div>
 										系辦公告
 									</div>
@@ -128,8 +133,8 @@
 								</ul>
 							</div>
 							<!-- 學術活動 -->
-							<div id="academic" class="container-fluid mid-col "  >
-								<div class="alert alert-light d-flex justify-content-between"  role="alert">
+							<div id="academic" class="container-fluid mid-col ">
+								<div class="alert alert-light d-flex justify-content-between" role="alert">
 									<div>
 										系辦公告
 									</div>
@@ -139,15 +144,15 @@
 									</div>
 								</div>
 								<ul class="list-group list-group-flush container-fluid mid-col">
-								<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
 									<li class="list-group-item "><a href="#">A third link item</a></li>
 									<li class="list-group-item "><a href="#">A third link item</a></li>
 									<li class="list-group-item "><a href="#">A third link item</a></li>
 								</ul>
 							</div>
 							<!-- 課務訊息 -->
-							<div id="lesson" class="container-fluid mid-col "  >
-								<div class="alert alert-light d-flex justify-content-between"  role="alert">
+							<div id="lesson" class="container-fluid mid-col ">
+								<div class="alert alert-light d-flex justify-content-between" role="alert">
 									<div>
 										系辦公告
 									</div>
@@ -157,7 +162,7 @@
 									</div>
 								</div>
 								<ul class="list-group list-group-flush mid-col">
-								<li class="list-group-item "><a href="#">A third link item</a></li>
+									<li class="list-group-item "><a href="#">A third link item</a></li>
 									<li class="list-group-item "><a href="#">A third link item</a></li>
 									<li class="list-group-item "><a href="#">A third link item</a></li>
 									<li class="list-group-item "><a href="#">A third link item</a></li>
@@ -166,7 +171,7 @@
 						</div>
 
 						<!-- Right -->
-						<?php include "./mods/basic/intro.php";?>
+						<?php include "./mods/basic/intro.php"; ?>
 					</div>
 				</div>
 			</section>
