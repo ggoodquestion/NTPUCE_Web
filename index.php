@@ -58,7 +58,7 @@
 	<div id="wrapper" class="fade-in">
 		<?php include "./mods/basic/top_banner.php"; ?>
 
-		<?php include("./mods/navbar.php"); ?>
+		<?php include("./mods/basic/navbar.php"); ?>
 
 		<!-- Main -->
 		<div id="main">
