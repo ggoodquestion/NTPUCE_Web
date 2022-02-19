@@ -170,8 +170,10 @@
 							</div>
 						</div>
 
-						<!-- Right -->
-						<?php include "./mods/basic/intro.php"; ?>
+						<div class="col-3 right-col">
+							<!-- Right -->
+							<?php include "./mods/basic/intro.php"; ?>
+						</div>
 					</div>
 				</div>
 			</section>
