@@ -1,4 +1,4 @@
-<style>
+<style>  
     .intro-bg {
         padding: 0.3rem;
         margin-bottom: 1rem;
