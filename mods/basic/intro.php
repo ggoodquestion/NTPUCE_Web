@@ -11,8 +11,8 @@
     }
 </style>
 <div class="intro-bg" style="line-height: 1.5rem">
-    <img src="./images/seo-title-1.gif">
-    <img src="./images/seo-title-2.gif">
+    <img src="/images/seo-title-1.gif">
+    <img src="/images/seo-title-2.gif">
     <p class="welcome">國立臺北大學通訊工程學系前身為國立台北大學通訊工程研究所，
         於2004年成立，位於南港軟體園區、中研院及新竹科學園區間，
         三峽交流道旁，為台灣高科技產業的中心點。本系主要發展通訊
