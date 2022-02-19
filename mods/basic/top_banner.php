@@ -1,6 +1,6 @@
 <div id="top">
     <div class="px-1 pt-1">
-        <a><img src="./images/logo-3.png" class="image fit" style="margin-bottom:0 !important"></a>
+        <a><img src="/images/logo-3.png" class="image fit" style="margin-bottom:0 !important"></a>
         <div>
             <ul id="ul-top" align="right">
                 <li><a>English</a></li>

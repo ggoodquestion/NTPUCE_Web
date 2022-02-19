@@ -31,6 +31,10 @@
 			background-color: #f5f5f5;
 		}
 
+		.right-col{
+			padding: 0.5rem;
+		}
+
 		.left-col > a{
 			padding: 0.1rem 0 0 1rem;
 			background-color: inherit;
@@ -164,15 +168,12 @@
 								</ul>
 							</div>
 						</div>
-
-						<!-- Right -->
-						<?php include "./mods/basic/intro.php";?>
 					</div>
 				</div>
 			</section>
 		</div>
 
-		<?php include './mods/footer.php'; ?>
+		<?php include './mods/basic/footer.php'; ?>
 		<!-- Scripts -->
 		<script src="./bootstrap-5.1.0-dist/js/popper.min.js"></script>
 		<script src="./bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
