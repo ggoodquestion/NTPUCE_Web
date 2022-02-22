@@ -3,19 +3,21 @@ session_start();
 
 if (isset($_POST['usage'])) {
     if ($_POST['usage'] == 'verify') {
-        include 'connect.php';
+        include 'utils.php';
         $user = trim($_POST['user']);
         $password = trim($_POST['password']);
-        $sql = "SELECT password FROM cie_admin WHERE user='$user';";
-        $result = mysql_query($sql);
+        $link = sql_connect();
+
+        $sql = "SELECT password FROM ce_admin WHERE user='$user';";
+        $result = mysqli_query($link, $sql);
         if(!$result) exit('error');
         
-        $row = mysql_fetch_assoc($result);
+        $row = mysqli_fetch_array($result);
         var_dump($row);
-        if($password == $row['password']){ //Password correct
+        if(password_verify($password, $row['password'])){ //Password correct
            $_SESSION['admin'] = true;
            $_SESSION['user'] = $user; 
-           header('Location: https://cie.ntpu.edu.tw/editor/menu.php');
+           header('Location: https://ce.ntpu.edu.tw/editor/');
            exit();
         }else{ //Password wrong
            echo("帳號或密碼錯誤");

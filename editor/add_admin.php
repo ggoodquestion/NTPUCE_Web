@@ -1,17 +1,19 @@
 <?php
 exit();
-// include 'connect.php';
-// $user = 'cieadmin';
-// $password = "ntpucie2021";
-// // $h_pwd = password_hash($password, PASSWORD_DEFAULT);
 
-// $sql = "INSERT INTO cie_admin(user, password) VALUES ('$user', '$password');";
-// $result = mysql_query($sql);
-// if(!$result) exit(mysql_error($link));
+// include 'utils.php';
+// $user = 'admin';
+// $password = "ntpuce2021";
+// $h_pwd = password_hash($password, PASSWORD_DEFAULT);
+
+// $link = sql_connect();
+// $sql = "INSERT INTO ce_admin(user, password) VALUES ('$user', '$h_pwd');";
+// $result = mysqli_query($link, $sql);
+// if(!$result) exit(mysqli_error($link));
 
 // $_SESSION['admin'] = true;
 // $_SESSION['user'] = $user;
 
-// header("Location: https://cie.ntpu.edu.tw/editor/menu.php");
+// header("Location: https://ce.ntpu.edu.tw/editor/");
 // exit();
 ?>

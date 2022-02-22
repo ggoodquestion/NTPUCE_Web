@@ -38,6 +38,7 @@
 		.left-col>a {
 			padding: 0.1rem 0 0 1rem;
 			background-color: inherit;
+			color: #2a6aa8;
 		}
 
 		.mid-col {

@@ -62,8 +62,8 @@
 
 <body>
     <?php
-    include './connect.php';
-    include './admin_check.php';
+    include 'utils.php';
+    include 'admin_check.php';
     ?>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
@@ -74,9 +74,9 @@
             <div class="row" >
                 <div class="col  align-left menu-option">
                     <div class="list-group mt-4 nav">
-                        <a class="list-group-item" href="./menu.php?usage=article" id="article">文章編輯</a>
-                        <a class="list-group-item" href="./menu.php?usage=banner" id="banner">首頁Banner</a>
-                        <a class="list-group-item" href="./menu.php?usage=project" id="project">相關資源</a>
+                        <a class="list-group-item" href="./index.php?usage=nav" id="nav_item">導覽列</a>
+                        <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
+                        <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
                 </div>
                 <div class="col-10 ms-4 align-right optArea">
@@ -85,18 +85,12 @@
                     if (isset($_GET['usage'])) {
                         $usage = $_GET['usage'];
                         switch ($usage) {
-                            case "banner":
-                                include("banner.php");
-                                break;
-                            case "article":
-                                include("postList.php");
-                                break;
-                            case "project":
-                                include("project.php");
+                            case "nav":
+                                include("./nav_item/index.php");
                                 break;
                         }
                     } else {
-                        include("postList.php");
+                        include("./nav_item/index.php");
                     }
                     ?>
                     </div>
@@ -116,7 +110,7 @@
     <script>
         var url = new URL(location.href);
         var params = url.searchParams;
-        var choose = "#article";
+        var choose = "#nav_item";
         for(let pair of params.entries()){
             if(pair[0] === "usage"){
                 choose = "#" + pair[1];

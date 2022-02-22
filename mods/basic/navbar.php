@@ -11,8 +11,18 @@ $json = json_decode($file, true);
 
 <nav id="nav">
     <ul class="links" align="center" valign="center" style="display: flex; justify-content: center;align-items: center;">
-        <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <li id="home"><a href="/index.php">Home</a></li>
+        <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
+        <?php
+        include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
+        $link =sql_connect();
+        $sql = "SELECT * FROM nav_item;";
+        $result = sql_query($link, $sql);
+        while($row = sql_fetch($result)){
+            echo '<li><a href="/mods/basic/content.php?usage=nav&id='.$row['post'].'">'.$row['name'].'</a></li>';
+        }
+        ?>
+        <!-- <li id="home"><a href="/index.php">Home</a></li>
         <li id="introduction"><a href="/index.php">系所簡介</a></li>
         <li id="edu"><a href="/index.php">教育目標</a></li>
         <li id="teacher"><a href="/index.php">師資介紹</a></li>
@@ -22,7 +32,7 @@ $json = json_decode($file, true);
         <li id="ieet"><a href="/index.php">IEET認證</a></li>
         <li id="resource"><a href="/index.php">相關資源</a></li>
         <li id="tidbits"><a href="/index.php">活動剪影</a></li>
-        <li id="intern"><a href="/index.php">實習徵才</a></li>
+        <li id="intern"><a href="/index.php">實習徵才</a></li> -->
     </ul>
 </nav>
 
