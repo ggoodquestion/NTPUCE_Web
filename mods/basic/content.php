@@ -36,16 +36,27 @@
 			background-color: inherit;
 		}
 
+		a{
+			color: #3b7bb9;
+			text-decoration: none !important;
+		}
 
+		#content{
+			padding: 0 0.3rem;
+		}
 
-		/* 設定預設字型 */
 		#content *{
+			margin: 0.2rem;
 			padding: 0;
-			border: 0;
-			font-size: inherit;
-			font: inherit;
+			/* border: 0; */
+			font-size: 50%;
 			line-height: 1rem;
-			vertical-align: baseline;
+			vertical-align: middle;
+		}
+
+		#content td 
+			{
+			border: inherit !important;
 		}
 	</style>
 
@@ -68,14 +79,14 @@
 						<!-- Left -->
 						<div class="col-3"><?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/intro.php"; ?></div>
 						<!-- Right -->
-						<div class="col-9 reboot" id="content">
+						<div class="col-9" id="content">
 							<?php
 							$usage = $_GET['usage'];
 							$id = $_GET['id'];
 							switch ($usage) {
 								case 'nav':
 									include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/nav_item/" . $id . ".php";
-									// echo "<iframe src='/editor/doc/nav_item/" . $id . ".php' scrolling='no' height='100%' width='100%'></iframe>";
+									// echo "<iframe id='fcontent' src='/editor/doc/nav_item/" . $id . ".php' scrolling='no' height='100%' width='100%'></iframe>";
 									break;
 								default:
 									break;
@@ -100,6 +111,9 @@
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
 		<script src="/assets/js/common.js"></script>
+		<script>
+			$("#fcontent")
+		</script>
 
 </body>
 
