@@ -74,7 +74,7 @@
             <div class="row" >
                 <div class="col  align-left menu-option">
                     <div class="list-group mt-4 nav">
-                        <a class="list-group-item" href="./index.php?usage=nav" id="nav_item">導覽列</a>
+                        <a class="list-group-item" href="./index.php?usage=mod" id="mod">模組</a>
                         <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
                         <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
@@ -85,12 +85,12 @@
                     if (isset($_GET['usage'])) {
                         $usage = $_GET['usage'];
                         switch ($usage) {
-                            case "nav":
-                                include("./nav_item/index.php");
+                            case "mod":
+                                include("./mod/index.php");
                                 break;
                         }
                     } else {
-                        include("./nav_item/index.php");
+                        include("./mod/index.php");
                     }
                     ?>
                     </div>
@@ -110,7 +110,7 @@
     <script>
         var url = new URL(location.href);
         var params = url.searchParams;
-        var choose = "#nav_item";
+        var choose = "#mod";
         for(let pair of params.entries()){
             if(pair[0] === "usage"){
                 choose = "#" + pair[1];

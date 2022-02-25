@@ -36,26 +36,25 @@
 			background-color: inherit;
 		}
 
-		a{
+		a {
 			color: #3b7bb9;
 			text-decoration: none !important;
 		}
 
-		#content{
-			padding: 0 0.3rem;
+		#content {
+			padding: 0 1rem 0 1rem;
 		}
 
-		#content *{
-			margin: 0.2rem;
+		#content * {
+			margin: 0;
 			padding: 0;
 			/* border: 0; */
-			font-size: 50%;
+			font-size: 0.6rem;
 			line-height: 1rem;
 			vertical-align: middle;
 		}
 
-		#content td 
-			{
+		#content td {
 			border: inherit !important;
 		}
 	</style>
@@ -86,7 +85,8 @@
 							switch ($usage) {
 								case 'nav':
 									include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/nav_item/" . $id . ".php";
-									// echo "<iframe id='fcontent' src='/editor/doc/nav_item/" . $id . ".php' scrolling='no' height='100%' width='100%'></iframe>";
+									// $url = "/editor/doc/nav_item/" . $id . ".php";
+									// echo "<iframe id='fcontent' src='$url' scrolling='auto' height='100%' frameborder='0' width='100%'></iframe>";
 									break;
 								default:
 									break;
@@ -111,8 +111,19 @@
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
 		<script src="/assets/js/common.js"></script>
-		<script>
-			$("#fcontent")
+		<script type="text/javascript">
+			// function setIframeHeight(iframe) {
+			// 	if (iframe) {
+			// 		var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+			// 		if (iframeWin.document.body) {
+			// 			iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+			// 		}
+			// 	}
+			// };
+
+			// window.onload = function() {
+			// 	setIframeHeight(document.getElementById('fcontent'));
+			// };
 		</script>
 
 </body>

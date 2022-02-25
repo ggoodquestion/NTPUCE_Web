@@ -1,6 +1,6 @@
 <?php
 $link = sql_connect();
-$table_name = "mod";
+$table_name = "mods";
 $page = 1;
 $num_per_page = 20;
 if (isset($_GET['page'])) {
@@ -8,7 +8,7 @@ if (isset($_GET['page'])) {
 }
 $data_start = ($page - 1) * $num_per_page;
 
-$sql = "SELECT COUNT(*) as total FROM $table_name;";
+$sql = "SELECT COUNT(*) as total FROM $table_name ORDER BY id desc LIMIT $data_start, $num_per_page;";
 $result = sql_query($link, $sql);
 if (!$result) exit(mysqli_error($link));
 $row = sql_fetch($result);
@@ -155,10 +155,8 @@ if (!$result) exit(mysqli_error($link));
         event.preventDefault();
 
         name = $("#nameInput").val();
-        content = tinymce.get("add_editor").getContent();
         $.post("./mod/save.php", {
             name: name,
-            content: content
         }, function(data) {
             if (data == "success") {
                 location.reload();
@@ -216,7 +214,7 @@ if (!$result) exit(mysqli_error($link));
 
         id = $("#editId").val();
         name = $("#editNameInput").val();
-        $.post("./nav_item/save.php", {
+        $.post("./mod/save.php", {
             id: id,
             name: name,
             usage: 'update'
