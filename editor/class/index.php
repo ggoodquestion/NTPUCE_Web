@@ -1,6 +1,6 @@
 <?php
 $link = sql_connect();
-$table_name = "mods";
+$table_name = "class";
 $page = 1;
 $num_per_page = 20;
 if (isset($_GET['page'])) {
@@ -24,17 +24,45 @@ if (!$result) exit(mysqli_error($link));
     <div class="col-2"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">新增</button></div>
 
     <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered" id="add">
+        <div class="modal-dialog modal-sm modal-dialog-centered" id="add">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">新增模組</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">新增類別</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="form">
                         <div class="mb-3">
-                            <label class="form-label">模組名稱</label>
-                            <input type="text" class="form-control" id="nameInput">
+                            <label class="form-label">類別名稱</label>
+                            <input type="text" class="form-control" id="titleInput">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" id="sel-parent">
+                                <option selected>--選擇分類--</option>
+                                <?php
+                                // Make select list of class parent
+                                $sql = "SELECT * FROM class;";
+                                $res = sql_query($link, $sql);
+                                $count = 1;
+                                while ($row = sql_fetch($res)) {
+                                    echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" id="sel-mods">
+                                <option selected>--選擇模組--</option>
+                                <?php
+                                // Make select list of mods
+                                $sql = "SELECT * FROM mods;";
+                                $res = sql_query($link, $sql);
+                                $count = 1;
+                                while ($row = sql_fetch($res)) {
+                                    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="d-flex justify-content-end">
                             <input type="submit" class="btn btn-primary" id="save" value="儲存"></input>
@@ -55,7 +83,9 @@ if (!$result) exit(mysqli_error($link));
                 <!-- Table 欄位名稱 -->
                 <tr class="table-secondary tab-title" id="title">
                     <th scope="col">#</th>
-                    <th scope="col">模組名稱</th>
+                    <th scope="col">分類名稱</th>
+                    <th scope="col">父分類</th>
+                    <th scope="col">所屬模組</th>
                     <th scope="col">操作</th>
                 </tr>
             </thead>
@@ -65,7 +95,9 @@ if (!$result) exit(mysqli_error($link));
                 while ($row = sql_fetch($result)) { ?>
                     <tr id="<?php echo $row["id"]; ?>" class="dataRow">
                         <th scope="row" name="id"><?php echo $row["id"]; ?></th>
-                        <td name="name"><?php echo $row["name"]; ?></td>
+                        <td name="title"><?php echo $row["title"]; ?></td>
+                        <td name="parent"><?php echo $row["parent"]; ?></td>
+                        <td name="mods"><?php echo $row["mod"]; ?></td>
                         <td name="operations">
                             <button class="btn btn-sm" name="edit" data-bs-toggle="modal" data-bs-target="#edit" for="<?php echo $row["id"]; ?>"><img src="./images/edit_black_24dp.svg"></button>
                             <input class="btn btn-sm" type="image" name="delete" value="<?php echo $row[0]; ?>" src="./images/delete_black_24dp.svg" />
@@ -124,7 +156,7 @@ if (!$result) exit(mysqli_error($link));
 
 <!-- 更新頁面 -->
 <div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" id="edit">
+    <div class="modal-dialog modal-sm modal-dialog-centered" id="edit">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">修改內容</h5>
@@ -135,8 +167,36 @@ if (!$result) exit(mysqli_error($link));
                     <input type="hidden" name="id" value="" id="editId">
                     <input type="hidden" name="post" value="" id="editPost">
                     <div class="mb-3">
-                        <label class="form-label">模組名稱</label>
-                        <input type="text" class="form-control" id="editNameInput" name="name">
+                        <label class="form-label">分類名稱</label>
+                        <input type="text" class="form-control" id="editTitleInput" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="sel-parent-edit">
+                            <option selected>--選擇分類--</option>
+                            <?php
+                            // Make select list of class parent
+                            $sql = "SELECT * FROM class;";
+                            $res = sql_query($link, $sql);
+                            $count = 1;
+                            while ($row = sql_fetch($res)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="sel-mods-edit">
+                            <option selected>--選擇模組--</option>
+                            <?php
+                            // Make select list of mods
+                            $sql = "SELECT * FROM mods;";
+                            $res = sql_query($link, $sql);
+                            $count = 1;
+                            while ($row = sql_fetch($res)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="d-flex justify-content-end">
                         <input type="submit" class="btn btn-primary" id="editInput" value="修改"></input>
@@ -150,13 +210,19 @@ if (!$result) exit(mysqli_error($link));
 </div>
 
 <script>
-
     $("#form").submit(function(event) {
         event.preventDefault();
 
-        name = $("#nameInput").val();
-        $.post("./mod/save.php", {
-            name: name,
+        title = $("#titleInput").val();
+        parent = $("#sel-parent").val();
+        if (parent.includes('--選擇')) parent = 'null';
+
+        mod = $("#sel-mods").val();
+
+        $.post("./class/save.php", {
+            title: title,
+            parent: parent,
+            mod: mod
         }, function(data) {
             if (data == "success") {
                 location.reload();
@@ -169,7 +235,7 @@ if (!$result) exit(mysqli_error($link));
     $("input[name='delete']").click(function() {
         var r = confirm("確定刪除?");
         if (r == true) {
-            $.post("./mod/delete.php", {
+            $.post("./class/delete.php", {
                     id: $(this).val()
                 },
                 function(data) {
@@ -205,7 +271,9 @@ if (!$result) exit(mysqli_error($link));
         $("#editId").val(id);
         tr = $(this).parent().parent();
 
-        name = tr.find("td[name='name']").text();
+        title = tr.find("td[name='title']").text();
+        parent = tr.find("td[name='parent']").text();
+        mod = tr.find("td[name='mod']").text();
         $("#editNameInput").val(name);
     });
 

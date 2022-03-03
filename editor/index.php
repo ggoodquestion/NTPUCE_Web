@@ -32,28 +32,29 @@
         align-items: left;
         align-content: left;
     }
-    .menu-option{
+
+    .menu-option {
         background-color: #000f1f;
-        padding-left: 0; 
-        padding-right: 0; 
-        margin-top:0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 0;
         height: 100vh;
         overflow: auto;
     }
 
     .nav,
-    .list-group-item{
+    .list-group-item {
         background-color: #000f1f;
-        color:#ffffff;
+        color: #ffffff;
         font-size: 1.25rem;
     }
 
-    .optArea{
+    .optArea {
         height: 100vh;
         overflow: auto;
     }
 
-    .choose{
+    .choose {
         background-color: #ebf5ff;
         color: #000000;
         width: cover;
@@ -71,28 +72,32 @@
     <!-- Main -->
     <div id="main" class="align-center">
         <div class="container-fluid">
-            <div class="row" >
+            <div class="row">
                 <div class="col  align-left menu-option">
                     <div class="list-group mt-4 nav">
                         <a class="list-group-item" href="./index.php?usage=mod" id="mod">模組</a>
+                        <a class="list-group-item" href="./index.php?usage=class" id="class">分類</a>
                         <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
                         <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
                 </div>
                 <div class="col-10 ms-4 align-right optArea">
                     <div>
-                    <?php
-                    if (isset($_GET['usage'])) {
-                        $usage = $_GET['usage'];
-                        switch ($usage) {
-                            case "mod":
-                                include("./mod/index.php");
-                                break;
+                        <?php
+                        if (isset($_GET['usage'])) {
+                            $usage = $_GET['usage'];
+                            switch ($usage) {
+                                case "mod":
+                                    include("./mod/index.php");
+                                    break;
+                                case "class":
+                                    include("./class/index.php");
+                                    break;
+                            }
+                        } else {
+                            include("./mod/index.php");
                         }
-                    } else {
-                        include("./mod/index.php");
-                    }
-                    ?>
+                        ?>
                     </div>
                 </div>
             </div>
@@ -111,8 +116,8 @@
         var url = new URL(location.href);
         var params = url.searchParams;
         var choose = "#mod";
-        for(let pair of params.entries()){
-            if(pair[0] === "usage"){
+        for (let pair of params.entries()) {
+            if (pair[0] === "usage") {
                 choose = "#" + pair[1];
             }
         }
