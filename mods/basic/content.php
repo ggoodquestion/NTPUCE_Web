@@ -42,7 +42,7 @@
 		}
 
 		#content{
-			padding: 0 0.3rem;
+			resetCSSMixin();
 		}
 
 		#content *{
