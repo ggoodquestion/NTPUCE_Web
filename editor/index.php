@@ -59,6 +59,16 @@
         color: #000000;
         width: cover;
     }
+
+    .editor-list > * {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .editor-list {
+        background-color: #ffffff;
+        color: #000000;
+    }
 </style>
 
 <body>

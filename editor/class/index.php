@@ -34,7 +34,7 @@ if (!$result) exit(mysqli_error($link));
                     <form id="form">
                         <div class="mb-3">
                             <label class="form-label">類別名稱</label>
-                            <input type="text" class="form-control" id="titleInput">
+                            <input type="text" class="form-control" id="titleInput" requried>
                         </div>
                         <div class="mb-3">
                             <select class="form-select" id="sel-parent">
@@ -96,8 +96,8 @@ if (!$result) exit(mysqli_error($link));
                     <tr id="<?php echo $row["id"]; ?>" class="dataRow">
                         <th scope="row" name="id"><?php echo $row["id"]; ?></th>
                         <td name="title"><?php echo $row["title"]; ?></td>
-                        <td name="parent"><?php echo $row["parent"]; ?></td>
-                        <td name="mods"><?php echo $row["mod"]; ?></td>
+                        <td name="parent" for="<?php echo $row["parent"]; ?>"><?php echo $row["parent"]; ?></td>
+                        <td name="mods" for="<?php echo $row["mods"]; ?>"><?php echo ids2Mods($row["mods"], $link); ?></td>
                         <td name="operations">
                             <button class="btn btn-sm" name="edit" data-bs-toggle="modal" data-bs-target="#edit" for="<?php echo $row["id"]; ?>"><img src="./images/edit_black_24dp.svg"></button>
                             <input class="btn btn-sm" type="image" name="delete" value="<?php echo $row[0]; ?>" src="./images/delete_black_24dp.svg" />
@@ -217,7 +217,17 @@ if (!$result) exit(mysqli_error($link));
         parent = $("#sel-parent").val();
         if (parent.includes('--選擇')) parent = 'null';
 
+        if (title == '') {
+            alert("請填入廷稱");
+            return;
+        }
+
         mod = $("#sel-mods").val();
+
+        if (mod.includes('--選擇')) {
+            alert("請選擇模組");
+            return;
+        }
 
         $.post("./class/save.php", {
             title: title,
@@ -263,7 +273,7 @@ if (!$result) exit(mysqli_error($link));
     //         } else {
     //             alert(data);
     //         }
-    //     });
+    //     }); 
     // });
 
     $("button[name='edit']").click(function() {
@@ -272,9 +282,11 @@ if (!$result) exit(mysqli_error($link));
         tr = $(this).parent().parent();
 
         title = tr.find("td[name='title']").text();
-        parent = tr.find("td[name='parent']").text();
-        mod = tr.find("td[name='mod']").text();
-        $("#editNameInput").val(name);
+        parent = tr.find("td[name='parent']").attr("for");
+        mod = tr.find("td[name='mods']").attr("for");
+        $("#editTitleInput").val(title);
+        if (parent != null && !(parent < 1)) $("#sel-parent-edit").val(parent);
+        $("#sel-mods-edit").val(mod);
     });
 
     $("#editForm").submit(function(event) {
@@ -295,3 +307,18 @@ if (!$result) exit(mysqli_error($link));
         });
     });
 </script>
+<?php
+function ids2Mods($data, $link)
+{
+    $ids = explode(",", $data);
+    $res = '';
+    foreach ($ids as $id) {
+        $sql = "SELECT * FROM mods WHERE id=$id;";
+        $result = sql_query($link, $sql);
+        $row = sql_fetch($result);
+        $res .= $row['name'] . ',';
+    }
+    $res = substr($res, 0, strlen($res) - 1);
+    return $res;
+}
+?>

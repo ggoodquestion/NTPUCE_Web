@@ -150,11 +150,15 @@ if (!$result) exit(mysqli_error($link));
 </div>
 
 <script>
-
     $("#form").submit(function(event) {
         event.preventDefault();
 
         name = $("#nameInput").val();
+        if (name == '') {
+            alert("請填入名稱");
+            retrun;
+        }
+
         $.post("./mod/save.php", {
             name: name,
         }, function(data) {
@@ -214,6 +218,11 @@ if (!$result) exit(mysqli_error($link));
 
         id = $("#editId").val();
         name = $("#editNameInput").val();
+        if (name == '') {
+            alert("請填入名稱");
+            retrun;
+        }
+        
         $.post("./mod/save.php", {
             id: id,
             name: name,
