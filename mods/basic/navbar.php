@@ -16,10 +16,14 @@ $json = json_decode($file, true);
         <?php
         include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
         $link =sql_connect();
-        $sql = "SELECT * FROM nav_item;";
+        $sql = "SELECT id FROM mods WHERE name='nav';";
+        $result = sql_query($link, $sql);
+        $mid = sql_fetch($result)['id'];
+
+        $sql = "SELECT * FROM class WHERE mods='$mid';";
         $result = sql_query($link, $sql);
         while($row = sql_fetch($result)){
-            echo '<li><a href="/mods/basic/content.php?usage=nav&id='.$row['post'].'">'.$row['name'].'</a></li>';
+            echo '<li><a href="/mods/basic/content.php?usage=nav&id=">'.$row['title'].'</a></li>';
         }
         ?>
         <!-- <li id="home"><a href="/index.php">Home</a></li>

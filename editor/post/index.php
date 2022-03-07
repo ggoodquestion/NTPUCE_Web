@@ -27,14 +27,14 @@ if (!$result) exit(mysqli_error($link));
         <div class="modal-dialog modal-xl modal-dialog-centered" id="add">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">新增模組</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">撰寫文章</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="form">
                         <div class="mb-3">
                             <label class="form-label">文章標題</label>
-                            <input type="text" class="form-control" id="nameInput">
+                            <input type="text" class="form-control" id="titleInput">
                         </div>
                         <div class="mb-3">
                             <select class="form-select" id="sel-class">
@@ -73,8 +73,9 @@ if (!$result) exit(mysqli_error($link));
                     <th scope="col">#</th>
                     <th scope="col">文章標題</th>
                     <th scope="col">分類</th>
-                    <th scope="col">啟用</th>
                     <th scope="col">發布時間</th>
+                    <th scope="col">啟用</th>
+                    <th scope="col">操作</th>
                 </tr>
             </thead>
             <!-- Table 欄位內容 -->
@@ -84,13 +85,14 @@ if (!$result) exit(mysqli_error($link));
                     <tr id="<?php echo $row["id"]; ?>" class="dataRow">
                         <th scope="row" name="id"><?php echo $row["id"]; ?></th>
                         <td name="title"><?php echo $row["title"]; ?></td>
-                        <td name="class"><?php echo $row["class"]; ?></td>
-                        <td name="enable"><?php echo $row["enable"]; ?></td>
+                        <td name="class" for="<?php echo $row["class"]; ?>"><?php echo id2Class($row["class"], $link); ?></td>
                         <td name="published"><?php echo $row["published"]; ?></td>
+                        <td name="enable"><input class="form-check-input" name="enableCheck" type="checkbox" <?php echo ($row['enable']) ? 'checked' : ''; ?>></td>
                         <td name="operations">
                             <button class="btn btn-sm" name="edit" data-bs-toggle="modal" data-bs-target="#edit" for="<?php echo $row["id"]; ?>"><img src="./images/edit_black_24dp.svg"></button>
                             <input class="btn btn-sm" type="image" name="delete" value="<?php echo $row[0]; ?>" src="./images/delete_black_24dp.svg" />
                             <input class="btn btn-sm" type="image" name="refresh" value="<?php echo $row[0]; ?>" src="./images/update_black_24dp.svg" />
+                            <input type="hidden" name="content" value="<?php echo $row["content"]; ?>">
                         </td>
                     </tr>
                 <?php }
@@ -148,16 +150,32 @@ if (!$result) exit(mysqli_error($link));
     <div class="modal-dialog modal-xl modal-dialog-centered" id="edit">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">修改內容</h5>
+                <h5 class="modal-title" id="exampleModalLabel">編輯文章</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm" method="post" action="./bannerSave.php">
+                <form id="editForm" method="post" action="">
                     <input type="hidden" name="id" value="" id="editId">
                     <input type="hidden" name="post" value="" id="editPost">
                     <div class="mb-3">
-                        <label class="form-label">模組名稱</label>
-                        <input type="text" class="form-control" id="editNameInput" name="name">
+                        <label class="form-label">文章標題</label>
+                        <input type="text" class="form-control" id="editTitleInput" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="sel-class-edit">
+                            <option selected>--選擇分類--</option>
+                            <?php
+                            // Make select list of class parent
+                            $sql = "SELECT * FROM class;";
+                            $res = sql_query($link, $sql);
+                            while ($row = sql_fetch($res)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="editor-edit"></textarea>
                     </div>
                     <div class="d-flex justify-content-end">
                         <input type="submit" class="btn btn-primary" id="editInput" value="修改"></input>
@@ -185,17 +203,40 @@ if (!$result) exit(mysqli_error($link));
         init_instance_callback: "setEditorContent"
     });
 
+    tinymce.init({
+        selector: 'textarea',
+        auto_focus: "editor-edit",
+        height: 800,
+        images_upload_url: 'imageUploadAccepter.php',
+        plugins: [
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'table emoticons template paste help'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+        init_instance_callback: "setEditorContent"
+    });
+
     $("#form").submit(function(event) {
         event.preventDefault();
 
-        name = $("#nameInput").val();
-        if (name == '') {
+        title = $("#titleInput").val();
+        if (title == '') {
             alert("請填入名稱");
             retrun;
         }
+        classes = $("#sel-class").val();
+        if (classes.includes('--選擇')) {
+            alert("請選擇分類");
+            return;
+        }
 
-        $.post("./mod/save.php", {
-            name: name,
+        var content = tinymce.get("editor").getContent();
+
+        $.post("./post/save.php", {
+            title: title,
+            class: classes,
+            content: content
         }, function(data) {
             if (data == "success") {
                 location.reload();
@@ -208,7 +249,7 @@ if (!$result) exit(mysqli_error($link));
     $("input[name='delete']").click(function() {
         var r = confirm("確定刪除?");
         if (r == true) {
-            $.post("./mod/delete.php", {
+            $.post("./post/delete.php", {
                     id: $(this).val()
                 },
                 function(data) {
@@ -222,45 +263,61 @@ if (!$result) exit(mysqli_error($link));
         }
     });
 
-    // $("input[name='enableCheck']").change(function() {
-    //     let chk = 0;
-    //     if ($(this).is(":checked")) {
-    //         chk = 1;
-    //     }
-    //     $.post("./bannerCheck.php", {
-    //         id: $(this).parent().parent().attr("id"),
-    //         enable: chk
-    //     }, function(data) {
-    //         if (data == "success") {
-    //             window.location.reload();
-    //         } else {
-    //             alert(data);
-    //         }
-    //     });
-    // });
+    $("input[name='enableCheck']").change(function() {
+        let chk = 0;
+        if ($(this).is(":checked")) {
+            chk = 1;
+        }
+        $.post("./post/check.php", {
+            id: $(this).parent().parent().attr("id"),
+            enable: chk
+        }, function(data) {
+            if (data == "success") {
+                window.location.reload();
+            } else {
+                alert(data);
+            }
+        });
+    });
 
     $("button[name='edit']").click(function() {
         var id = $(this).attr("for");
         $("#editId").val(id);
         tr = $(this).parent().parent();
 
-        name = tr.find("td[name='name']").text();
-        $("#editNameInput").val(name);
+        title = tr.find("td[name='title']").text();
+        classes = tr.find("td[name='class']").attr("for");
+        cid = $(this).parent().find("input[name='content']").val();
+
+        $("#editTitleInput").val(title);
+        $("#sel-class-edit").val(classes);
+        
+        $.get("./doc/" + cid + ".php", function(data) {
+            tinymce.get("editor-edit").setContent(data);
+        });
     });
 
     $("#editForm").submit(function(event) {
         event.preventDefault();
 
         id = $("#editId").val();
-        name = $("#editNameInput").val();
-        if (name == '') {
-            alert("請填入名稱");
+        title = $("#editTitleInput").val();
+        classes = $('#sel-class-edit').val();
+        content = tinymce.get("editor-edit").getContent();
+        if (title == '') {
+            alert("請填入標題");
             retrun;
         }
+        if(classes.includes('--選擇')){
+            alert("請選擇分類");
+            return;
+        }
 
-        $.post("./mod/save.php", {
+        $.post("./post/save.php", {
             id: id,
-            name: name,
+            title: title,
+            class: classes,
+            content: content,
             usage: 'update'
         }, function(data) {
             if (data == "success") {

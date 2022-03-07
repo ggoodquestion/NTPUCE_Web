@@ -9,13 +9,26 @@ if (isset($_POST['usage'])) {
     $id = $_POST['id'];
 }
 
-$name = $_POST['name'];
+$title = $_POST['title'];
+$class = $_POST['class'];
+$content = $_POST['content'];
 
-$sql = "INSERT INTO mods(name) VALUES " .
-    "('$name');";
+$path = $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/";
+$fn = uniqid();
+file_put_contents($path . $fn . '.php', $content);
+
+$sql = "INSERT INTO post(title, class, content) VALUES " .
+    "('$title', $class, '$fn');";
 
 if ($usage == 'update') {
-    $sql = "UPDATE mods SET name='$name' WHERE id=$id;";
+    $sql = "SELECT content FROM post WHERE id=$id;";
+    $res = sql_query($link, $sql);
+    $fn = $path . sql_fetch($res)['content'];
+    $fp = fopen($fn . '.php', 'w');
+    fwrite($fp, $content);
+    fclose($fp);
+
+    $sql = "UPDATE post SET title='$title', class=$class WHERE id=$id;";
 } 
 
 $result = mysqli_query($link, $sql);
