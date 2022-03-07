@@ -1,6 +1,6 @@
 <?php
 $link = sql_connect();
-$table_name = "class";
+$table_name = "post";
 $page = 1;
 $num_per_page = 20;
 if (isset($_GET['page'])) {
@@ -14,7 +14,7 @@ if (!$result) exit(mysqli_error($link));
 $row = sql_fetch($result);
 $total = ceil($row[0] / $num_per_page);
 
-$sql = "SELECT * FROM $table_name ORDER BY id desc LIMIT $data_start, $num_per_page;";
+$sql = "SELECT * FROM $table_name ORDER BY published desc LIMIT $data_start, $num_per_page;";
 $result = sql_query($link, $sql);
 if (!$result) exit(mysqli_error($link));
 ?>
@@ -24,26 +24,25 @@ if (!$result) exit(mysqli_error($link));
     <div class="col-2"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">新增</button></div>
 
     <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered" id="add">
+        <div class="modal-dialog modal-xl modal-dialog-centered" id="add">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">新增類別</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">新增模組</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="form">
                         <div class="mb-3">
-                            <label class="form-label">類別名稱</label>
-                            <input type="text" class="form-control" id="titleInput" requried>
+                            <label class="form-label">文章標題</label>
+                            <input type="text" class="form-control" id="nameInput">
                         </div>
                         <div class="mb-3">
-                            <select class="form-select" id="sel-parent">
+                            <select class="form-select" id="sel-class">
                                 <option selected>--選擇分類--</option>
                                 <?php
                                 // Make select list of class parent
                                 $sql = "SELECT * FROM class;";
                                 $res = sql_query($link, $sql);
-                                $count = 1;
                                 while ($row = sql_fetch($res)) {
                                     echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
                                 }
@@ -51,18 +50,7 @@ if (!$result) exit(mysqli_error($link));
                             </select>
                         </div>
                         <div class="mb-3">
-                            <select class="form-select" id="sel-mods">
-                                <option selected>--選擇模組--</option>
-                                <?php
-                                // Make select list of mods
-                                $sql = "SELECT * FROM mods;";
-                                $res = sql_query($link, $sql);
-                                $count = 1;
-                                while ($row = sql_fetch($res)) {
-                                    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
-                                }
-                                ?>
-                            </select>
+                            <textarea id="editor"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             <input type="submit" class="btn btn-primary" id="save" value="儲存"></input>
@@ -83,10 +71,10 @@ if (!$result) exit(mysqli_error($link));
                 <!-- Table 欄位名稱 -->
                 <tr class="table-secondary tab-title" id="title">
                     <th scope="col">#</th>
-                    <th scope="col">分類名稱</th>
-                    <th scope="col">父分類</th>
-                    <th scope="col">所屬模組</th>
-                    <th scope="col">操作</th>
+                    <th scope="col">文章標題</th>
+                    <th scope="col">分類</th>
+                    <th scope="col">啟用</th>
+                    <th scope="col">發布時間</th>
                 </tr>
             </thead>
             <!-- Table 欄位內容 -->
@@ -96,8 +84,9 @@ if (!$result) exit(mysqli_error($link));
                     <tr id="<?php echo $row["id"]; ?>" class="dataRow">
                         <th scope="row" name="id"><?php echo $row["id"]; ?></th>
                         <td name="title"><?php echo $row["title"]; ?></td>
-                        <td name="parent" for="<?php echo $row["parent"]; ?>"><?php echo id2Class($row["parent"], $link); ?></td>
-                        <td name="mods" for="<?php echo $row["mods"]; ?>"><?php echo ids2Mods($row["mods"], $link); ?></td>
+                        <td name="class"><?php echo $row["class"]; ?></td>
+                        <td name="enable"><?php echo $row["enable"]; ?></td>
+                        <td name="published"><?php echo $row["published"]; ?></td>
                         <td name="operations">
                             <button class="btn btn-sm" name="edit" data-bs-toggle="modal" data-bs-target="#edit" for="<?php echo $row["id"]; ?>"><img src="./images/edit_black_24dp.svg"></button>
                             <input class="btn btn-sm" type="image" name="delete" value="<?php echo $row[0]; ?>" src="./images/delete_black_24dp.svg" />
@@ -156,7 +145,7 @@ if (!$result) exit(mysqli_error($link));
 
 <!-- 更新頁面 -->
 <div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" id="edit">
+    <div class="modal-dialog modal-xl modal-dialog-centered" id="edit">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">修改內容</h5>
@@ -167,36 +156,8 @@ if (!$result) exit(mysqli_error($link));
                     <input type="hidden" name="id" value="" id="editId">
                     <input type="hidden" name="post" value="" id="editPost">
                     <div class="mb-3">
-                        <label class="form-label">分類名稱</label>
-                        <input type="text" class="form-control" id="editTitleInput" name="name">
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select" id="sel-parent-edit">
-                            <option selected>--選擇分類--</option>
-                            <?php
-                            // Make select list of class parent
-                            $sql = "SELECT * FROM class;";
-                            $res = sql_query($link, $sql);
-                            $count = 1;
-                            while ($row = sql_fetch($res)) {
-                                echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select" id="sel-mods-edit">
-                            <option selected>--選擇模組--</option>
-                            <?php
-                            // Make select list of mods
-                            $sql = "SELECT * FROM mods;";
-                            $res = sql_query($link, $sql);
-                            $count = 1;
-                            while ($row = sql_fetch($res)) {
-                                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <label class="form-label">模組名稱</label>
+                        <input type="text" class="form-control" id="editNameInput" name="name">
                     </div>
                     <div class="d-flex justify-content-end">
                         <input type="submit" class="btn btn-primary" id="editInput" value="修改"></input>
@@ -210,29 +171,31 @@ if (!$result) exit(mysqli_error($link));
 </div>
 
 <script>
+    tinymce.init({
+        selector: 'textarea',
+        auto_focus: "editor",
+        height: 800,
+        images_upload_url: 'imageUploadAccepter.php',
+        plugins: [
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'table emoticons template paste help'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+        init_instance_callback: "setEditorContent"
+    });
+
     $("#form").submit(function(event) {
         event.preventDefault();
 
-        title = $("#titleInput").val();
-        parent = $("#sel-parent").val();
-        if (parent.includes('--選擇')) parent = 'null';
-
-        if (title == '') {
+        name = $("#nameInput").val();
+        if (name == '') {
             alert("請填入名稱");
-            return;
+            retrun;
         }
 
-        mod = $("#sel-mods").val();
-
-        if (mod.includes('--選擇')) {
-            alert("請選擇模組");
-            return;
-        }
-
-        $.post("./class/save.php", {
-            title: title,
-            parent: parent,
-            mod: mod
+        $.post("./mod/save.php", {
+            name: name,
         }, function(data) {
             if (data == "success") {
                 location.reload();
@@ -245,7 +208,7 @@ if (!$result) exit(mysqli_error($link));
     $("input[name='delete']").click(function() {
         var r = confirm("確定刪除?");
         if (r == true) {
-            $.post("./class/delete.php", {
+            $.post("./mod/delete.php", {
                     id: $(this).val()
                 },
                 function(data) {
@@ -273,7 +236,7 @@ if (!$result) exit(mysqli_error($link));
     //         } else {
     //             alert(data);
     //         }
-    //     }); 
+    //     });
     // });
 
     $("button[name='edit']").click(function() {
@@ -281,38 +244,23 @@ if (!$result) exit(mysqli_error($link));
         $("#editId").val(id);
         tr = $(this).parent().parent();
 
-        title = tr.find("td[name='title']").text();
-        parent = tr.find("td[name='parent']").attr("for");
-        mod = tr.find("td[name='mods']").attr("for");
-        $("#editTitleInput").val(title);
-        if (parent != null && !(parent < 1)) $("#sel-parent-edit").val(parent);
-        $("#sel-mods-edit").val(mod);
+        name = tr.find("td[name='name']").text();
+        $("#editNameInput").val(name);
     });
 
     $("#editForm").submit(function(event) {
         event.preventDefault();
 
         id = $("#editId").val();
-        title = $("#editTitleInput").val();
-        parent = $("#sel-parent-edit").val();
-        if (parent.includes('--選擇')) parent = 'null';
-
-        if (title == '') {
+        name = $("#editNameInput").val();
+        if (name == '') {
             alert("請填入名稱");
-            return;
+            retrun;
         }
 
-        mod = $("#sel-mods-edit").val();
-
-        if (mod.includes('--選擇')) {
-            alert("請選擇模組");
-            return;
-        }
-        $.post("./class/save.php", {
+        $.post("./mod/save.php", {
             id: id,
-            title: title,
-            parent: parent,
-            mod: mod,
+            name: name,
             usage: 'update'
         }, function(data) {
             if (data == "success") {

@@ -60,7 +60,7 @@
         width: cover;
     }
 
-    .editor-list > * {
+    .editor-list>* {
         background-color: #ffffff !important;
         color: #000000 !important;
     }
@@ -87,6 +87,7 @@
                     <div class="list-group mt-4 nav">
                         <a class="list-group-item" href="./index.php?usage=mod" id="mod">模組</a>
                         <a class="list-group-item" href="./index.php?usage=class" id="class">分類</a>
+                        <a class="list-group-item" href="./index.php?usage=post" id="post">文章</a>
                         <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
                         <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
@@ -102,6 +103,9 @@
                                     break;
                                 case "class":
                                     include("./class/index.php");
+                                    break;
+                                case "post":
+                                    include("./post/index.php");
                                     break;
                             }
                         } else {

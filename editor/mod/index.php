@@ -8,7 +8,7 @@ if (isset($_GET['page'])) {
 }
 $data_start = ($page - 1) * $num_per_page;
 
-$sql = "SELECT COUNT(*) as total FROM $table_name ORDER BY id desc LIMIT $data_start, $num_per_page;";
+$sql = "SELECT COUNT(*) as total FROM $table_name;";
 $result = sql_query($link, $sql);
 if (!$result) exit(mysqli_error($link));
 $row = sql_fetch($result);
