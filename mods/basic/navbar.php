@@ -23,7 +23,7 @@ $json = json_decode($file, true);
         $sql = "SELECT * FROM class WHERE mods='$mid';";
         $result = sql_query($link, $sql);
         while($row = sql_fetch($result)){
-            echo '<li><a href="/mods/basic/content.php?usage=nav&id=">'.$row['title'].'</a></li>';
+            echo '<li><a href="/mods/basic/content.php?class='.$row['id'].'">'.$row['title'].'</a></li>';
         }
         ?>
         <!-- <li id="home"><a href="/index.php">Home</a></li>

@@ -80,8 +80,23 @@
 						<!-- Right -->
 						<div class="col-9" id="content">
 							<?php
+							include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
+							$link = sql_connect();
+
 							$usage = $_GET['usage'];
-							$id = $_GET['id'];
+							$class = $_GET['class'];
+
+							$sql = "SELECT COUNT(*) as total FROM post WHERE class=$class AND enable=1;";
+							$res = sql_query($link, $sql);
+							if(sql_fetch($res)['total'] == 1){
+								$sql = "SELECT * as total FROM post WHERE class=$class AND enable=1;";
+								$res = sql_query($link, $sql);
+								$row = sql_fetch($res);
+								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
+							}else{
+
+							}
+
 							switch ($usage) {
 								case 'nav':
 									include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/nav_item/" . $id . ".php";
