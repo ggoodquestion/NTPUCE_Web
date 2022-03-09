@@ -80,18 +80,21 @@
 						<!-- Right -->
 						<div class="col-9" id="content">
 							<?php
-							include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
-							$link = sql_connect();
-
+							// Utils is include in navbar.php
 							$usage = $_GET['usage'];
-							$class = $_GET['class'];
+							$class = trim($_GET['class']);
 
-							$sql = "SELECT COUNT(*) as total FROM post WHERE class=$class AND enable=1;";
+							$sql = "SELECT * FROM post WHERE class=$class AND enable=1;";
 							$res = sql_query($link, $sql);
-							if(sql_fetch($res)['total'] == 1){
-								$sql = "SELECT * as total FROM post WHERE class=$class AND enable=1;";
-								$res = sql_query($link, $sql);
-								$row = sql_fetch($res);
+							
+							$count = 0;
+							$data = array();
+							while($row = sql_fetch($res)){
+								$count++;
+								$data[] = $row;
+							}
+							if($count === 1){
+								$row = $data[0];
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
 							}else{
 

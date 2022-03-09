@@ -8,7 +8,7 @@ function sql_connect(){
 
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
     if(!$link){
-        exit(mysqli_connect_error());
+        echo(mysqli_connect_error());
         exit("Connection failed.");
     }
     return $link;

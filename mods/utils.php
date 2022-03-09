@@ -8,7 +8,7 @@ function sql_connect(){
 
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
     if(!$link){
-        exit(mysqli_connect_error());
+        echo(mysqli_connect_error());
         exit("Connection failed.");
     }
     return $link;
@@ -28,5 +28,29 @@ function sql_fetch($result){
         $row = false;
     }
     return $row;
+}
+
+function ids2Mods($data, $link)
+{
+    $ids = explode(",", $data);
+    $res = '';
+    foreach ($ids as $id) {
+        $sql = "SELECT * FROM mods WHERE id=$id;";
+        $result = sql_query($link, $sql);
+        $row = sql_fetch($result);
+        $res .= $row['name'] . ',';
+    }
+    $res = substr($res, 0, strlen($res) - 1);
+    return $res;
+}
+
+function id2Class($data, $link)
+{
+    if (empty($data)) return; // To be insure $data is not empty
+    $sql = "SELECT * FROM class WHERE id=$data;";
+    $result = sql_query($link, $sql);
+    $row = sql_fetch($result);
+    $res = $row['title'];
+    return $res;
 }
 ?>
