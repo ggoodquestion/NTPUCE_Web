@@ -97,7 +97,7 @@
 								$row = $data[0];
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
 							}else{
-
+								
 							}
 
 							switch ($usage) {
