@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link href="/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/article.css" />
     <link rel="stylesheet" href="/assets/css/common.css" />
     <noscript>
         <link rel="stylesheet" href="/assets/css/noscript.css" />
@@ -42,6 +42,30 @@
             padding: 0rem 0.25rem;
             margin: 0.2rem 0.2rem 0.1rem 0.2rem;
         }
+
+		a {
+			color: #3b7bb9;
+			text-decoration: none !important;
+		}
+
+		#content {
+			padding: 0 1rem 0 1rem;
+		}
+
+		#content * {
+			margin: 0;
+			padding: 0;
+			/* border: 0; */
+			font-size: 0.6rem;
+			line-height: 1rem;
+			vertical-align: middle;
+		}
+
+		#content td {
+			border: inherit !important;
+		}
+	</style>
+
     </style>
 
     <!-- Wrapper -->
@@ -76,8 +100,14 @@
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
                         </div>
                         <!-- Middle -->
-                        <div class="col-9">
-
+                        <div class="col-9" id="content">
+                        <?php
+                        $id = $_GET['id'];
+                        $sql = "SELECT * FROM post WHERE id=$id;";
+						$res = sql_query($link, $sql);
+                        $row = sql_fetch($res);
+                        include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
+                        ?>
                         </div>
                     </div>
                 </div>
