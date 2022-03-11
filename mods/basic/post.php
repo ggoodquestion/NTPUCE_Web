@@ -101,13 +101,7 @@
                         </div>
                         <!-- Middle -->
                         <div class="col-9" id="content">
-                        <?php
-                        $id = $_GET['id'];
-                        $sql = "SELECT * FROM post WHERE id=$id;";
-						$res = sql_query($link, $sql);
-                        $row = sql_fetch($res);
-                        include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
-                        ?>
+                        
                         </div>
                     </div>
                 </div>
