@@ -14,6 +14,10 @@ function sql_connect(){
     return $link;
 }
 
+function sql_disconnect(&$link){
+    mysqli_close($link);
+}
+
 // Select
 function sql_query($link, $sql){
     $result = mysqli_query($link, $sql);

@@ -62,6 +62,20 @@
 		.lm>div {
 			margin-bottom: 1rem;
 		}
+
+		#info-wrapper>div {
+			padding: 0 0.5rem 0 0;
+		}
+
+		.post-item {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.post-item > a{
+			color: #2a6aa8;
+		}
 	</style>
 
 	<!-- Wrapper -->
@@ -104,79 +118,47 @@
 
 							<!-- 公告區 -->
 							<div class="container">
-								<div class="row">
-									<!--系辦公告 -->
-									<div id="announcement" class="container-fluid mid-col col-6">
-										<div class="alert alert-light d-flex justify-content-between" role="alert">
-											<div>
-												系辦公告
-											</div>
-											<div></div>
-											<div>
-												<a href="#" class="alert-link">more</a>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush container-fluid mid-col">
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-										</ul>
-									</div>
-									<!--招生快訊  -->
-									<div id="student" class="container-fluid mid-col col-6">
-										<div class="alert alert-light d-flex justify-content-between" role="alert">
-											<div>
-												系辦公告
-											</div>
-											<div></div>
-											<div>
-												<a href="#" class="alert-link">more</a>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush container-fluid mid-col">
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-										</ul>
-									</div>
-									<!-- 學術活動 -->
-									<div id="academic" class="container-fluid mid-col col-6">
-										<div class="alert alert-light d-flex justify-content-between" role="alert">
-											<div>
-												系辦公告
-											</div>
-											<div></div>
-											<div>
-												<a href="#" class="alert-link">more</a>
+								<div class="row" id="info-wrapper">
+									<?php
+										$link = sql_connect();
+										$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='info';";
+										$result = sql_query($link, $sql);
+										while($row = sql_fetch($result)){
+										?>
+										<div class="col-6">
+											<div id="announcement" class="mid-col">
+												<div class="alert alert-light d-flex justify-content-between" role="alert">
+													<div>
+														<?php echo $row['title']; ?>
+													</div>
+													<div>
+														<a href="<?php 
+														// Use $row[0] to avoid selecting mods' id
+														echo '/mods/basic/content.php?class='.$row[0]; ?>" class="alert-link">more</a>
+													</div>
+												</div>
+												<ul class="list-group list-group-flush mid-col">
+													<?php
+													$id = $row[0];
+													$sql = "SELECT * FROM post WHERE class=$id AND enable=1 ORDER BY published LIMIT 5;";
+													$res = sql_query($link, $sql);
+													while ($row2 = sql_fetch($res)) {
+														$title = $row2['title'];
+														$pid = $row2['id'];
+														$published = explode(' ', $row2['published'])[0];
+														echo "<li class='list-group-item d-flex justify-content-between post-item'>
+																<small>$published&nbsp</small>
+																<a href='/mods/basic/post.php?id=$pid' data-bs-toggle='tooltip' data-bs-placement='top' title='$title'>$title</a>
+															</li>";
+													}
+													?>
+												</ul>
 											</div>
 										</div>
-										<ul class="list-group list-group-flush container-fluid mid-col">
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-										</ul>
-									</div>
-									<!-- 課務訊息 -->
-									<div id="lesson" class="container-fluid mid-col col-6">
-										<div class="alert alert-light d-flex justify-content-between" role="alert">
-											<div>
-												系辦公告
-											</div>
-											<div></div>
-											<div>
-												<a href="#" class="alert-link">more</a>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush mid-col">
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-											<li class="list-group-item "><a href="#">A third link item</a></li>
-										</ul>
-									</div>
+										<?php
+										}
+										sql_disconnect($link);
+									?>
 								</div>
 							</div>
 						</div>

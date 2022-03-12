@@ -101,7 +101,7 @@
                         </div>
                         <!-- Middle -->
                         <div class="col-9" id="content">
-                        
+                        <?php $link = sql_connect(); ?>
                         </div>
                     </div>
                 </div>

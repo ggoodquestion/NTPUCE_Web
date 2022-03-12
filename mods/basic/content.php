@@ -90,6 +90,7 @@
 
 						<?php
 						// Utils is include in navbar.php
+						$link = sql_connect();
 						$usage = $_GET['usage'];
 						$class = trim($_GET['class']);
 

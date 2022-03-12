@@ -51,6 +51,7 @@ $json = json_decode($file, true);
 </script>
 
 <?php
+sql_disconnect($link);
 // function get_eng_nav($item, $index, $zh, $src){
 //     if(isEng()){
 //         global $json;
