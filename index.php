@@ -96,19 +96,7 @@
 					<div class="row">
 						<!-- Left -->
 						<div class="col-3 lm">
-							<div class="list-group list-group-flush left-col">
-								<a href="#" class="list-group-item list-group-item-action">新生專區</a>
-								<a href="#" class="list-group-item list-group-item-action">競賽資訊</a>
-								<a href="#" class="list-group-item list-group-item-action">專題製作</a>
-								<a href="#" class="list-group-item list-group-item-action">學分學程/微學程</a>
-								<a href="#" class="list-group-item list-group-item-action">獎學金</a>
-								<a href="#" class="list-group-item list-group-item-action">系友專區</a>
-								<a href="#" class="list-group-item list-group-item-action">通訊系學會</a>
-								<a href="#" class="list-group-item list-group-item-action">相片集錦</a>
-								<a href="#" class="list-group-item list-group-item-action">大學程式能力檢定</a>
-								<a href="#" class="list-group-item list-group-item-action">榮譽榜</a>
-								<a href="#" class="list-group-item list-group-item-action">問與答</a>
-							</div>
+							<?php include "./mods/basic/leftcol.php"; ?>
 							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
