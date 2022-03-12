@@ -110,6 +110,18 @@
 							include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
 							echo '</div>';
 						} else {
+							// 以下參數準備給分頁器使用
+							$totalPage = ceil($count / 8);
+							$currentPage = 1;
+							if(isset($_GET['page'])) $currentPage = $_GET['page'];
+							$main_url = "/mods/basic/content.php?class=".$class;
+							$paramName = 'page';
+
+							// 用SQL在查詢一次指定範圍的資料
+							$start = ($currentPage-1) * 8;
+							$sql = "SELECT * FROM post WHERE class=$class AND enable=1 ORDER BY published DESC LIMIT $start, 8;";
+							$res = sql_query($link, $sql);
+
 							echo '<link rel="stylesheet" href="/assets/css/main.css" />';
 							echo '<div class="col-9" id="">';
 							echo '<div class="table-wrapper">
@@ -125,7 +137,7 @@
 										</tr>
 									</thead>
 									<tbody>';
-							foreach ($data as $row) {
+							while($row = sql_fetch($res)) {
 								$ts = explode(" ", $row['published'])[0];
 								echo "
 										<tr>
@@ -136,8 +148,13 @@
 							}
 							echo '</tbody>
 									</table>
-								</div>
-							</div>';
+								</div>';
+
+
+							// Generate pagination by utils function
+							echo '<div class="d-flex justify-content-center">';
+							generatePagination($totalPage, $currentPage, $main_url, $paramName);
+							echo '</div></div>';
 						}
 
 						switch ($usage) {

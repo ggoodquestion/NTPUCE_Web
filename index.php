@@ -147,8 +147,8 @@
 														$pid = $row2['id'];
 														$published = explode(' ', $row2['published'])[0];
 														echo "<li class='list-group-item d-flex justify-content-between post-item'>
-																<small>$published&nbsp</small>
-																<a href='/mods/basic/post.php?id=$pid' data-bs-toggle='tooltip' data-bs-placement='top' title='$title'>$title</a>
+																<small>$published&ensp;&ensp;</small>
+																<a href='/mods/basic/post.php?id=$pid' title='$title'>$title</a>
 															</li>";
 													}
 													?>
