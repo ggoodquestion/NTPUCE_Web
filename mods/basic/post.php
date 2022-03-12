@@ -83,20 +83,7 @@
                     <div class="row">
                         <!-- Left -->
                         <div class="col-3">
-                            <div class="left-top">
-                                <div class="alert alert-light topic" role="alert">
-                                    <div>
-                                        訊息公告
-                                    </div>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item "><a href="#">A third link item</a></li>
-                                    <li class="list-group-item "><a href="#">A third link item</a></li>
-                                    <li class="list-group-item "><a href="#">A third link item</a></li>
-                                    <li class="list-group-item "><a href="#">A third link item</a></li>
-                                </ul>
-                            </div>
-
+                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>   
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
                         </div>
                         <!-- Middle -->

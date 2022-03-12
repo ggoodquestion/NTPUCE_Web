@@ -108,7 +108,7 @@ if (!$result) exit(mysqli_error($link));
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-end">
                 <li class="page-item">
-                    <a class="page-link" href="./menu.php?usage=banner&page=<?php echo ($page - 1 < 1) ?  $page :  $page - 1; ?>" id="previous">
+                    <a class="page-link" href="./index.php?usage=post&page=<?php echo ($page - 1 < 1) ?  $page :  $page - 1; ?>" id="previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -129,14 +129,14 @@ if (!$result) exit(mysqli_error($link));
 
                 for ($i = $start; $i <= $stop; $i++) {
                     if ($page == $i) {
-                        echo "<li class='page-item disabled'><a class='page-link' href='./menu.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link' href='./index.php?usage=article&page=$i'>$i</a></li>";
                     } else {
-                        echo "<li class='page-item'><a class='page-link' href='./menu.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='./index.php?usage=article&page=$i'>$i</a></li>";
                     }
                 }
                 ?>
                 <li class="page-item">
-                    <a class="page-link" href="./menu.php?usage=banner&page=<?php echo ($page + 1 > $total) ?  $page :  $page + 1; ?>" id="next">
+                    <a class="page-link" href="./index.php?usage=post&page=<?php echo ($page + 1 > $total) ?  $page :  $page + 1; ?>" id="next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

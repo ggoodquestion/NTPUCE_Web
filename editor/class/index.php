@@ -117,7 +117,7 @@ if (!$result) exit(mysqli_error($link));
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-end">
                 <li class="page-item">
-                    <a class="page-link" href="./menu.php?usage=banner&page=<?php echo ($page - 1 < 1) ?  $page :  $page - 1; ?>" id="previous">
+                    <a class="page-link" href="./index.php?usage=class&page=<?php echo ($page - 1 < 1) ?  $page :  $page - 1; ?>" id="previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -138,14 +138,14 @@ if (!$result) exit(mysqli_error($link));
 
                 for ($i = $start; $i <= $stop; $i++) {
                     if ($page == $i) {
-                        echo "<li class='page-item disabled'><a class='page-link' href='./menu.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link' href='./index.php?usage=article&page=$i'>$i</a></li>";
                     } else {
-                        echo "<li class='page-item'><a class='page-link' href='./menu.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='./index.php?usage=article&page=$i'>$i</a></li>";
                     }
                 }
                 ?>
                 <li class="page-item">
-                    <a class="page-link" href="./menu.php?usage=banner&page=<?php echo ($page + 1 > $total) ?  $page :  $page + 1; ?>" id="next">
+                    <a class="page-link" href="./index.php?usage=class&page=<?php echo ($page + 1 > $total) ?  $page :  $page + 1; ?>" id="next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -163,7 +163,7 @@ if (!$result) exit(mysqli_error($link));
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm" method="post" action="./bannerSave.php">
+                <form id="editForm" method="post" action="./classSave.php">
                     <input type="hidden" name="id" value="" id="editId">
                     <input type="hidden" name="post" value="" id="editPost">
                     <div class="mb-3">
@@ -264,7 +264,7 @@ if (!$result) exit(mysqli_error($link));
     //     if ($(this).is(":checked")) {
     //         chk = 1;
     //     }
-    //     $.post("./bannerCheck.php", {
+    //     $.post("./classCheck.php", {
     //         id: $(this).parent().parent().attr("id"),
     //         enable: chk
     //     }, function(data) {
