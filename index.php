@@ -67,14 +67,22 @@
 			padding: 0 0.5rem 0 0;
 		}
 
+		#info-wrapper {
+			margin-right: -2rem;
+		}
+
 		.post-item {
 			display: inline-block;
 			white-space: nowrap;
 			overflow: hidden;
 		}
 
-		.post-item > a{
+		.post-item>a {
 			color: #2a6aa8;
+		}
+
+		#navPanel{
+			display: block;
 		}
 	</style>
 
@@ -108,11 +116,11 @@
 							<div class="container">
 								<div class="row" id="info-wrapper">
 									<?php
-										$link = sql_connect();
-										$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='info';";
-										$result = sql_query($link, $sql);
-										while($row = sql_fetch($result)){
-										?>
+									$link = sql_connect();
+									$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='info';";
+									$result = sql_query($link, $sql);
+									while ($row = sql_fetch($result)) {
+									?>
 										<div class="col-6">
 											<div id="announcement" class="mid-col">
 												<div class="alert alert-light d-flex justify-content-between" role="alert">
@@ -120,9 +128,9 @@
 														<?php echo $row['title']; ?>
 													</div>
 													<div>
-														<a href="<?php 
-														// Use $row[0] to avoid selecting mods' id
-														echo '/mods/basic/content.php?class='.$row[0]; ?>" class="alert-link">more</a>
+														<a href="<?php
+																	// Use $row[0] to avoid selecting mods' id
+																	echo '/mods/basic/content.php?class=' . $row[0]; ?>" class="alert-link">more</a>
 													</div>
 												</div>
 												<ul class="list-group list-group-flush mid-col">
@@ -143,9 +151,9 @@
 												</ul>
 											</div>
 										</div>
-										<?php
-										}
-										sql_disconnect($link);
+									<?php
+									}
+									sql_disconnect($link);
 									?>
 								</div>
 							</div>

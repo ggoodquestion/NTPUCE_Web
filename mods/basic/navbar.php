@@ -1,8 +1,8 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 // phpinfo();exit();
 $file = file_get_contents("./eng/config.json");
-if(empty($file)) $file = file_get_contents("../eng/config.json");
+if (empty($file)) $file = file_get_contents("../eng/config.json");
 $json = json_decode($file, true);
 ?>
 <!-- <header id="header">
@@ -10,20 +10,20 @@ $json = json_decode($file, true);
 </header> -->
 
 <nav id="nav">
-    <ul class="links" align="center" valign="center" style="display: flex; justify-content: center;align-items: center;">
+    <ul id="nav-ul" class="links d-flex justify-content-center" align="center" valign="center" >
         <li id="home"><a href="/index.php">Home</a></li>
         <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <?php
         include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
-        $link =sql_connect();
+        $link = sql_connect();
         $sql = "SELECT id FROM mods WHERE name='nav';";
         $result = sql_query($link, $sql);
         $mid = sql_fetch($result)['id'];
 
         $sql = "SELECT * FROM class WHERE mods='$mid';";
         $result = sql_query($link, $sql);
-        while($row = sql_fetch($result)){
-            echo '<li><a href="/mods/basic/content.php?class='.$row['id'].'">'.$row['title'].'</a></li>';
+        while ($row = sql_fetch($result)) {
+            echo '<li><a href="/mods/basic/content.php?class=' . $row['id'] . '">' . $row['title'] . '</a></li>';
         }
         ?>
         <!-- <li id="home"><a href="/index.php">Home</a></li>
@@ -57,7 +57,7 @@ sql_disconnect($link);
 //         global $json;
 //         $nav = $json['nav'];
 //         echo $nav[$item][$index];
-        
+
 //     }else{
 //         echo $zh;
 //     }

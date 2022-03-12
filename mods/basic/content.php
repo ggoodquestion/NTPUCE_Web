@@ -66,6 +66,11 @@
 			padding-right: 1rem;
 			font-size: 0.8rem;
 		}
+
+		hr{
+			color: #aaaaaa;
+			margin: 0.5rem 0 !important;
+		}
 	</style>
 
 	<!-- Wrapper -->
@@ -106,7 +111,10 @@
 						if ($count === 1) {
 							$row = $data[0];
 							echo '<link rel="stylesheet" href="/assets/css/article.css" />';
-							echo '<div class="col-9" id="content">';
+							
+							echo '<div class="col-9">';
+							echo '<h3>' . $row['title'] . '</h3><hr/>';
+							echo '<div id="content">';
 							include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
 							echo '</div>';
 						} else {
@@ -154,7 +162,7 @@
 							// Generate pagination by utils function
 							echo '<div class="d-flex justify-content-center">';
 							generatePagination($totalPage, $currentPage, $main_url, $paramName);
-							echo '</div></div>';
+							echo '</div></div></div';
 						}
 
 						switch ($usage) {

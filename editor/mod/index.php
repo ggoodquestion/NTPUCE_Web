@@ -4,7 +4,7 @@ $table_name = "mods";
 $page = 1;
 $num_per_page = 20;
 if (isset($_GET['page'])) {
-    $cur_page = $_GET['page'];
+    $page = $_GET['page'];
 }
 $data_start = ($page - 1) * $num_per_page;
 
@@ -106,9 +106,9 @@ if (!$result) exit(mysqli_error($link));
 
                 for ($i = $start; $i <= $stop; $i++) {
                     if ($page == $i) {
-                        echo "<li class='page-item disabled'><a class='page-link' href='./index.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link' href='./index.php?usage=mod&page=$i'>$i</a></li>";
                     } else {
-                        echo "<li class='page-item'><a class='page-link' href='./index.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='./index.php?usage=mod&page=$i'>$i</a></li>";
                     }
                 }
                 ?>

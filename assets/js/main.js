@@ -173,6 +173,9 @@
 					$('.dropdown-toggle').parent().find('ul').removeClass("collapse").addClass("dropdown-menu");
 					$('.dropdown-menu').removeClass("dp-op-mobile").addClass("dp-op"); //.dp-op is css by my self
 
+					// add display: flex
+					$('nav-ul').addClass('d-flex justify-content-center');
+
 					// NavPanel -> Nav.
 						$navContent.appendTo($nav);
 
@@ -186,6 +189,9 @@
 					$('.dropdown-toggle').removeAttr("disabled").attr("data-bs-toggle", "collapse");
 					$('.dropdown-menu').removeClass("dp-op").addClass("dp-op-mobile"); //.dp-op is css by my self
 					$('.dropdown-toggle').parent().find('ul').removeClass("dropdown-menu").addClass("collapse");
+
+					// Remove display: flex
+					$('#nav-ul').removeClass('d-flex justify-content-center');
 
 					// Nav -> NavPanel.
 						$navContent.appendTo($navPanelInner);
