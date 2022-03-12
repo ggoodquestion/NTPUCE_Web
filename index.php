@@ -58,6 +58,10 @@
 			padding: 0.33rem;
 			margin: 0.2rem 0;
 		}
+
+		.lm>div {
+			margin-bottom: 1rem;
+		}
 	</style>
 
 	<!-- Wrapper -->
@@ -77,7 +81,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Left -->
-						<div class="col-3">
+						<div class="col-3 lm">
 							<div class="list-group list-group-flush left-col">
 								<a href="#" class="list-group-item list-group-item-action">新生專區</a>
 								<a href="#" class="list-group-item list-group-item-action">競賽資訊</a>
@@ -91,89 +95,90 @@
 								<a href="#" class="list-group-item list-group-item-action">榮譽榜</a>
 								<a href="#" class="list-group-item list-group-item-action">問與答</a>
 							</div>
+							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
-						<div class="col-6">
+						<div class="col-9">
 							<!--形象影片 -->
 							<iframe width="100%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-							<!--系辦公告 -->
-							<div id="announcement" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
+							<!-- 公告區 -->
+							<div class="container">
+								<div class="row">
+									<!--系辦公告 -->
+									<div id="announcement" class="container-fluid mid-col col-6">
+										<div class="alert alert-light d-flex justify-content-between" role="alert">
+											<div>
+												系辦公告
+											</div>
+											<div></div>
+											<div>
+												<a href="#" class="alert-link">more</a>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush container-fluid mid-col">
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+										</ul>
 									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
+									<!--招生快訊  -->
+									<div id="student" class="container-fluid mid-col col-6">
+										<div class="alert alert-light d-flex justify-content-between" role="alert">
+											<div>
+												系辦公告
+											</div>
+											<div></div>
+											<div>
+												<a href="#" class="alert-link">more</a>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush container-fluid mid-col">
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+										</ul>
+									</div>
+									<!-- 學術活動 -->
+									<div id="academic" class="container-fluid mid-col col-6">
+										<div class="alert alert-light d-flex justify-content-between" role="alert">
+											<div>
+												系辦公告
+											</div>
+											<div></div>
+											<div>
+												<a href="#" class="alert-link">more</a>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush container-fluid mid-col">
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+										</ul>
+									</div>
+									<!-- 課務訊息 -->
+									<div id="lesson" class="container-fluid mid-col col-6">
+										<div class="alert alert-light d-flex justify-content-between" role="alert">
+											<div>
+												系辦公告
+											</div>
+											<div></div>
+											<div>
+												<a href="#" class="alert-link">more</a>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush mid-col">
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+											<li class="list-group-item "><a href="#">A third link item</a></li>
+										</ul>
 									</div>
 								</div>
-								<ul class="list-group list-group-flush container-fluid mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
 							</div>
-							<!--招生快訊  -->
-							<div id="student" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush container-fluid mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
-							</div>
-							<!-- 學術活動 -->
-							<div id="academic" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush container-fluid mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
-							</div>
-							<!-- 課務訊息 -->
-							<div id="lesson" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-3 right-col">
-							<!-- Right -->
-							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 					</div>
 				</div>
