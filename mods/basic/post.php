@@ -101,7 +101,19 @@
                         </div>
                         <!-- Middle -->
                         <div class="col-9" id="content">
-                        <?php $link = sql_connect(); ?>
+                            <?php 
+                                $link=sql_connect();
+                                $data = array();
+                                $row = $data[0];
+                                $target=$_GET['id'];
+                                $sql="SELECT * FROM post WHERE id=$target AND enable=1;";
+                                $res = sql_query($link, $sql);
+                                echo '<div class="col-9" id="post">';
+                                $row=sql_fetch($res);
+                                include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
+                                echo '</div>';
+                                sql_disconnect($link);
+                            ?>
                         </div>
                     </div>
                 </div>
