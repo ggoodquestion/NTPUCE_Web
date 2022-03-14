@@ -9,7 +9,7 @@
 <!-- Copyright -->
 <div id="copyright" style="color: #aaaaaa">
     <ul>
-        <li>&copy; NTPUCIE</li>
+        <li>&copy; NTPU CE</li>
         <li>Design: 
             <a href="https://html5up.net">HTML5 UP </a>
             |
