@@ -17,14 +17,14 @@ if (isset($_POST['usage'])) {
         if(password_verify($password, $row['password'])){ //Password correct
            $_SESSION['admin'] = true;
            $_SESSION['user'] = $user; 
-           header('Location: https://ce.ntpu.edu.tw/editor/');
+           header('Location: https://ce.ntpu.edu.tw:8080/editor/');
            exit();
         }else{ //Password wrong
            echo("帳號或密碼錯誤");
            ?>
             <script>
                 setTimeout(function(){
-                    window.location.href = "./menu.php";
+                    window.location.href = "./index.php";
                 }, 1500);
             </script>
            <?php

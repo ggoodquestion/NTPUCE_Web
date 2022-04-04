@@ -58,6 +58,32 @@
 			padding: 0.33rem;
 			margin: 0.2rem 0;
 		}
+
+		.lm>div {
+			margin-bottom: 1rem;
+		}
+
+		#info-wrapper>div {
+			padding: 0 0.5rem 0 0;
+		}
+
+		#info-wrapper {
+			margin-right: -2rem;
+		}
+
+		.post-item {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.post-item>a {
+			color: #2a6aa8;
+		}
+
+		#navPanel{
+			display: block;
+		}
 	</style>
 
 	<!-- Wrapper -->
@@ -77,103 +103,60 @@
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Left -->
-						<div class="col-3">
-							<div class="list-group list-group-flush left-col">
-								<a href="#" class="list-group-item list-group-item-action">新生專區</a>
-								<a href="#" class="list-group-item list-group-item-action">競賽資訊</a>
-								<a href="#" class="list-group-item list-group-item-action">專題製作</a>
-								<a href="#" class="list-group-item list-group-item-action">學分學程/微學程</a>
-								<a href="#" class="list-group-item list-group-item-action">獎學金</a>
-								<a href="#" class="list-group-item list-group-item-action">系友專區</a>
-								<a href="#" class="list-group-item list-group-item-action">通訊系學會</a>
-								<a href="#" class="list-group-item list-group-item-action">相片集錦</a>
-								<a href="#" class="list-group-item list-group-item-action">大學程式能力檢定</a>
-								<a href="#" class="list-group-item list-group-item-action">榮譽榜</a>
-								<a href="#" class="list-group-item list-group-item-action">問與答</a>
-							</div>
+						<div class="col-3 lm">
+							<?php include "./mods/basic/leftcol.php"; ?>
+							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
-						<div class="col-6">
+						<div class="col-9">
 							<!--形象影片 -->
 							<iframe width="100%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-							<!--系辦公告 -->
-							<div id="announcement" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
+							<!-- 公告區 -->
+							<div class="container">
+								<div class="row" id="info-wrapper">
+									<?php
+									$link = sql_connect();
+									$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='info';";
+									$result = sql_query($link, $sql);
+									while ($row = sql_fetch($result)) {
+									?>
+										<div class="col-6">
+											<div id="announcement" class="mid-col">
+												<div class="alert alert-light d-flex justify-content-between" role="alert">
+													<div>
+														<?php echo $row['title']; ?>
+													</div>
+													<div>
+														<a href="<?php
+																	// Use $row[0] to avoid selecting mods' id
+																	echo '/mods/basic/content.php?class=' . $row[0]; ?>" class="alert-link">more</a>
+													</div>
+												</div>
+												<ul class="list-group list-group-flush mid-col">
+													<?php
+													$id = $row[0];
+													$sql = "SELECT * FROM post WHERE class=$id AND enable=1 ORDER BY published LIMIT 5;";
+													$res = sql_query($link, $sql);
+													while ($row2 = sql_fetch($res)) {
+														$title = $row2['title'];
+														$pid = $row2['id'];
+														$published = explode(' ', $row2['published'])[0];
+														echo "<li class='list-group-item d-flex justify-content-between post-item'>
+																<small>$published&ensp;&ensp;</small>
+																<a href='/mods/basic/post.php?id=$pid' title='$title'>$title</a>
+															</li>";
+													}
+													?>
+												</ul>
+											</div>
+										</div>
+									<?php
+									}
+									sql_disconnect($link);
+									?>
 								</div>
-								<ul class="list-group list-group-flush container-fluid mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
 							</div>
-							<!--招生快訊  -->
-							<div id="student" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush container-fluid mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
-							</div>
-							<!-- 學術活動 -->
-							<div id="academic" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush container-fluid mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
-							</div>
-							<!-- 課務訊息 -->
-							<div id="lesson" class="container-fluid mid-col ">
-								<div class="alert alert-light d-flex justify-content-between" role="alert">
-									<div>
-										系辦公告
-									</div>
-									<div></div>
-									<div>
-										<a href="#" class="alert-link">more</a>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush mid-col">
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-									<li class="list-group-item "><a href="#">A third link item</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-3 right-col">
-							<!-- Right -->
-							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 					</div>
 				</div>

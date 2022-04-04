@@ -1,10 +1,10 @@
 <?php
 $link = sql_connect();
-$table_name = "mod";
+$table_name = "mods";
 $page = 1;
 $num_per_page = 20;
 if (isset($_GET['page'])) {
-    $cur_page = $_GET['page'];
+    $page = $_GET['page'];
 }
 $data_start = ($page - 1) * $num_per_page;
 
@@ -33,7 +33,7 @@ if (!$result) exit(mysqli_error($link));
                 <div class="modal-body">
                     <form id="form">
                         <div class="mb-3">
-                            <label class="form-label">模組名稱(英文)</label>
+                            <label class="form-label">模組名稱</label>
                             <input type="text" class="form-control" id="nameInput">
                         </div>
                         <div class="d-flex justify-content-end">
@@ -85,7 +85,7 @@ if (!$result) exit(mysqli_error($link));
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-end">
                 <li class="page-item">
-                    <a class="page-link" href="./menu.php?usage=banner&page=<?php echo ($page - 1 < 1) ?  $page :  $page - 1; ?>" id="previous">
+                    <a class="page-link" href="./index.php?usage=mod&page=<?php echo ($page - 1 < 1) ?  $page :  $page - 1; ?>" id="previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -106,14 +106,14 @@ if (!$result) exit(mysqli_error($link));
 
                 for ($i = $start; $i <= $stop; $i++) {
                     if ($page == $i) {
-                        echo "<li class='page-item disabled'><a class='page-link' href='./menu.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link' href='./index.php?usage=mod&page=$i'>$i</a></li>";
                     } else {
-                        echo "<li class='page-item'><a class='page-link' href='./menu.php?usage=article&page=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='./index.php?usage=mod&page=$i'>$i</a></li>";
                     }
                 }
                 ?>
                 <li class="page-item">
-                    <a class="page-link" href="./menu.php?usage=banner&page=<?php echo ($page + 1 > $total) ?  $page :  $page + 1; ?>" id="next">
+                    <a class="page-link" href="./index.php?usage=mod&page=<?php echo ($page + 1 > $total) ?  $page :  $page + 1; ?>" id="next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -131,7 +131,7 @@ if (!$result) exit(mysqli_error($link));
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm" method="post" action="./bannerSave.php">
+                <form id="editForm" method="post" action="./modSave.php">
                     <input type="hidden" name="id" value="" id="editId">
                     <input type="hidden" name="post" value="" id="editPost">
                     <div class="mb-3">
@@ -150,15 +150,17 @@ if (!$result) exit(mysqli_error($link));
 </div>
 
 <script>
-
     $("#form").submit(function(event) {
         event.preventDefault();
 
         name = $("#nameInput").val();
-        content = tinymce.get("add_editor").getContent();
+        if (name == '') {
+            alert("請填入名稱");
+            retrun;
+        }
+
         $.post("./mod/save.php", {
             name: name,
-            content: content
         }, function(data) {
             if (data == "success") {
                 location.reload();
@@ -190,7 +192,7 @@ if (!$result) exit(mysqli_error($link));
     //     if ($(this).is(":checked")) {
     //         chk = 1;
     //     }
-    //     $.post("./bannerCheck.php", {
+    //     $.post("./modCheck.php", {
     //         id: $(this).parent().parent().attr("id"),
     //         enable: chk
     //     }, function(data) {
@@ -216,7 +218,12 @@ if (!$result) exit(mysqli_error($link));
 
         id = $("#editId").val();
         name = $("#editNameInput").val();
-        $.post("./nav_item/save.php", {
+        if (name == '') {
+            alert("請填入名稱");
+            retrun;
+        }
+        
+        $.post("./mod/save.php", {
             id: id,
             name: name,
             usage: 'update'
