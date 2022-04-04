@@ -25,46 +25,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <style>
-        .left-top{
+        .left-top {
             font-size: 0.85rem;
-			padding: 0.2rem 0.25rem;
+            padding: 0.2rem 0.25rem;
             margin-bottom: 1rem;
-			background-color: #f5f5f5;
+            background-color: #f5f5f5;
         }
 
-        .left-top > ul > li{
+        .left-top>ul>li {
             background-color: inherit;
             padding: 0.2rem 0.5rem;
             font-size: 0.6rem;
         }
 
-        .topic{
+        .topic {
             padding: 0rem 0.25rem;
             margin: 0.2rem 0.2rem 0.1rem 0.2rem;
         }
 
-		a {
-			color: #3b7bb9;
-			text-decoration: none !important;
-		}
+        a {
+            color: #3b7bb9;
+            text-decoration: none !important;
+        }
 
-		#content {
-			padding: 0 1rem 0 1rem;
-		}
+        #content {
+            padding: 0 1rem 0 1rem;
+        }
 
-		#content * {
-			margin: 0;
-			padding: 0;
-			/* border: 0; */
-			font-size: 0.6rem;
-			line-height: 1rem;
-			vertical-align: middle;
-		}
+        #content * {
+            margin: 0;
+            padding: 0;
+            /* border: 0; */
+            font-size: 0.6rem;
+            line-height: 1rem;
+            vertical-align: middle;
+        }
 
-		#content td {
-			border: inherit !important;
-		}
-	</style>
+        #content td {
+            border: inherit !important;
+        }
+    </style>
 
     </style>
 
@@ -83,23 +83,35 @@
                     <div class="row">
                         <!-- Left -->
                         <div class="col-3">
-                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>   
+                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
+
                         </div>
                         <!-- Middle -->
-                        <div class="col-9" id="content">
-                            <?php 
-                                $link=sql_connect();
-                                $data = array();
-                                $row = $data[0];
-                                $target=$_GET['id'];
-                                $sql="SELECT * FROM post WHERE id=$target AND enable=1;";
-                                $res = sql_query($link, $sql);
-                                echo '<div class="col-9" id="post">';
-                                $row=sql_fetch($res);
+                        <div class="col-9">
+                            <?php
+                            $link = sql_connect();
+                            $target = $_GET['id'];
+                            $sql = "SELECT * FROM post WHERE id=$target AND enable=1;";
+                            $res = sql_query($link, $sql);
+                            $row = sql_fetch($res);
+
+                            if($row['href'] == ''){
+                                echo '<h3>' . $row['title'] . '</h3>';
+                            ?>
+                            <div id="content">
+                                <?php
+                                echo '<hr/><div class="col-9" id="post">';
                                 include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
                                 echo '</div>';
                                 sql_disconnect($link);
+                                ?>
+                            </div>
+                            <?php
+                            }else{
+                                $href = $row['href'];
+                                echo "<script>window.location.href = '$href';</script>";
+                            }
                             ?>
                         </div>
                     </div>

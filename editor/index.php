@@ -88,6 +88,7 @@
                         <a class="list-group-item" href="./index.php?usage=mod" id="mod">模組</a>
                         <a class="list-group-item" href="./index.php?usage=class" id="class">分類</a>
                         <a class="list-group-item" href="./index.php?usage=post" id="post">文章</a>
+                        <a class="list-group-item" href="./index.php?usage=doc" id="doc">檔案</a>
                         <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
                         <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
@@ -106,6 +107,9 @@
                                     break;
                                 case "post":
                                     include("./post/index.php");
+                                    break;
+                                case "doc":
+                                    include("./document/index.php");
                                     break;
                             }
                         } else {

@@ -49,6 +49,13 @@ if (!$result) exit(mysqli_error($link));
                                 ?>
                             </select>
                         </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="replaceHref" onclick="enableHref(this);">
+                            <label class="form-check-label" for="replaceHref">
+                                啟用重新導向至：
+                            </label>
+                            <input type="text" class="form-control" id="inputReplaceHref" placeholder="EX: http://example.com">
+                        </div>
                         <div class="mb-3">
                             <textarea id="editor"></textarea>
                         </div>
@@ -93,6 +100,7 @@ if (!$result) exit(mysqli_error($link));
                             <input class="btn btn-sm" type="image" name="delete" value="<?php echo $row[0]; ?>" src="./images/delete_black_24dp.svg" />
                             <input class="btn btn-sm" type="image" name="refresh" value="<?php echo $row[0]; ?>" src="./images/update_black_24dp.svg" />
                             <input type="hidden" name="content" value="<?php echo $row["content"]; ?>">
+                            <input type="hidden" name="href" value="<?php echo $row["href"]; ?>">
                         </td>
                     </tr>
                 <?php }
@@ -174,6 +182,13 @@ if (!$result) exit(mysqli_error($link));
                             ?>
                         </select>
                     </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="eReplaceHref" onclick="enableHref(this);">
+                        <label class="form-check-label" for="eReplaceHref">
+                            啟用重新導向至：
+                        </label>
+                        <input type="text" class="form-control" id="editReplaceHref" placeholder="EX: http://example.com">
+                    </div>
                     <div class="mb-3">
                         <textarea id="editor-edit"></textarea>
                     </div>
@@ -233,19 +248,37 @@ if (!$result) exit(mysqli_error($link));
             return;
         }
 
-        var content = tinymce.get("editor").getContent();
+        // If replace to href
+        if ($("#replaceHref").is(":checked")) {
+            var href = $("#inputReplaceHref").val();
 
-        $.post("./post/save.php", {
-            title: title,
-            class: classes,
-            content: content
-        }, function(data) {
-            if (data == "success") {
-                location.reload();
-            } else {
-                alert("新增失敗: " + data);
-            }
-        });
+            $.post("./post/save.php", {
+                title: title,
+                class: classes,
+                type: 'href',
+                href: href
+            }, function(data) {
+                if (data == "success") {
+                    location.reload();
+                } else {
+                    alert("新增失敗: " + data);
+                }
+            });
+        } else {
+            var content = tinymce.get("editor").getContent();
+
+            $.post("./post/save.php", {
+                title: title,
+                class: classes,
+                content: content
+            }, function(data) {
+                if (data == "success") {
+                    location.reload();
+                } else {
+                    alert("新增失敗: " + data);
+                }
+            });
+        }
     });
 
     $("input[name='delete']").click(function() {
@@ -290,10 +323,18 @@ if (!$result) exit(mysqli_error($link));
         title = tr.find("td[name='title']").text();
         classes = tr.find("td[name='class']").attr("for");
         cid = $(this).parent().find("input[name='content']").val();
+        href = $(this).parent().find("input[name='href']").val();
 
         $("#editTitleInput").val(title);
         $("#sel-class-edit").val(classes);
-        
+
+        if (href != '') {
+            $("#eReplaceHref").prop('checked', true);
+            $("#editReplaceHref").val(href);
+        } else {
+            $("#eReplaceHref").prop('checked', false);
+        }
+
         $.get("./doc/" + cid + ".php", function(data) {
             tinymce.get("editor-edit").setContent(data);
         });
@@ -305,28 +346,55 @@ if (!$result) exit(mysqli_error($link));
         id = $("#editId").val();
         title = $("#editTitleInput").val();
         classes = $('#sel-class-edit').val();
-        content = tinymce.get("editor-edit").getContent();
+
         if (title == '') {
             alert("請填入標題");
             retrun;
         }
-        if(classes.includes('--選擇')){
+        if (classes.includes('--選擇')) {
             alert("請選擇分類");
             return;
         }
 
-        $.post("./post/save.php", {
-            id: id,
-            title: title,
-            class: classes,
-            content: content,
-            usage: 'update'
-        }, function(data) {
-            if (data == "success") {
-                location.reload();
-            } else {
-                alert("更新失敗: " + data);
-            }
-        });
+        // If replace to href
+        if ($("#eReplaceHref").is(":checked")) {
+            var href = $("#editReplaceHref").val();
+
+            $.post("./post/save.php", {
+                id: id,
+                title: title,
+                class: classes,
+                type: 'href',
+                href: href,
+                usage: 'update'
+            }, function(data) {
+                if (data == "success") {
+                    location.reload();
+                } else {
+                    alert("更新失敗: " + data);
+                }
+            });
+        } else {
+            var content = tinymce.get("editor-edit").getContent();
+
+            $.post("./post/save.php", {
+                id: id,
+                title: title,
+                class: classes,
+                content: content,
+                usage: 'update'
+            }, function(data) {
+                if (data == "success") {
+                    location.reload();
+                } else {
+                    alert("更新失敗: " + data);
+                }
+            });
+        }
+
     });
+
+    var enableHref = function(checkbox) {
+        // do something
+    }
 </script>

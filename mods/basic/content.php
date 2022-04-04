@@ -110,13 +110,18 @@
 						}
 						if ($count === 1) {
 							$row = $data[0];
-							echo '<link rel="stylesheet" href="/assets/css/article.css" />';
-							
-							echo '<div class="col-9">';
-							echo '<h3>' . $row['title'] . '</h3><hr/>';
-							echo '<div id="content">';
-							include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
-							echo '</div>';
+							if($row['href'] != ''){
+								$href = $row['href'];
+								echo "<script>window.location.href = '$href';</script>";
+							}else{
+								echo '<link rel="stylesheet" href="/assets/css/article.css" />';
+								
+								echo '<div class="col-9">';
+								echo '<h3>' . $row['title'] . '</h3><hr/>';
+								echo '<div id="content">';
+								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
+								echo '</div>';
+							}
 						} else {
 							// 以下參數準備給分頁器使用
 							$totalPage = ceil($count / 8);

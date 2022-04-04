@@ -136,7 +136,7 @@
 												<ul class="list-group list-group-flush mid-col">
 													<?php
 													$id = $row[0];
-													$sql = "SELECT * FROM post WHERE class=$id AND enable=1 ORDER BY published LIMIT 5;";
+													$sql = "SELECT * FROM post WHERE class=$id AND enable=1 ORDER BY published DESC LIMIT 5;";
 													$res = sql_query($link, $sql);
 													while ($row2 = sql_fetch($res)) {
 														$title = $row2['title'];
