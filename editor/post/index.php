@@ -206,7 +206,6 @@ if (!$result) exit(mysqli_error($link));
 <script>
     tinymce.init({
         selector: 'textarea',
-        auto_focus: "editor",
         height: 800,
         images_upload_url: 'imageUploadAccepter.php',
         content_css: "../assets/css/common.css",
@@ -216,22 +215,6 @@ if (!$result) exit(mysqli_error($link));
             'table emoticons template paste help'
         ],
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-        init_instance_callback: "setEditorContent"
-    });
-
-    tinymce.init({
-        selector: 'textarea',
-        auto_focus: "editor-edit",
-        height: 800,
-        images_upload_url: 'imageUploadAccepter.php',
-        content_css: "../assets/css/common.css",
-        plugins: [
-            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
-            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-            'table emoticons template paste help'
-        ],
-        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-        init_instance_callback: "setEditorContent"
     });
 
     $("#form").submit(function(event) {

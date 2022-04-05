@@ -78,7 +78,7 @@
     ?>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="./js/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ci920ps8fuhe7xut4w689y9i3jp2azan67y82bw101pi3be4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- Main -->
     <div id="main" class="align-center">
         <div class="container-fluid">
@@ -89,6 +89,7 @@
                         <a class="list-group-item" href="./index.php?usage=class" id="class">分類</a>
                         <a class="list-group-item" href="./index.php?usage=post" id="post">文章</a>
                         <a class="list-group-item" href="./index.php?usage=doc" id="doc">檔案</a>
+                        <a class="list-group-item" href="./index.php?usage=img" id="img">圖片</a>
                         <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
                         <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
@@ -110,6 +111,9 @@
                                     break;
                                 case "doc":
                                     include("./document/index.php");
+                                    break;
+                                case "img":
+                                    include("./img/index.php");
                                     break;
                             }
                         } else {

@@ -30,7 +30,7 @@
 <div class="contain mt-2">
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'] . '/';
-    $base_dir = "files/";
+    $base_dir = "images/";
     $port = 8080;
 
     if ($handle = opendir($root . $base_dir)) {
@@ -56,13 +56,13 @@
         fd.append('file', files);
 
         $.ajax({
-            url: 'fileUploadAccepter.php',
+            url: 'imageUploadAccepter.php',
             type: 'post',
             data: fd,
             contentType: false,
             processData: false,
             success: function(response) {
-                window.location.reload();
+                alert(response);
             },
             catch: function(e) {
                 alert(e);

@@ -7,7 +7,7 @@
   /*********************************************
    * Change this line to set the upload folder *
    *********************************************/
-  $imageFolder = $_SERVER["DOCUMENT_ROOT"]."/images/";
+  $imageFolder = $_SERVER["DOCUMENT_ROOT"] . "/files/";
 
 //   if (isset($_SERVER['HTTP_ORIGIN'])) {
 //     // same-origin requests won't set an origin. If the origin is set, it must be valid.
@@ -44,7 +44,7 @@
     }
 
     // Verify extension
-    if (!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png", "svg"))) {
+    if (in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("sh", "exe"))) {
         header("HTTP/1.1 400 Invalid extension.");
         return;
     }
@@ -60,7 +60,7 @@
     // Respond to the successful upload with JSON.
     // Use a location key to specify the path to the saved image resource.
     // { location : '/your/uploaded/image/file'}
-    echo json_encode(array('location' => $filetowrite));
+    echo json_encode(array('status' => 'success'));
   } else {
     exit($temp['tmp_name']);
     // Notify editor that the upload failed
