@@ -33,15 +33,12 @@ $usage = 'none';
 if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
     $usage = 'edit';
     $id = $_POST['id'];
-    $sql = "SELECT * FROM article WHERE id = '$id';";
-    $result = sql_query($link, $sql);
-    if (!$result) exit(mysqli_error($link));
 
     $row = sql_fetch($result);
-    $title = $row["title"];
-    $class = $row["class"];
-    $cid = $row["cid"];
-    $href = $row["href"];
+    $title = $_POST["title"];
+    $class = $_POST["class"];
+    $cid = $_POST["cid"];
+    $href = $_POST["href"];
 }
 ?>
 
@@ -147,50 +144,67 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
                 return;
             }
 
+            var json;
             // If replace to href
             if ($("#replaceHref").is(":checked")) {
                 var href = $("#inputReplaceHref").val();
 
-                $.post("./post/save.php", {
+                json = {
                     title: title,
                     class: classes,
                     type: 'href',
                     href: href
-                }, function(data) {
-                    if (data == "success") {
-                        location.reload();
-                    } else {
-                        alert("新增失敗: " + data);
-                    }
-                });
+                };
             } else {
                 var content = tinymce.get("editor").getContent();
 
-                $.post("./post/save.php", {
+                json = {
                     title: title,
                     class: classes,
                     content: content
-                }, function(data) {
+                };
+            }
+
+            <?php
+            if ($usage == "edit") {
+                echo "json['id'] = $id ;";
+                echo "json['usage'] = 'update';";
+            }
+            ?>
+
+            $.post("../post/save.php", json, function(data) {
                     if (data == "success") {
-                        location.reload();
+                        window.location.replace("../index.php?usage=post");
                     } else {
                         alert("新增失敗: " + data);
                     }
                 });
-            }
         });
 
         var setEditorContent = function() {
             <?php
             if ($usage == "edit") {
-                $content = str_replace("\n", "", $content);
-                echo '$.get("../doc/" + cid + ".php", function(data) {
+            ?>
+                $("#titleInput").val('<?php echo $title; ?>');
+                $("#sel-class").val('<?php echo $class; ?>');
+
+                var href = "<?php echo $href; ?>";
+                var cid = "<?php echo $cid; ?>";
+
+                if (href != '') {
+                    $("#replaceHref").prop('checked', true);
+                    $("#inputReplaceHref").val(href);
+                } else {
+                    $("#replaceHref").prop('checked', false);
+                }
+
+                $.get("../doc/" + cid + ".php", function(data) {
                     tinymce.get("editor").setContent(data);
-                });';
+                });
+            <?php
             }
             ?>
         }
-
     </script>
 </body>
 

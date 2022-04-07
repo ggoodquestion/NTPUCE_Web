@@ -3112,7 +3112,7 @@ input, select, textarea {
 		user-select: none;
 		cursor: default;
 		list-style: none;
-		margin: 0 0 2rem 2rem;
+		margin: 0 2rem;
 		padding: 0;
 	}
 
@@ -3615,13 +3615,14 @@ input, select, textarea {
 		background: rgba(0, 0, 0, 0.65);
 		height: auto;
 		line-height: auto;
-		margin: 1rem auto 0 auto;
+		margin: 1rem auto 0.5rem auto;
 		overflow: visible;
 		padding: 0 0rem 0 0;
 		position: relative;
 		width: calc(100% - 4rem);
-		max-width: 44rem;
+		max-width:50rem;
 		z-index: 3;
+		border: 0rem;
 	}
 	@media screen and (max-width: 1280px) {
 
@@ -3660,7 +3661,7 @@ input, select, textarea {
 		padding: 0 0rem 0 0;
 		position: relative;
 		width: calc(100% - 4rem);
-		max-width: 44rem;
+		max-width: 50rem;
 		z-index: 3;
 	}
 
@@ -3821,7 +3822,7 @@ input, select, textarea {
 		position: relative;
 		margin: 0 auto;
 		width: calc(100% - 4rem);
-		max-width: 44rem;
+		max-width: 50rem;
 		z-index: 2;
 	}
 
@@ -4029,7 +4030,7 @@ input, select, textarea {
 		position: relative;
 		margin: 0 auto;
 		width: calc(100% - 4rem);
-		max-width: 44rem;
+		max-width: 50rem;
 		z-index: 2;
 	}
 

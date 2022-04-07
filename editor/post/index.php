@@ -96,7 +96,7 @@ if (!$result) exit(mysqli_error($link));
                         <td name="published"><?php echo $row["published"]; ?></td>
                         <td name="enable"><input class="form-check-input" name="enableCheck" type="checkbox" <?php echo ($row['enable']) ? 'checked' : ''; ?>></td>
                         <td name="operations">
-                            <button class="btn btn-sm" name="edit" data-bs-toggle="modal" data-bs-target="#edit" for="<?php echo $row["id"]; ?>"><img src="./images/edit_black_24dp.svg"></button>
+                            <button class="btn btn-sm" name="edit" for="<?php echo $row["id"]; ?>"><img src="./images/edit_black_24dp.svg"></button>
                             <input class="btn btn-sm" type="image" name="delete" value="<?php echo $row[0]; ?>" src="./images/delete_black_24dp.svg" />
                             <input class="btn btn-sm" type="image" name="refresh" value="<?php echo $row[0]; ?>" src="./images/update_black_24dp.svg" />
                             <input type="hidden" name="content" value="<?php echo $row["content"]; ?>">
@@ -198,28 +198,19 @@ if (!$result) exit(mysqli_error($link));
         cid = $(this).parent().find("input[name='content']").val();
         href = $(this).parent().find("input[name='href']").val();
 
-        $("#editTitleInput").val(title);
-        $("#sel-class-edit").val(classes);
-
-        if (href != '') {
-            $("#eReplaceHref").prop('checked', true);
-            $("#editReplaceHref").val(href);
-        } else {
-            $("#eReplaceHref").prop('checked', false);
-        }
-
-        $.get("./doc/" + cid + ".php", function(data) {
-            tinymce.get("editor-edit").setContent(data);
-        });
-
         // Make normally post request
-        $('<form action="./post/postEditor.php" method="POST">' +
+        form = $('<form action="./post/postEditor.php" method="POST">' +
+            '<input type="hidden" name="id" value="'+id+'">' +
             '<input type="hidden" name="usage" value="edit">' +
             '<input type="hidden" name="title" value="' + title + '">' +
             '<input type="hidden" name="class" value="' + classes + '">' +
             '<input type="hidden" name="cid" value="' + cid + '">' +
             '<input type="hidden" name="href" value="' + href + '">' +
-            '</form>').submit();
+            '</form>');
+
+        // Avoid error "Form submission canceled because the form is not connected"
+        document.body.appendChild(form[0]);
+        form.submit();
     });
 
     $("#editForm").submit(function(event) {

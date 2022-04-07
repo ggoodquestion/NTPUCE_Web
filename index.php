@@ -42,8 +42,7 @@
 		}
 
 		.mid-col {
-			font-size: 0.65rem;
-			;
+			font-size: 0.6rem;
 			padding: 0.2rem 0.25rem;
 			background-color: #f5f5f5;
 			margin-bottom: 0.9rem;
@@ -84,6 +83,10 @@
 		#navPanel{
 			display: block;
 		}
+
+		small{
+			font-size: 0.5rem;
+		}
 	</style>
 
 	<!-- Wrapper -->
@@ -98,8 +101,8 @@
 			<!-- Carousel -->
 			<?php include "./mods/basic/logo_banner.php"; ?>
 
-			<!-- Block the area in 3:6:3 -->
-			<section id="main-infomation" style="padding-top: 1rem">
+			<!-- Block the area in 3:9 -->
+			<section id="main-infomation" style="padding: 1rem 0.5rem 0 0">
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Left -->
@@ -108,10 +111,8 @@
 							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
-						<div class="col-9">
-							<!--形象影片 -->
-							<iframe width="100%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+						<div class="col-9 ">
+							
 							<!-- 公告區 -->
 							<div class="container">
 								<div class="row" id="info-wrapper">
@@ -144,7 +145,7 @@
 														$published = explode(' ', $row2['published'])[0];
 														echo "<li class='list-group-item d-flex justify-content-between post-item'>
 																<small>$published&ensp;&ensp;</small>
-																<a href='/mods/basic/post.php?id=$pid' title='$title'>$title</a>
+																<a href='/mods/basic/post.php?id=$pid'name='info' title='$title'>$title</a>
 															</li>";
 													}
 													?>
@@ -157,6 +158,10 @@
 									?>
 								</div>
 							</div>
+
+							<!--形象影片 -->
+							<iframe width="100%" height="300rem" src="https://www.youtube-nocookie.com/embed/zxJTcWSAjiY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 						</div>
 					</div>
 				</div>

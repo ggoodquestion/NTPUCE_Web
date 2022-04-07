@@ -60,7 +60,8 @@
     // Respond to the successful upload with JSON.
     // Use a location key to specify the path to the saved image resource.
     // { location : '/your/uploaded/image/file'}
-    echo json_encode(array('location' => $filetowrite));
+    $res_fn = '/images/' . $temp['name'];
+    echo json_encode(array('location' => $res_fn));
   } else {
     exit($temp['tmp_name']);
     // Notify editor that the upload failed

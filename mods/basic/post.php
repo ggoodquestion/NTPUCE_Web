@@ -53,17 +53,23 @@
         }
 
         #content * {
-            margin: 0;
-            padding: 0;
-            /* border: 0; */
-            font-size: 0.6rem;
-            line-height: 1rem;
-            vertical-align: middle;
-        }
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 0.6rem;
+			line-height: 1rem;
+			vertical-align: middle;
+		}
 
-        #content td {
+        /* #content td {
             border: inherit !important;
-        }
+        } */
+
+        hr{
+			border-bottom-color: #555555 !important;
+			margin: 0.3rem 0 !important;
+			border-bottom: 0rem !important;
+		}
     </style>
 
     </style>

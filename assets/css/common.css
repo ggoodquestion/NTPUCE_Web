@@ -207,10 +207,18 @@
     font-size: 0.65rem;
 }
 
+#ul-top{
+    margin-bottom: 0rem;
+}
+
 #ul-top li > a {
     color: #ffffff;
 }
 
 .list-group > li > a{
     border: 0;
+}
+
+.title{
+    margin-bottom: 0.5rem;
 }

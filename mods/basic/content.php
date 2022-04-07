@@ -48,28 +48,29 @@
 		#content * {
 			margin: 0;
 			padding: 0;
-			/* border: 0; */
+			border: 0;
 			font-size: 0.6rem;
 			line-height: 1rem;
 			vertical-align: middle;
 		}
 
-		#content td {
+		/* #content td {
 			border: inherit !important;
-		}
+		} */
 
-		.table-wrapper > table > tbody > tr > td{
+		/* .table-wrapper > table > tbody > tr > td{
 			padding: 0 0 0 0.5rem;
-		}
+		} */
 
-		.table-wrapper{
+		/* .table-wrapper{
 			padding-right: 1rem;
 			font-size: 0.8rem;
-		}
+		} */
 
 		hr{
-			color: #aaaaaa;
-			margin: 0.5rem 0 !important;
+			border-bottom-color: #555555 !important;
+			margin: 0.3rem 0 !important;
+			border-bottom: 0rem !important;
 		}
 	</style>
 
@@ -117,7 +118,7 @@
 								echo '<link rel="stylesheet" href="/assets/css/article.css" />';
 								
 								echo '<div class="col-9">';
-								echo '<h3>' . $row['title'] . '</h3><hr/>';
+								echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
 								echo '<div id="content">';
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
 								echo '</div>';
