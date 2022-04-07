@@ -13,6 +13,7 @@
 	<link href="./bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/common.css" />
+	<link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
@@ -78,13 +79,14 @@
 
 		.post-item>a {
 			color: #2a6aa8;
+			text-align: left !important;
 		}
 
-		#navPanel{
+		#navPanel {
 			display: block;
 		}
 
-		small{
+		small {
 			font-size: 0.5rem;
 		}
 	</style>
@@ -106,13 +108,13 @@
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Left -->
-						<div class="col-3 lm">
+						<div class="col-sm-12 col-md-3 lm">
 							<?php include "./mods/basic/leftcol.php"; ?>
 							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
-						<div class="col-9 ">
-							
+						<div class="col-sm-12 col-md-9">
+
 							<!-- 公告區 -->
 							<div class="container">
 								<div class="row" id="info-wrapper">
@@ -122,7 +124,7 @@
 									$result = sql_query($link, $sql);
 									while ($row = sql_fetch($result)) {
 									?>
-										<div class="col-6">
+										<div class="col-md-6 col-sm-12">
 											<div id="announcement" class="mid-col">
 												<div class="alert alert-light d-flex justify-content-between" role="alert">
 													<div>
@@ -143,9 +145,9 @@
 														$title = $row2['title'];
 														$pid = $row2['id'];
 														$published = explode(' ', $row2['published'])[0];
-														echo "<li class='list-group-item d-flex justify-content-between post-item'>
+														echo "<li class='list-group-item d-flex flex-row post-item'>
 																<small>$published&ensp;&ensp;</small>
-																<a href='/mods/basic/post.php?id=$pid'name='info' title='$title'>$title</a>
+															<a href='/mods/basic/post.php?id=$pid' name='info' title='$title'>$title</a>
 															</li>";
 													}
 													?>

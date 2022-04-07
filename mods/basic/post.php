@@ -13,6 +13,7 @@
     <link href="/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/article.css" />
     <link rel="stylesheet" href="/assets/css/common.css" />
+    <link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
     <noscript>
         <link rel="stylesheet" href="/assets/css/noscript.css" />
     </noscript>
@@ -53,23 +54,23 @@
         }
 
         #content * {
-			margin: 0;
-			padding: 0;
-			border: 0;
-			font-size: 0.6rem;
-			line-height: 1rem;
-			vertical-align: middle;
-		}
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 0.6rem;
+            line-height: 1rem;
+            vertical-align: middle;
+        }
 
         /* #content td {
             border: inherit !important;
         } */
 
-        hr{
-			border-bottom-color: #555555 !important;
-			margin: 0.3rem 0 !important;
-			border-bottom: 0rem !important;
-		}
+        hr {
+            border-bottom-color: #555555 !important;
+            margin: 0.3rem 0 !important;
+            border-bottom: 0rem !important;
+        }
     </style>
 
     </style>
@@ -88,13 +89,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <!-- Left -->
-                        <div class="col-3">
+                        <div class="col-sm-12 col-md-3">
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
 
                         </div>
                         <!-- Middle -->
-                        <div class="col-9">
+                        <div class="col-sm-12 col-md-9">
                             <?php
                             $link = sql_connect();
                             $target = $_GET['id'];
@@ -102,19 +103,19 @@
                             $res = sql_query($link, $sql);
                             $row = sql_fetch($res);
 
-                            if($row['href'] == ''){
+                            if ($row['href'] == '') {
                                 echo '<h3>' . $row['title'] . '</h3>';
                             ?>
-                            <div id="content">
-                                <?php
-                                echo '<hr/><div class="col-9" id="post">';
-                                include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
-                                echo '</div>';
-                                sql_disconnect($link);
-                                ?>
-                            </div>
+                                <div id="content">
+                                    <?php
+                                    echo '<hr/><div class="col-9" id="post">';
+                                    include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
+                                    echo '</div>';
+                                    sql_disconnect($link);
+                                    ?>
+                                </div>
                             <?php
-                            }else{
+                            } else {
                                 $href = $row['href'];
                                 echo "<script>window.location.href = '$href';</script>";
                             }

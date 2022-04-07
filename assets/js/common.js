@@ -2,6 +2,12 @@ var pageLoadInit = function (title, topic) {
 
 }
 
+// $("a[name='info']").hover(function(){
+//     w = $(this).width();
+//     sw = $(this).prop("scrollWidth");
+//     var diff = w*2;
+//     $(this).css("transform", "translateX("+diff+"px)");
+// });
 
 // window.onload = function checkScrollLeft() {
 //     // 判斷文字長度是否大於盒子長度

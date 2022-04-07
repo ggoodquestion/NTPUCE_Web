@@ -11,7 +11,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link href="/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-	
+	<link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
 	<link rel="stylesheet" href="/assets/css/common.css" />
 	<noscript>
 		<link rel="stylesheet" href="/assets/css/noscript.css" />
@@ -67,10 +67,30 @@
 			font-size: 0.8rem;
 		} */
 
-		hr{
+		hr {
 			border-bottom-color: #555555 !important;
 			margin: 0.3rem 0 !important;
 			border-bottom: 0rem !important;
+		}
+
+		td {
+			padding-top: 0.5rem !important;
+			padding-bottom: 0.5rem !important;
+		}
+
+		.link {
+			font-size: 0.8rem;
+			line-height: 0.5rem !important;
+			color: #2a6aa8;
+			text-decoration: none !important;
+		}
+
+		.s-txt {
+			font-size: 0.6rem !important;
+		}
+
+		.tb {
+			line-height: 1.2rem;
 		}
 	</style>
 
@@ -91,7 +111,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Left -->
-						<div class="col-3"><?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/intro.php"; ?></div>
+						<div class="col-sm-12 col-md-3"><?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/intro.php"; ?></div>
 						<!-- Right -->
 
 						<?php
@@ -111,13 +131,13 @@
 						}
 						if ($count === 1) {
 							$row = $data[0];
-							if($row['href'] != ''){
+							if ($row['href'] != '') {
 								$href = $row['href'];
 								echo "<script>window.location.href = '$href';</script>";
-							}else{
+							} else {
 								echo '<link rel="stylesheet" href="/assets/css/article.css" />';
-								
-								echo '<div class="col-9">';
+
+								echo '<div class="col-sm-12 col-md-9">';
 								echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
 								echo '<div id="content">';
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
@@ -127,37 +147,32 @@
 							// 以下參數準備給分頁器使用
 							$totalPage = ceil($count / 8);
 							$currentPage = 1;
-							if(isset($_GET['page'])) $currentPage = $_GET['page'];
-							$main_url = "/mods/basic/content.php?class=".$class;
+							if (isset($_GET['page'])) $currentPage = $_GET['page'];
+							$main_url = "/mods/basic/content.php?class=" . $class;
 							$paramName = 'page';
 
 							// 用SQL在查詢一次指定範圍的資料
-							$start = ($currentPage-1) * 8;
+							$start = ($currentPage - 1) * 8;
 							$sql = "SELECT * FROM post WHERE class=$class AND enable=1 ORDER BY published DESC LIMIT $start, 8;";
 							$res = sql_query($link, $sql);
 
 							echo '<link rel="stylesheet" href="/assets/css/main.css" />';
-							echo '<div class="col-9" id="">';
-							echo '<div class="table-wrapper">
+							echo '<div class="col-sm-12 col-md-9 p-3" id="">';
+							echo '<div class="">
 								<table>
 									<thead>
 										<tr>
-											<th>標題</th>
-											<th ></th>
-											<th ></th>
-											<th ></th>
-											<th ></th>
-											<th>發布時間</th>
+											<th class="col-10">標題</th>
+											<th class="col-2">發布時間</th>
 										</tr>
 									</thead>
-									<tbody>';
-							while($row = sql_fetch($res)) {
+									<tbody class="tb">';
+							while ($row = sql_fetch($res)) {
 								$ts = explode(" ", $row['published'])[0];
 								echo "
-										<tr>
-											<td><a href='/mods/basic/post.php?id=".$row['id']."'>" . $row['title'] . "</a></td>
-											<td colspan='4'></td>
-											<td>" . $ts . "</td>
+										<tr class=''>
+											<td><a class='link' href='/mods/basic/post.php?id=" . $row['id'] . "'>" . $row['title'] . "</a></td>
+											<td><small class='s-txt'>" . $ts . "</small></td>
 										</tr>";
 							}
 							echo '</tbody>

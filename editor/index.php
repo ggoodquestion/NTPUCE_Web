@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link href="../bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
     <noscript>
         <link rel="stylesheet" href="../assets/css/noscript.css" />
     </noscript>

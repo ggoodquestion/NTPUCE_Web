@@ -4,7 +4,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="/images/ntpu.gif" class="d-block w-100" alt="...">
+            <img src="/images/ntpu.gif" class="image fit" alt="..." style="margin-bottom:0 !important; height:100%">
         </div>
     </div>
     <a class="carousel-control-prev" data-bs-target="#carouselIndicators" data-bs-slide="prev" role="button" id="carousel-prev">

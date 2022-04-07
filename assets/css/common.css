@@ -222,3 +222,7 @@
 .title{
     margin-bottom: 0.5rem;
 }
+
+/* a[name="info"]:hover{
+    transform: translateX(-5rem);
+} */
