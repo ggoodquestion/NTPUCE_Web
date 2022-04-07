@@ -21,9 +21,9 @@ if (!$result) exit(mysqli_error($link));
 
 <!-- 新增頁面 -->
 <div class="row mt-5">
-    <div class="col-2"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">新增</button></div>
+    <div class="col-2"><a class="btn btn-primary" href="./post/postEditor.php">新增</a></div>
 
-    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered" id="add">
             <div class="modal-content">
                 <div class="modal-header">
@@ -67,7 +67,7 @@ if (!$result) exit(mysqli_error($link));
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <!-- 顯示用table -->
@@ -153,117 +153,7 @@ if (!$result) exit(mysqli_error($link));
     </div>
 </div>
 
-<!-- 更新頁面 -->
-<div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" id="edit">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">編輯文章</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editForm" method="post" action="">
-                    <input type="hidden" name="id" value="" id="editId">
-                    <input type="hidden" name="post" value="" id="editPost">
-                    <div class="mb-3">
-                        <label class="form-label">文章標題</label>
-                        <input type="text" class="form-control" id="editTitleInput" name="name">
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select" id="sel-class-edit">
-                            <option selected>--選擇分類--</option>
-                            <?php
-                            // Make select list of class parent
-                            $sql = "SELECT * FROM class;";
-                            $res = sql_query($link, $sql);
-                            while ($row = sql_fetch($res)) {
-                                echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="" id="eReplaceHref" onclick="enableHref(this);">
-                        <label class="form-check-label" for="eReplaceHref">
-                            啟用重新導向至：
-                        </label>
-                        <input type="text" class="form-control" id="editReplaceHref" placeholder="EX: http://example.com">
-                    </div>
-                    <div class="mb-3">
-                        <textarea id="editor-edit"></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <input type="submit" class="btn btn-primary" id="editInput" value="修改"></input>
-                        <button type="button" class="btn btn-secondary ms-3" data-bs-dismiss="modal">取消</button>
-                        <input type="hidden" name="usage" value="update">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-    tinymce.init({
-        selector: 'textarea',
-        height: 800,
-        images_upload_url: 'imageUploadAccepter.php',
-        content_css: "../assets/css/common.css",
-        plugins: [
-            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
-            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-            'table emoticons template paste help'
-        ],
-        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-    });
-
-    $("#form").submit(function(event) {
-        event.preventDefault();
-
-        title = $("#titleInput").val();
-        if (title == '') {
-            alert("請填入名稱");
-            retrun;
-        }
-        classes = $("#sel-class").val();
-        if (classes.includes('--選擇')) {
-            alert("請選擇分類");
-            return;
-        }
-
-        // If replace to href
-        if ($("#replaceHref").is(":checked")) {
-            var href = $("#inputReplaceHref").val();
-
-            $.post("./post/save.php", {
-                title: title,
-                class: classes,
-                type: 'href',
-                href: href
-            }, function(data) {
-                if (data == "success") {
-                    location.reload();
-                } else {
-                    alert("新增失敗: " + data);
-                }
-            });
-        } else {
-            var content = tinymce.get("editor").getContent();
-
-            $.post("./post/save.php", {
-                title: title,
-                class: classes,
-                content: content
-            }, function(data) {
-                if (data == "success") {
-                    location.reload();
-                } else {
-                    alert("新增失敗: " + data);
-                }
-            });
-        }
-    });
-
     $("input[name='delete']").click(function() {
         var r = confirm("確定刪除?");
         if (r == true) {
@@ -321,6 +211,15 @@ if (!$result) exit(mysqli_error($link));
         $.get("./doc/" + cid + ".php", function(data) {
             tinymce.get("editor-edit").setContent(data);
         });
+
+        // Make normally post request
+        $('<form action="./post/postEditor.php" method="POST">' +
+            '<input type="hidden" name="usage" value="edit">' +
+            '<input type="hidden" name="title" value="' + title + '">' +
+            '<input type="hidden" name="class" value="' + classes + '">' +
+            '<input type="hidden" name="cid" value="' + cid + '">' +
+            '<input type="hidden" name="href" value="' + href + '">' +
+            '</form>').submit();
     });
 
     $("#editForm").submit(function(event) {
