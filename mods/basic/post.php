@@ -63,13 +63,41 @@
         }
 
         #content td {
-            border: inherit !important;
+            border: inherit;
         }
 
         hr {
             border-bottom-color: #555555 !important;
             margin: 0.3rem 0 !important;
             border-bottom: 0rem !important;
+        }
+
+        .s-txt {
+            font-size: 0.6rem !important;
+        }
+
+        h1 {
+            font-size: 1.2rem !important;
+        }
+
+        h2 {
+            font-size: 1rem !important;
+        }
+
+        h3 {
+            font-size: 0.8rem !important;
+        }
+
+        h4 {
+            font-size: 0.6rem !important;
+        }
+
+        h5 {
+            font-size: 0.5rem !important;
+        }
+
+        h6 {
+            font-size: 0.4rem !important;
         }
     </style>
 
@@ -108,7 +136,7 @@
                             ?>
                                 <div id="content">
                                     <?php
-                                    echo '<hr/><div class="col-9" id="post">';
+                                    echo '<hr/><div class="mt-4" id="post">';
                                     include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
                                     echo '</div>';
                                     sql_disconnect($link);
@@ -138,6 +166,11 @@
         <script src="/assets/js/util.js"></script>
         <script src="/assets/js/main.js"></script>
         <script src="/assets/js/common.js"></script>
+        <script>
+            $("#content").find("img").each(function() {
+                $(this).addClass("img-fluid");
+            });
+        </script>
 
 </body>
 

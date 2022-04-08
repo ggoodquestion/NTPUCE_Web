@@ -48,14 +48,14 @@
 		#content * {
 			margin: 0;
 			padding: 0;
-			border: 0;
+			/* border: 0; */
 			line-height: 1rem;
 			vertical-align: middle;
 		}
 
-		#content td {
+		/* #content td {
 			border: inherit !important;
-		}
+		} */
 
 		.table-wrapper>table>tbody>tr>td {
 			padding: 0 0 0 0.5rem;
@@ -110,6 +110,7 @@
 		h6 {
 			font-size: 0.4rem !important;
 		}
+
 	</style>
 
 	<!-- Wrapper -->
@@ -157,7 +158,7 @@
 
 								echo '<div class="col-sm-12 col-md-9">';
 								echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
-								echo '<div id="content">';
+								echo '<div id="content" class="mt-4">';
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
 								echo '</div>';
 							}
@@ -251,6 +252,9 @@
 		// window.onload = function() {
 		// 	setIframeHeight(document.getElementById('fcontent'));
 		// };
+		$("#content").find("img").each(function(){
+			$(this).addClass("img-fluid");
+		});
 	</script>
 
 </body>

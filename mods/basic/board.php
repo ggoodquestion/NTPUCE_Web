@@ -1,7 +1,7 @@
 <?php
 $link = sql_connect();
 
-$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='board';";
+$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='info';";
 $result = sql_query($link, $sql);
 ?>
 
@@ -16,7 +16,7 @@ $result = sql_query($link, $sql);
         while($row = sql_fetch($result)){
             $cid = $row[0];
             $title = $row['title'];
-            echo "<li class='list-group-item'><a href='/mods/basic/content.php?class=$id'>$title</a></li>";
+            echo "<li class='list-group-item'><a href='/mods/basic/content.php?class=$cid'>$title</a></li>";
         }
         ?>
     </ul>
