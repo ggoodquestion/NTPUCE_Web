@@ -16,7 +16,7 @@
     <form class="col-5" id="uploadForm">
         <div class="input-group">
             <input type="file" id="uploadFile" class="form-control" name="file">
-            <button class="btn btn-primary" id="submit">上傳</button>
+            <input type="submit" class="btn btn-primary" id="submit" value="上傳"></input>
         </div>
     </form>
     <div class="col-5">
@@ -40,7 +40,7 @@
 
             $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? "https://" : "http://";
 
-            $full_path = "$protocol" . $_SERVER['SERVER_NAME'] . ":$port/$base_dir$file";
+            $full_path = "/$base_dir$file";
             echo "<div class='d-flex flex-row bd-highlight'><a href='$full_path'>$file</a><button class='btn btn-light' onclick='copy(this);' value='$full_path'><img src='./images/content_copy_black_24dp.svg'></button></div>";
         }
         closedir($handle);
@@ -50,7 +50,8 @@
     ?>
 </div>
 <script>
-    $("#submit").click(function(e) {
+    $("#uploadForm").submit(function(e) {
+        e.preventDefault();
         var fd = new FormData();
         var files = $('#uploadFile')[0].files[0];
         fd.append('file', files);
@@ -62,7 +63,11 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                window.location.reload();
+                if (response != "success") {
+                    alert(response);
+                } else {
+                    location.reload();
+                }
             },
             catch: function(e) {
                 alert(e);

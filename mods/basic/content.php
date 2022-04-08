@@ -49,33 +49,27 @@
 			margin: 0;
 			padding: 0;
 			border: 0;
-			font-size: 0.6rem;
 			line-height: 1rem;
 			vertical-align: middle;
 		}
 
-		/* #content td {
+		#content td {
 			border: inherit !important;
-		} */
+		}
 
-		/* .table-wrapper > table > tbody > tr > td{
+		.table-wrapper>table>tbody>tr>td {
 			padding: 0 0 0 0.5rem;
-		} */
+		}
 
-		/* .table-wrapper{
+		.table-wrapper {
 			padding-right: 1rem;
 			font-size: 0.8rem;
-		} */
+		}
 
 		hr {
 			border-bottom-color: #555555 !important;
 			margin: 0.3rem 0 !important;
 			border-bottom: 0rem !important;
-		}
-
-		td {
-			padding-top: 0.5rem !important;
-			padding-bottom: 0.5rem !important;
 		}
 
 		.link {
@@ -91,6 +85,30 @@
 
 		.tb {
 			line-height: 1.2rem;
+		}
+
+		h1 {
+			font-size: 1.2rem !important;
+		}
+
+		h2 {
+			font-size: 1rem !important;
+		}
+
+		h3 {
+			font-size: 0.8rem !important;
+		}
+
+		h4 {
+			font-size: 0.6rem !important;
+		}
+
+		h5 {
+			font-size: 0.5rem !important;
+		}
+
+		h6 {
+			font-size: 0.4rem !important;
 		}
 	</style>
 
@@ -155,6 +173,11 @@
 							$start = ($currentPage - 1) * 8;
 							$sql = "SELECT * FROM post WHERE class=$class AND enable=1 ORDER BY published DESC LIMIT $start, 8;";
 							$res = sql_query($link, $sql);
+
+							echo '<style>td {
+								padding-top: 0.5rem !important;
+								padding-bottom: 0.5rem !important;
+							};</style>';
 
 							echo '<link rel="stylesheet" href="/assets/css/main.css" />';
 							echo '<div class="col-sm-12 col-md-9 p-3" id="">';

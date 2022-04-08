@@ -60,7 +60,7 @@
     // Respond to the successful upload with JSON.
     // Use a location key to specify the path to the saved image resource.
     // { location : '/your/uploaded/image/file'}
-    echo json_encode(array('status' => 'success'));
+    echo "success";
   } else {
     exit($temp['tmp_name']);
     // Notify editor that the upload failed

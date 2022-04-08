@@ -62,9 +62,9 @@
             vertical-align: middle;
         }
 
-        /* #content td {
+        #content td {
             border: inherit !important;
-        } */
+        }
 
         hr {
             border-bottom-color: #555555 !important;

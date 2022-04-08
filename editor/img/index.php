@@ -16,7 +16,7 @@
     <form class="col-5" id="uploadForm">
         <div class="input-group">
             <input type="file" id="uploadFile" class="form-control" name="file">
-            <button class="btn btn-primary" id="submit">上傳</button>
+            <input type="submit" class="btn btn-primary" id="submit" value="上傳"></input>
         </div>
     </form>
     <div class="col-5">
@@ -50,7 +50,8 @@
     ?>
 </div>
 <script>
-    $("#submit").click(function(e) {
+    $("#uploadForm").submit(function(e) {
+        e.preventDefault();
         var fd = new FormData();
         var files = $('#uploadFile')[0].files[0];
         fd.append('file', files);
@@ -62,7 +63,7 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                alert(response);
+                location.reload();
             },
             catch: function(e) {
                 alert(e);
