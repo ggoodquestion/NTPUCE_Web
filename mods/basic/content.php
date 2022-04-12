@@ -87,30 +87,6 @@
 			line-height: 1.2rem;
 		}
 
-		h1 {
-			font-size: 1.2rem !important;
-		}
-
-		h2 {
-			font-size: 1rem !important;
-		}
-
-		h3 {
-			font-size: 0.8rem !important;
-		}
-
-		h4 {
-			font-size: 0.6rem !important;
-		}
-
-		h5 {
-			font-size: 0.5rem !important;
-		}
-
-		h6 {
-			font-size: 0.4rem !important;
-		}
-
 	</style>
 
 	<!-- Wrapper -->

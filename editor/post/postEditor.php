@@ -117,6 +117,7 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
             auto_focus: "editor",
             height: 800,
             images_upload_url: '../imageUploadAccepter.php',
+            content_css : "../../assets/css/article.css, ../../assets/css/custom.css",
             plugins: [
                 'advlist autolink link image lists charmap print preview hr anchor pagebreak',
                 'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
