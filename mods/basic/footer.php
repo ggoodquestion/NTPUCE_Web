@@ -1,21 +1,22 @@
 <footer id="footer" class="">
-    <section class="split contact col-lg">
-        <section>
-            <h4></h4>
+    <section class="col-lg py-2 px-1">
+        <section class="">
+            <h6 class="m-0" align="center" style="font-size: 0.6rem;">National Taipei University．Department of Communication Engineering
+            Tel： (02) 86741111#68880,68881 / Fax： (02) 26710893</h6>
         </section>
     </section>
 </footer>
 
 <!-- Copyright -->
-<div id="copyright" style="color: #aaaaaa">
+<div id="copyright" class="mt-3" style="color: #aaaaaa">
     <ul>
-        <li>&copy; NTPU CE</li>
-        <li>Design: 
-            <a href="https://html5up.net">HTML5 UP </a>
+        <li>&copy; 2021 NTPUCE</li>
+        <li>Design:
+            HTML5 UP
             |
-            <a href="https://www.instagram.com/ggbro_0718/">Gary Su </a>
+            Gary Su
             |
-            <a href="https://www.instagram.com/ted_031/">Ted Yeh</a>
+            Ted Yeh
         </li>
     </ul>
 </div>

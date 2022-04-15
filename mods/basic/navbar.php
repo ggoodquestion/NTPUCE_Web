@@ -14,7 +14,7 @@ $json = json_decode($file, true);
         <li id="home"><a href="/index.php">Home</a></li>
         <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <?php
-        include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
+        // include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php"; // If delete top-banner need to discomment this line
         $link = sql_connect();
         $sql = "SELECT id FROM mods WHERE name='nav';";
         $result = sql_query($link, $sql);

@@ -42,7 +42,7 @@
 		}
 
 		#content {
-			padding: 0 1rem 0 1rem;
+			padding: 0 0rem 0 0rem;
 		}
 
 		#content * {
@@ -104,9 +104,9 @@
 			<!-- Block the area in 3:6:3 -->
 			<section id="main-infomation" style="padding-top: 1rem">
 				<div class="container-fluid">
-					<div class="row">
+					<div class="row m-0">
 						<!-- Left -->
-						<div class="col-sm-12 col-md-3"><?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/intro.php"; ?></div>
+						<div class="col-sm-12 col-md-3 px-md-1 px-0"><?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/intro.php"; ?></div>
 						<!-- Right -->
 
 						<?php
@@ -132,7 +132,7 @@
 							} else {
 								echo '<link rel="stylesheet" href="/assets/css/article.css" />';
 
-								echo '<div class="col-sm-12 col-md-9">';
+								echo '<div class="col-sm-12 col-md-9 px-md-1 px-0">';
 								echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
 								echo '<div id="content" class="mt-4">';
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";

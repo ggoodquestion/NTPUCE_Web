@@ -162,7 +162,7 @@ if (!$result) exit(mysqli_error($link));
         $.post("./mod/save.php", {
             name: name,
         }, function(data) {
-            if (data == "success") {
+            if (data.trim() == "success") {
                 location.reload();
             } else {
                 alert("新增失敗: " + data);

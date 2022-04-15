@@ -32,7 +32,7 @@
 
 		.left-col {
 			font-size: 0.65rem;
-			padding: 0.2rem 0.25rem;
+			padding: 0.2rem 0;
 			background-color: #f5f5f5;
 		}
 
@@ -104,19 +104,19 @@
 			<?php include "./mods/basic/logo_banner.php"; ?>
 
 			<!-- Block the area in 3:9 -->
-			<section id="main-infomation" style="padding: 1rem 0.5rem 0 0">
+			<div id="main-infomation" style="padding-top: 1rem">
 				<div class="container-fluid">
-					<div class="row">
+					<div class="row m-0">
 						<!-- Left -->
-						<div class="col-sm-12 col-md-3 lm">
+						<div class="col-sm-12 col-md-3 lm px-md-1 px-0">
 							<?php include "./mods/basic/leftcol.php"; ?>
 							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
-						<div class="col-sm-12 col-md-9">
+						<div class="col-sm-12 col-md-9 px-md-1 px-0">
 
 							<!-- 公告區 -->
-							<div class="container">
+							<div class="container-fluid">
 								<div class="row" id="info-wrapper">
 									<?php
 									$link = sql_connect();
@@ -167,7 +167,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 
 		<?php include './mods/basic/footer.php'; ?>

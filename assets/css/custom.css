@@ -16,6 +16,12 @@ section, summary, time, mark, audio, video {
 	vertical-align: middle;
 }
 
+hr {
+    border-bottom-color: #555555 !important;
+    margin: 0.3rem 0 !important;
+    border-bottom: 0rem !important;
+}
+
 h1 {
     font-size: 1.5rem !important;
 }

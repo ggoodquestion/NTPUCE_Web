@@ -50,7 +50,7 @@
         }
 
         #content {
-            padding: 0 1rem 0 1rem;
+            padding: 0 0rem 0 0rem;
         }
 
         #content * {
@@ -91,15 +91,15 @@
             <!-- Block the area in 3:6:3 -->
             <section id="main-infomation" style="padding-top: 1rem">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row m-0">
                         <!-- Left -->
-                        <div class="col-sm-12 col-md-3">
+                        <div class="col-sm-12 col-md-3 px-md-1 px-0">
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
 
                         </div>
                         <!-- Middle -->
-                        <div class="col-sm-12 col-md-9">
+                        <div class="col-sm-12 col-md-9 px-md-1 px-0">
                             <?php
                             $link = sql_connect();
                             $target = $_GET['id'];
@@ -108,13 +108,13 @@
                             $row = sql_fetch($res);
 
                             if ($row['href'] == '') {
-                                echo '<h3>' . $row['title'] . '</h3>';
+                                echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
                             ?>
-                                <div id="content">
+                                <div id="content" class="mt-4">
                                     <?php
-                                    echo '<hr/><div class="mt-4" id="post">';
+                                    // echo '<div id="post">';
                                     include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
-                                    echo '</div>';
+                                    // echo '</div>';
                                     sql_disconnect($link);
                                     ?>
                                 </div>
