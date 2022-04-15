@@ -8,19 +8,19 @@ session_start();
 
 <nav id="nav">
     <ul id="nav-ul" class="links d-flex justify-content-center" align="center" valign="center" >
-        <li id="home"><a href="/index.php">Home</a></li>
+        <li id="home"><a href="/eng/index.php">Home</a></li>
         <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <?php
         // include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php"; // If delete top-banner need to discomment this line
         $link = sql_connect();
-        $sql = "SELECT id FROM mods WHERE name='nav';";
+        $sql = "SELECT id FROM mods WHERE name='nav_eng';";
         $result = sql_query($link, $sql);
         $mid = sql_fetch($result)['id'];
 
         $sql = "SELECT * FROM class WHERE mods='$mid';";
         $result = sql_query($link, $sql);
         while ($row = sql_fetch($result)) {
-            echo '<li><a href="/mods/basic/content.php?class=' . $row['id'] . '">' . $row['title'] . '</a></li>';
+            echo '<li><a href="/eng/mods/basic/content.php?class=' . $row['id'] . '">' . $row['title'] . '</a></li>';
         }
         ?>
         <!-- <li id="home"><a href="/index.php">Home</a></li>

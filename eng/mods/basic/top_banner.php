@@ -1,7 +1,7 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
 $link = sql_connect();
-$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='contact'";
+$sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='contact_eng'";
 $result = sql_query($link, $sql);
 $row = sql_fetch($result);
 ?>
@@ -11,9 +11,9 @@ $row = sql_fetch($result);
         <a><img src="/images/logo-3.png" class="image fit" style="margin-bottom:0 !important"></a>
         <div>
             <ul id="ul-top" align="right">
-                <li><a href="/eng/">English</a></li>
-                <li><a href="<?php echo '/mods/basic/content.php?class=' . $row[0]; ?>">聯絡我們</a></li>
-                <li><a href="https://new.ntpu.edu.tw/" target="_blank">臺北大學</a></li>
+                <li><a href="/">中文</a></li>
+                <li><a href="<?php echo '/eng/mods/basic/content.php?class=' . $row[0]; ?>">Contact</a></li>
+                <li><a href="https://new.ntpu.edu.tw/" target="_blank">NTPU</a></li>
             </ul>
         </div>
     </div>
