@@ -110,7 +110,8 @@
 						<!-- Left -->
 						<div class="col-sm-12 col-md-3 lm px-md-1 px-0">
 							<?php include "./mods/basic/leftcol.php"; ?>
-							<?php include "./mods/basic/intro.php"; ?>
+							<?php //include "./mods/basic/intro.php"; ?>
+							<?php include "./mods/gallery/tinyView.php"; ?>
 						</div>
 						<!-- Middle -->
 						<div class="col-sm-12 col-md-9 px-md-1 px-0">

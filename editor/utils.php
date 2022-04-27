@@ -53,4 +53,14 @@ function id2Class($data, $link)
     $res = $row['title'];
     return $res;
 }
+
+function id2Topic($data, $link)
+{
+    if (empty($data)) return; // To be insure $data is not empty
+    $sql = "SELECT * FROM ga_topic WHERE id=$data;";
+    $result = sql_query($link, $sql);
+    $row = sql_fetch($result);
+    $res = $row['name'];
+    return $res;
+}
 ?>

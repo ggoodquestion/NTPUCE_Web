@@ -69,6 +69,10 @@
         background-color: #ffffff;
         color: #000000;
     }
+
+    .e-mod {
+        padding-left: 2.5rem;
+    }
 </style>
 
 <body>
@@ -85,11 +89,22 @@
             <div class="row">
                 <div class="col  align-left menu-option">
                     <div class="list-group mt-4 nav">
-                        <a class="list-group-item" href="./index.php?usage=mod" id="mod">模組</a>
-                        <a class="list-group-item" href="./index.php?usage=class" id="class">分類</a>
-                        <a class="list-group-item" href="./index.php?usage=post" id="post">文章</a>
-                        <a class="list-group-item" href="./index.php?usage=doc" id="doc">檔案</a>
-                        <a class="list-group-item" href="./index.php?usage=img" id="img">圖片</a>
+                        <span class="list-group-item">一般
+                            <hr>
+                        </span>
+                        <a class="list-group-item e-mod" href="./index.php?usage=mod" id="mod">模組</a>
+                        <a class="list-group-item e-mod" href="./index.php?usage=class" id="class">分類</a>
+                        <a class="list-group-item e-mod" href="./index.php?usage=post" id="post">文章</a>
+                        <a class="list-group-item e-mod" href="./index.php?usage=doc" id="doc">檔案</a>
+                        <a class="list-group-item e-mod" href="./index.php?usage=img" id="img">圖片</a>
+
+                        <br>
+
+                        <span class="list-group-item">海報牆
+                            <hr>
+                        </span>
+                        <a class="list-group-item e-mod" href="./index.php?usage=ga_topic" id="ga_topic">活動</a>
+                        <a class="list-group-item e-mod" href="./index.php?usage=ga_item" id="ga_item">項目</a>
                         <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
                         <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
                     </div>
@@ -114,6 +129,12 @@
                                     break;
                                 case "img":
                                     include("./img/index.php");
+                                    break;
+                                case "ga_topic":
+                                    include("./ga_topic/index.php");
+                                    break;
+                                case "ga_item":
+                                    include("./ga_item/index.php");
                                     break;
                             }
                         } else {

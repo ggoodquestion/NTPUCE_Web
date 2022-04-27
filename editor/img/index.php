@@ -40,7 +40,7 @@
 
             $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? "https://" : "http://";
 
-            $full_path = "$protocol" . $_SERVER['SERVER_NAME'] . ":$port/$base_dir$file";
+            $full_path = "$protocol" . $_SERVER['SERVER_NAME'] . "/$base_dir$file";
             echo "<div class='d-flex flex-row bd-highlight'><a href='$full_path'>$file</a><button class='btn btn-light' onclick='copy(this);' value='$full_path'><img src='./images/content_copy_black_24dp.svg'></button></div>";
         }
         closedir($handle);
