@@ -18,8 +18,9 @@ if (isset($_POST['type'])) {
 }
 
 $title = $_POST['title'];
-$class = $_POST['class'];
+$topic = $_POST['topic'];
 $content = $_POST['content'];
+$cover = $_POST['cover'];
 
 $path = $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/";
 $fn = uniqid();
@@ -27,24 +28,24 @@ $fn = uniqid();
 if ($type == 'href') {
     // If is href mode, also give a fn_id in order to necesity of add article in future
     file_put_contents($path . $fn . '.php', "");
-    $sql = "INSERT INTO post(title, class, content, href) VALUES " .
-        "('$title', $class, '$fn', '$href');";
+    $sql = "INSERT INTO ga_item(title, topic, content, href, cover) VALUES " .
+        "('$title', $topic, '$fn', '$href', '$cover');";
         
 } else {
     
     file_put_contents($path . $fn . '.php', $content);
 
-    $sql = "INSERT INTO post(title, class, content) VALUES " .
-        "('$title', $class, '$fn');";
+    $sql = "INSERT INTO ga_item(title, topic, content, cover) VALUES " .
+        "('$title', $topic, '$fn', '$cover');";
     
 }
 
 if ($usage == 'update') {
-    $sql = "SELECT content FROM post WHERE id=$id;";
+    $sql = "SELECT content FROM ga_item WHERE id=$id;";
     $res = sql_query($link, $sql);
 
     if ($type == 'href') {
-        $sql = "UPDATE post SET title='$title', class=$class, href='$href' WHERE id=$id;";
+        $sql = "UPDATE ga_item SET title='$title', topic=$topic, href='$href' WHERE id=$id;";
 
     } else {
         $fn = $path . sql_fetch($res)['content'];
@@ -52,9 +53,12 @@ if ($usage == 'update') {
         fwrite($fp, $content);
         fclose($fp);
 
-        $sql = "UPDATE post SET title='$title', class=$class, href=NULL WHERE id=$id;";
+        $sql = "UPDATE ga_item SET title='$title', topic=$topic, href=NULL WHERE id=$id;";
         // Here href need to clean up to NULL
     }
+    $cover_sql = "UPDATE ga_item SET cover='$cover' WHERE id=$id;";
+    $result = mysqli_query($link, $cover_sql);
+    if (!$result) exit(mysqli_error($link));
 }
 
 $result = mysqli_query($link, $sql);

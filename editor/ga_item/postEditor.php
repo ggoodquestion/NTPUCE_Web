@@ -74,8 +74,8 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
                         <input type="text" class="form-control" id="titleInput">
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" id="sel-class">
-                            <option selected>--選擇分類--</option>
+                        <select class="form-select" id="sel-topic">
+                            <option selected>--選擇活動--</option>
                             <?php
                             // Make select list of topic parent
                             $sql = "SELECT * FROM ga_topic;";
@@ -156,8 +156,8 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
                 alert("請填入名稱");
                 retrun;
             }
-            classes = $("#sel-class").val();
-            if (classes.includes('--選擇')) {
+            topic = $("#sel-topic").val();
+            if (topic.includes('--選擇')) {
                 alert("請選擇活動");
                 return;
             }
@@ -169,7 +169,7 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
 
                 json = {
                     title: title,
-                    class: classes,
+                    topic: topic,
                     type: 'href',
                     href: href
                 };
@@ -178,7 +178,7 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
 
                 json = {
                     title: title,
-                    class: classes,
+                    topic: topic,
                     content: content
                 };
             }
@@ -190,15 +190,16 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
             }
             ?>
 
-            $.post("../post/save.php", json, function(data) {
+            $.post("../ga_item/save.php", json, function(data) {
                 if (data == "success") {
-                    window.location.replace("../index.php?usage=post");
+                    window.location.replace("../index.php?usage=ga_item");
                 } else {
                     alert("新增失敗: " + data);
                 }
             });
         });
 
+        // Process uplaod file
         $('#coverImg').change(function() {
             var fd = new FormData();
             var files = $('#coverImg')[0].files[0];
@@ -232,7 +233,8 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
             if ($usage == "edit") {
             ?>
                 $("#titleInput").val('<?php echo $title; ?>');
-                $("#sel-class").val('<?php echo $class; ?>');
+                $("#sel-topic").val('<?php echo $topic; ?>');
+                $("#coverImg").attr('src', '<?php echo $cover; ?>');
 
                 var href = "<?php echo $href; ?>";
                 var cid = "<?php echo $cid; ?>";
