@@ -58,7 +58,7 @@
             padding: 0;
             border: 0;
             font-size: 0.5rem;
-            line-height: 1rem;
+            line-height: 1.5rem;
             vertical-align: middle;
         }
 
@@ -99,7 +99,7 @@
 
                         </div>
                         <!-- Middle -->
-                        <div class="col-sm-12 col-md-9 px-md-1 px-0">
+                        <div class="col-sm-12 col-md-9 pe-md-1 ps-md-3 px-0">
                             <?php
                             $link = sql_connect();
                             $target = $_GET['id'];

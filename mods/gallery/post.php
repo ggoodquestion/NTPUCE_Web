@@ -81,9 +81,9 @@
 
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/eng/mods/basic/top_banner.php"; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/top_banner.php"; ?>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/eng/mods/basic/navbar.php"; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/navbar.php"; ?>
 
         <!-- Main -->
         <div id="main">
@@ -94,8 +94,8 @@
                     <div class="row m-0">
                         <!-- Left -->
                         <div class="col-sm-12 col-md-3 px-md-1 px-0">
-                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/eng/mods/basic/board.php'; ?>
-                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/eng/mods/basic/intro.php'; ?>
+                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>
+                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
 
                         </div>
                         <!-- Middle -->
@@ -103,7 +103,7 @@
                             <?php
                             $link = sql_connect();
                             $target = $_GET['id'];
-                            $sql = "SELECT * FROM post WHERE id=$target AND enable=1;";
+                            $sql = "SELECT * FROM ga_item WHERE id=$target;";
                             $res = sql_query($link, $sql);
                             $row = sql_fetch($res);
 
@@ -130,7 +130,7 @@
             </section>
         </div>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/eng/mods/basic/footer.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/footer.php'; ?>
         <!-- Scripts -->
         <script src="/bootstrap-5.1.0-dist/js/popper.min.js"></script>
         <script src="/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>

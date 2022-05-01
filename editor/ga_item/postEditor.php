@@ -162,6 +162,8 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
                 return;
             }
 
+            cover = $("#cImg").attr('src');
+
             var json;
             // If replace to href
             if ($("#replaceHref").is(":checked")) {
@@ -171,7 +173,8 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
                     title: title,
                     topic: topic,
                     type: 'href',
-                    href: href
+                    href: href,
+                    cover: cover
                 };
             } else {
                 var content = tinymce.get("editor").getContent();
@@ -179,7 +182,8 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
                 json = {
                     title: title,
                     topic: topic,
-                    content: content
+                    content: content,
+                    cover: cover
                 };
             }
 
@@ -234,7 +238,7 @@ if (isset($_POST['usage']) && $_POST['usage'] == "edit") {
             ?>
                 $("#titleInput").val('<?php echo $title; ?>');
                 $("#sel-topic").val('<?php echo $topic; ?>');
-                $("#coverImg").attr('src', '<?php echo $cover; ?>');
+                $("#cImg").attr('src', '<?php echo $cover; ?>');
 
                 var href = "<?php echo $href; ?>";
                 var cid = "<?php echo $cid; ?>";

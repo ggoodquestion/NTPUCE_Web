@@ -109,7 +109,7 @@
 					<div class="row m-0">
 						<!-- Left -->
 						<div class="col-sm-12 col-md-3 lm px-md-1 px-0">
-							<?php include "./mods/basic/leftcol.php"; ?>
+							<?php //include "./mods/basic/leftcol.php"; ?>
 							<?php include "./mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->

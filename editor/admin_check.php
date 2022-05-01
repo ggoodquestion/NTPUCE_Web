@@ -18,7 +18,7 @@ if (isset($_POST['usage'])) {
            $_SESSION['admin'] = true;
            $_SESSION['user'] = $user;
            $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? "https://" : "http://";
-           header("Location: $protocol"."ce.ntpu.edu.tw:8080/editor/");
+           header("Location: $protocol"."ce.ntpu.edu.tw/editor/");
            exit();
         }else{ //Password wrong
            echo("帳號或密碼錯誤");

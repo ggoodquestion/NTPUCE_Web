@@ -95,18 +95,21 @@
                         <a class="list-group-item e-mod" href="./index.php?usage=mod" id="mod">模組</a>
                         <a class="list-group-item e-mod" href="./index.php?usage=class" id="class">分類</a>
                         <a class="list-group-item e-mod" href="./index.php?usage=post" id="post">文章</a>
+                        <a class="list-group-item e-mod" href="./index.php?usage=carousel" id="carousel">圖片輪播</a>
                         <a class="list-group-item e-mod" href="./index.php?usage=doc" id="doc">檔案</a>
                         <a class="list-group-item e-mod" href="./index.php?usage=img" id="img">圖片</a>
-
                         <br>
-
                         <span class="list-group-item">海報牆
                             <hr>
                         </span>
                         <a class="list-group-item e-mod" href="./index.php?usage=ga_topic" id="ga_topic">活動</a>
                         <a class="list-group-item e-mod" href="./index.php?usage=ga_item" id="ga_item">項目</a>
-                        <!-- <a class="list-group-item" href="./index.php?usage=banner" id="banner">首頁Banner</a>
-                        <a class="list-group-item" href="./index.php?usage=project" id="project">相關資源</a> -->
+                        <br>
+                        <span class="list-group-item">
+                            <hr>
+                            <h4><?php echo $_SESSION["user"]; ?></h4>
+                            <a href="./logout.php" style="color: #f5f5f5; text-decoration: none;">登出</a>
+                        </span>
                     </div>
                 </div>
                 <div class="col-10 ms-4 align-right optArea">
@@ -123,6 +126,9 @@
                                     break;
                                 case "post":
                                     include("./post/index.php");
+                                    break;
+                                case "carousel":
+                                    include("./carousel/index.php");
                                     break;
                                 case "doc":
                                     include("./document/index.php");

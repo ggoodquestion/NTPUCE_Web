@@ -49,7 +49,7 @@
 			margin: 0;
 			padding: 0;
 			/* border: 0; */
-			line-height: 1rem;
+			line-height: 1.5rem;
 			vertical-align: middle;
 		}
 
@@ -86,7 +86,6 @@
 		.tb {
 			line-height: 1.2rem;
 		}
-
 	</style>
 
 	<!-- Wrapper -->
@@ -132,7 +131,7 @@
 							} else {
 								echo '<link rel="stylesheet" href="/assets/css/article.css" />';
 
-								echo '<div class="col-sm-12 col-md-9 px-md-1 px-0">';
+								echo '<div class="col-sm-12 col-md-9 pe-md-1 ps-md-3 px-0">';
 								echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
 								echo '<div id="content" class="mt-4">';
 								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
@@ -228,7 +227,7 @@
 		// window.onload = function() {
 		// 	setIframeHeight(document.getElementById('fcontent'));
 		// };
-		$("#content").find("img").each(function(){
+		$("#content").find("img").each(function() {
 			$(this).addClass("img-fluid");
 		});
 	</script>
