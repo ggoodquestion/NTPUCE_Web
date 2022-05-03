@@ -19,7 +19,7 @@ $result = sql_query($link, $sql);
 ?>
 
 <div class="gallery p-0 p-md-2">
-    <h6 align="center" class="mb-1"><a href="/mods/gallery/">專題成果</a></h6>
+    <h6 align="center" class="mb-1"><a href="/mods/gallery/">歷屆專題成果</a></h6>
     <div id="carouselGallery" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <?php

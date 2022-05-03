@@ -47,6 +47,10 @@
         .poster>.row>* {
             padding: 0 0.75rem 0 0.75rem;
         }
+
+        .modal-backdrop{
+            z-index: 0;
+        }
     </style>
 
     </style>
@@ -116,7 +120,7 @@
                                 ?>
                                     <div classs="col">
                                         <div class="card">
-                                            <img class="card-img-top" src="<?php echo $row['cover']; ?>">
+                                            <a data-bs-toggle="modal" data-bs-target="#poster-display"><img class="card-img-top poster-img" src="<?php echo $row['cover']; ?>"></a>
                                             <div class="card-body">
                                                 <h4 align="center" class="card-title"><?php echo $row['title']; ?></h4>
                                             </div>
@@ -130,6 +134,20 @@
                     </div>
                 </div>
             </section>
+        </div>
+
+        <!-- 點選圖片放大的頁面 -->
+        <div class="modal" id="poster-display" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="modal-show" class="img-fluid d-block w-100">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/footer.php'; ?>
@@ -148,6 +166,11 @@
             // $("#content").find("img").each(function() {
             //     $(this).addClass("img-fluid");
             // });
+
+            $(".poster-img").click(function() {
+                src = $(this).attr("src");
+                $("#modal-show").attr("src", src);
+            })
         </script>
 
 </body>
