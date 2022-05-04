@@ -19,9 +19,9 @@ $result = sql_query($link, $sql);
 ?>
 
 <div class="gallery p-0 p-md-2">
-    <h6 align="center" class="mb-1"><a href="/mods/gallery/">歷屆專題成果</a></h6>
+    <h6 align="center" class="mb-1"><a href="/mods/gallery/" style="color: #2a6aa8;">歷屆專題成果</a></h6>
     <div id="carouselGallery" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+        <div class="carousel-indicators" style="margin-bottom:0rem;">
             <?php
             for ($i = 0; $i < $total; $i++) {
                 if ($i == 0) echo '<a data-bs-target="#carouselGallery" data-bs-slide-to="' . $i . '" class="active" aria-current="true"></a>';
