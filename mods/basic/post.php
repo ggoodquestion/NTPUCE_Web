@@ -55,16 +55,15 @@
 
         #content * {
             margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 0.5rem;
-            line-height: 1.5rem;
-            vertical-align: middle;
+			padding: 0;
+			/* border: 0; */
+			line-height: 1.5rem;
+			vertical-align: middle;
         }
 
-        #content td {
+        /* #content td {
             border: inherit;
-        }
+        } */
 
         hr {
             border-bottom-color: #555555 !important;

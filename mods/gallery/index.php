@@ -119,7 +119,7 @@
                                 while ($row = sql_fetch($res)) {
                                 ?>
                                     <div classs="col">
-                                        <div class="card">
+                                        <div class="card mb-2 mb-md-3">
                                             <a data-bs-toggle="modal" data-bs-target="#poster-display"><img class="card-img-top poster-img" src="<?php echo $row['cover']; ?>"></a>
                                             <div class="card-body">
                                                 <h4 align="center" class="card-title"><?php echo $row['title']; ?></h4>

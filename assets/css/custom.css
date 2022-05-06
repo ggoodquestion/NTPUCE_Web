@@ -45,3 +45,7 @@ h5 {
 h6 {
     font-size: 0.5rem !important;
 }
+
+table{ 
+    border-style: solid;
+}

@@ -57,14 +57,15 @@
 			border: inherit !important;
 		} */
 
-		.table-wrapper>table>tbody>tr>td {
+
+		/* .table-wrapper>table>tbody>tr>td {
 			padding: 0 0 0 0.5rem;
 		}
 
 		.table-wrapper {
 			padding-right: 1rem;
 			font-size: 0.8rem;
-		}
+		} */
 
 		hr {
 			border-bottom-color: #555555 !important;
