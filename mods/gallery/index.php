@@ -122,7 +122,14 @@
                                         <div class="card mb-2 mb-md-3">
                                             <a data-bs-toggle="modal" data-bs-target="#poster-display"><img class="card-img-top poster-img" src="<?php echo $row['cover']; ?>"></a>
                                             <div class="card-body">
-                                                <h4 align="center" class="card-title"><?php echo $row['title']; ?></h4>
+                                                <?php
+                                                if($row['href'] != ""){
+                                                ?>
+                                               <h4 align="center" class="card-title"> <a href="<?php echo $row['href'] ?>"><?php echo $row['title']; ?></a></h4>
+                                                <?php
+                                                }else echo "<h4 align='center' class='card-title'>".$row['title']."</h4>";
+                                                ?>
+                                                
                                             </div>
                                         </div>
                                     </div>
