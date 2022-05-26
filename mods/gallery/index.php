@@ -25,6 +25,7 @@
 <body class="">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
     <style>
         hr {
             border-bottom-color: #555555 !important;
@@ -48,8 +49,20 @@
             padding: 0 0.75rem 0 0.75rem;
         }
 
-        .modal-backdrop{
+        .modal-backdrop {
             z-index: 0;
+        }
+
+        #content {
+            -webkit-column-width: 354px;
+            /*Safari and Chrome*/
+            -moz-column-width: 354px;
+            /*Firefox*/
+            -o-column-width: 354px;
+            /*Opera*/
+            -ms-column-width: 354px;
+            /*IE*/
+            column-width: 354px;
         }
     </style>
 
@@ -112,24 +125,24 @@
                         echo "<h2 align='center'>$cur_topic_name</h2>";
                         ?>
                         <div class="container p-0 poster">
-                            <div class=" row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
+                            <div class=" row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0 content" id="">
                                 <?php
                                 $sql = "SELECT * FROM ga_item WHERE topic=$topic;";
                                 $res = sql_query($link, $sql);
                                 while ($row = sql_fetch($res)) {
                                 ?>
-                                    <div classs="col">
+                                    <div classs="col-12 col-md-6 col-lg-4 content-item">
                                         <div class="card mb-2 mb-md-3">
                                             <a data-bs-toggle="modal" data-bs-target="#poster-display"><img class="card-img-top poster-img" src="<?php echo $row['cover']; ?>"></a>
                                             <div class="card-body">
                                                 <?php
-                                                if($row['href'] != ""){
+                                                if ($row['href'] != "") {
                                                 ?>
-                                               <h4 align="center" class="card-title"> <a href="<?php echo $row['href'] ?>"><?php echo $row['title']; ?></a></h4>
+                                                    <h4 align="center" class="card-title"> <a href="<?php echo $row['href'] ?>"><?php echo $row['title']; ?></a></h4>
                                                 <?php
-                                                }else echo "<h4 align='center' class='card-title'>".$row['title']."</h4>";
+                                                } else echo "<h4 align='center' class='card-title'>" . $row['title'] . "</h4>";
                                                 ?>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -169,6 +182,7 @@
         <script src="/assets/js/util.js"></script>
         <script src="/assets/js/main.js"></script>
         <script src="/assets/js/common.js"></script>
+        <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
         <script>
             // $("#content").find("img").each(function() {
             //     $(this).addClass("img-fluid");
@@ -178,6 +192,12 @@
                 src = $(this).attr("src");
                 $("#modal-show").attr("src", src);
             })
+
+            window.onload = function() {
+                $(".content").masonry({
+                    percentPosition: true
+                })
+            }
         </script>
 
 </body>
