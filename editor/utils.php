@@ -2,8 +2,8 @@
 // Connection
 function sql_connect(){
     $dbuser = "ntpuce";
-    $dbpassword = "ceweb2021";
-    $dbname = "ceweb";
+    $dbpassword = "Cq2FprT6 ";
+    $dbname = "ntpuce";
     $host = "127.0.0.1";
 
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);

@@ -2,7 +2,7 @@
 // Connection
 function sql_connect(){
     $dbuser = "ntpuce";
-    $dbpassword = "ceweb2021";
+    $dbpassword = "Cq2FprT6";
     $dbname = "ceweb";
     $host = "127.0.0.1";
 
@@ -20,7 +20,7 @@ function sql_disconnect(&$link){
 
 // Select
 function sql_query($link, $sql){
-    $result = mysqli_query($link, $sql);
+    $result = mysql_query($sql);
     if(!$result) exit(mysqli_error($link));
     return $result;
 }
