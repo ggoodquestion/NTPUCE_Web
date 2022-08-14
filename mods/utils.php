@@ -3,31 +3,35 @@
 function sql_connect(){
     $dbuser = "ntpuce";
     $dbpassword = "Cq2FprT6";
-    $dbname = "ceweb";
+    $dbname = "ntpuce";
     $host = "127.0.0.1";
 
-    $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
-    if(!$link){
-        echo(mysqli_connect_error());
+    $link = mysql_connect($host, $dbuser, $dbpassword);
+    mysql_select_db($dbname);
+    if($link){
+        mysql_query("SET NAMES utf8");
+    }else{
+        // exit(mysql_connect_error());
         exit("Connection failed.");
     }
     return $link;
 }
 
 function sql_disconnect(&$link){
-    mysqli_close($link);
+    mysql_close($link);
 }
 
 // Select
 function sql_query($link, $sql){
     $result = mysql_query($sql);
-    if(!$result) exit(mysqli_error($link));
+    if(!$result) exit(mysql_error($link));
+    // var_dump($result);
     return $result;
 }
 
 function sql_fetch($result){
     if($result){
-        $row = mysqli_fetch_array($result);
+        $row = mysql_fetch_array($result);
     }else{
         $row = false;
     }

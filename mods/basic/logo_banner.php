@@ -2,7 +2,8 @@
 $link = sql_connect();
 $sql = "SELECT id FROM mods WHERE name='home_banner';";
 $result = sql_query($link, $sql);
-$mid = sql_fetch($result)['id'];
+$row = sql_fetch($result);
+$mid = $row['id'];
 
 $sql = "SELECT * FROM carousel WHERE mods='$mid' AND enable=1;";
 $result = sql_query($link, $sql);
@@ -15,7 +16,7 @@ $result = sql_query($link, $sql);
             if($count == 0) echo '<div class="carousel-item active">';
             else '<div class="carousel-item">';
 
-            if ($row['href'] == '') echo '<img src="' . $row['url'] . '" class="image fit" alt="..." style="margin-bottom:0 !important; height:100%">';
+            if ($row['href'] == '') echo '<img src=".' . $row['url'] . '" class="image fit" alt="..." style="margin-bottom:0 !important; height:100%">';
             else echo '<a href="'.$row['href'].'"><img src="' . $row['url'] . '" class="image fit" alt="..." style="margin-bottom:0 !important; height:100%"></a>';
             
             echo '</div>';

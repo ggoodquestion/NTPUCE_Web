@@ -20,6 +20,7 @@
 </head>
 
 <?php //include "./editor/connect.php"; 
+define('ROOT', ".");
 ?>
 
 <body class="">
@@ -93,15 +94,15 @@
 
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
-		<?php include "./mods/basic/top_banner.php"; ?>
+		<?php include ROOT . "/mods/basic/top_banner.php"; ?>
 
-		<?php include("./mods/basic/navbar.php"); ?>
+		<?php include ROOT . "/mods/basic/navbar.php"; ?>
 
 		<!-- Main -->
 		<div id="main">
 
 			<!-- Carousel -->
-			<?php include "./mods/basic/logo_banner.php"; ?>
+			<?php include ROOT . "/mods/basic/logo_banner.php"; ?>
 
 			<!-- Block the area in 3:9 -->
 			<div id="main-infomation" style="padding-top: 1rem">
@@ -109,9 +110,9 @@
 					<div class="row m-0">
 						<!-- Left -->
 						<div class="col-sm-12 col-md-3 lm px-md-1 px-0">
-							<?php include "./mods/basic/leftcol.php"; ?>
+							<?php include ROOT . "/mods/basic/leftcol.php"; ?>
 							<?php //include "./mods/basic/intro.php"; ?>
-							<?php include "./mods/gallery/tinyView.php"; ?>
+							<?php include ROOT . "/mods/gallery/tinyView.php"; ?>
 						</div>
 						<!-- Middle -->
 						<div class="col-sm-12 col-md-9 px-md-1 px-0">
@@ -145,7 +146,7 @@
 													while ($row2 = sql_fetch($res)) {
 														$title = $row2['title'];
 														$pid = $row2['id'];
-														$published = explode(' ', $row2['published'])[0];
+														// $published = explode(' ', $row2['published'])[0];
 														echo "<li class='list-group-item d-flex flex-row post-item'>
 																<small>$published&ensp;&ensp;</small>
 															<a href='/mods/basic/post.php?id=$pid' name='info' title='$title'>$title</a>

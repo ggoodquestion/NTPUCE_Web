@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php";
+include "./mods/utils.php";
 $link = sql_connect();
 $sql = "SELECT * FROM class INNER JOIN mods ON mods.id=class.mods AND mods.name='contact_eng'";
 $result = sql_query($link, $sql);

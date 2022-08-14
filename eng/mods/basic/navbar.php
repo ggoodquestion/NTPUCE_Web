@@ -11,7 +11,7 @@ session_start();
         <li id="home"><a href="/eng/index.php">Home</a></li>
         <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <?php
-        // include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php"; // If delete top-banner need to discomment this line
+        // include "./mods/utils.php"; // If delete top-banner need to discomment this line
         $link = sql_connect();
         $sql = "SELECT id FROM mods WHERE name='nav_eng';";
         $result = sql_query($link, $sql);

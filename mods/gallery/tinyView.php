@@ -8,11 +8,13 @@
 $link = sql_connect();
 $sql = "SELECT id FROM mods WHERE name='topic_banner';";
 $result = sql_query($link, $sql);
-$mid = sql_fetch($result)['id'];
+$row = sql_fetch($result);
+$mid = $row['id'];
 
 $sql = "SELECT COUNT(*) as total FROM carousel WHERE mods='$mid' AND enable=1;";
 $result = sql_query($link, $sql);
-$total = sql_fetch($result)['total'];
+$row = sql_fetch($result);
+$total = $row['total'];
 
 $sql = "SELECT * FROM carousel WHERE mods='$mid'  AND enable=1;";
 $result = sql_query($link, $sql);

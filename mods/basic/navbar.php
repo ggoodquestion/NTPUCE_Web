@@ -11,11 +11,12 @@ session_start();
         <li id="home"><a href="/index.php">Home</a></li>
         <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <?php
-        // include $_SERVER['DOCUMENT_ROOT'] . "/mods/utils.php"; // If delete top-banner need to discomment this line
+        // include "/mods/utils.php"; // If delete top-banner need to discomment this line
         $link = sql_connect();
         $sql = "SELECT id FROM mods WHERE name='nav';";
         $result = sql_query($link, $sql);
-        $mid = sql_fetch($result)['id'];
+        $row = sql_fetch($result);
+        $mid = $row['id'];
 
         $sql = "SELECT * FROM class WHERE mods='$mid';";
         $result = sql_query($link, $sql);
