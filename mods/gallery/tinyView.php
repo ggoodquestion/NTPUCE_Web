@@ -21,7 +21,7 @@ $result = sql_query($link, $sql);
 ?>
 
 <div class="gallery p-0 p-md-2">
-    <h6 align="center" class="mb-1"><a href="/mods/gallery/" style="color: #2a6aa8;">歷屆專題成果</a></h6>
+    <h6 align="center" class="mb-1"><a href="<?php echo ROOT; ?>/mods/gallery/" style="color: #2a6aa8;">歷屆專題成果</a></h6>
     <div id="carouselGallery" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators" style="margin-bottom:0rem;">
             <?php
@@ -37,10 +37,10 @@ $result = sql_query($link, $sql);
             while ($row = sql_fetch($result)) {
                 if ($count == 0) echo '<div class="carousel-item active">';
                 else echo '<div class="carousel-item">';
-                
-                if($row['href'] == '') echo '<img src="' . $row['url'] . '" alt="..." class="d-block w-100">';
-                else echo '<a href="' . $row['href'] . '"><img src="' . $row['url'] . '" alt="..." class="d-block w-100"></a>';
-                
+
+                if ($row['href'] == '') echo '<img src="'. ROOT . $row['url'] . '" alt="..." class="d-block w-100">';
+                else echo '<a href="'.ROOT . $row['href'] . '"><img src="'.ROOT . $row['url'] . '" alt="..." class="d-block w-100"></a>';
+
                 echo '</div>';
                 $count++;
             }

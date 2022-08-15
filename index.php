@@ -1,3 +1,6 @@
+<?php
+define('ROOT', ".");
+?>
 <!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -10,17 +13,16 @@
 	<title>臺北大學通訊工程學系</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link href="./bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/common.css" />
-	<link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
+	<link href="<?php echo ROOT ?>/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/main.css" />
+	<link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/common.css" />
+	<link rel="icon" href="<?php echo ROOT ?>/images/icon.jpg" type="image/x-icon" />
 	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
+		<link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/noscript.css" />
 	</noscript>
 </head>
 
 <?php //include "./editor/connect.php"; 
-define('ROOT', ".");
 ?>
 
 <body class="">
@@ -111,7 +113,8 @@ define('ROOT', ".");
 						<!-- Left -->
 						<div class="col-sm-12 col-md-3 lm px-md-1 px-0">
 							<?php include ROOT . "/mods/basic/leftcol.php"; ?>
-							<?php //include "./mods/basic/intro.php"; ?>
+							<?php //include "./mods/basic/intro.php"; 
+							?>
 							<?php include ROOT . "/mods/gallery/tinyView.php"; ?>
 						</div>
 						<!-- Middle -->
@@ -135,7 +138,7 @@ define('ROOT', ".");
 													<div>
 														<a href="<?php
 																	// Use $row[0] to avoid selecting mods' id
-																	echo '/mods/basic/content.php?class=' . $row[0]; ?>" class="alert-link">more</a>
+																	echo ROOT . '/mods/basic/content.php?class=' . $row[0]; ?>" class="alert-link">more</a>
 													</div>
 												</div>
 												<ul class="list-group list-group-flush mid-col">
@@ -149,7 +152,7 @@ define('ROOT', ".");
 														// $published = explode(' ', $row2['published'])[0];
 														echo "<li class='list-group-item d-flex flex-row post-item'>
 																<small>$published&ensp;&ensp;</small>
-															<a href='/mods/basic/post.php?id=$pid' name='info' title='$title'>$title</a>
+															<a href='" . ROOT . "/mods/basic/post.php?id=$pid' name='info' title='$title'>$title</a>
 															</li>";
 													}
 													?>
@@ -172,18 +175,18 @@ define('ROOT', ".");
 			</div>
 		</div>
 
-		<?php include './mods/basic/footer.php'; ?>
+		<?php include ROOT . '/mods/basic/footer.php'; ?>
 		<!-- Scripts -->
-		<script src="./bootstrap-5.1.0-dist/js/popper.min.js"></script>
-		<script src="./bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script src="assets/js/common.js"></script>
+		<script src="<?php echo ROOT ?>/bootstrap-5.1.0-dist/js/popper.min.js"></script>
+		<script src="<?php echo ROOT ?>/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/jquery.min.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/jquery.scrollex.min.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/jquery.scrolly.min.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/browser.min.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/breakpoints.min.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/util.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/main.js"></script>
+		<script src="<?php echo ROOT ?>/assets/js/common.js"></script>
 
 </body>
 

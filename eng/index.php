@@ -1,3 +1,6 @@
+<?php
+define('ROOT', "..");
+?>
 <!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -10,12 +13,12 @@
 	<title>臺北大學通訊工程學系</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link href="../bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../assets/css/main.css" />
-	<link rel="stylesheet" href="../assets/css/common.css" />
-	<link rel="icon" href="../images/icon.jpg" type="image/x-icon" />
+	<link href="<?php echo ROOT; ?>/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo ROOT; ?>/assets/css/main.css" />
+	<link rel="stylesheet" href="<?php echo ROOT; ?>/assets/css/common.css" />
+	<link rel="icon" href="<?php echo ROOT; ?>/images/icon.jpg" type="image/x-icon" />
 	<noscript>
-		<link rel="stylesheet" href="../assets/css/noscript.css" />
+		<link rel="stylesheet" href="<?php echo ROOT; ?>/assets/css/noscript.css" />
 	</noscript>
 </head>
 
@@ -93,15 +96,15 @@
 
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
-		<?php include "./mods/basic/top_banner.php"; ?>
+		<?php include ROOT."/eng/mods/basic/top_banner.php"; ?>
 
-		<?php include("./mods/basic/navbar.php"); ?>
+		<?php include(ROOT."/eng/mods/basic/navbar.php"); ?>
 
 		<!-- Main -->
 		<div id="main">
 
 			<!-- Carousel -->
-			<?php include "./mods/basic/logo_banner.php"; ?>
+			<?php include ROOT."/eng/mods/basic/logo_banner.php"; ?>
 
 			<!-- Block the area in 3:9 -->
 			<div id="main-infomation" style="padding-top: 1rem">
@@ -110,7 +113,7 @@
 						<!-- Left -->
 						<div class="col-sm-12 col-md-3 lm px-md-1 px-0">
 							<?php //include "./mods/basic/leftcol.php"; ?>
-							<?php include "./mods/basic/intro.php"; ?>
+							<?php include ROOT."/eng/mods/basic/intro.php"; ?>
 						</div>
 						<!-- Middle -->
 						<div class="col-sm-12 col-md-9 px-md-1 px-0">
@@ -133,7 +136,7 @@
 													<div>
 														<a href="<?php
 																	// Use $row[0] to avoid selecting mods' id
-																	echo '/eng/mods/basic/content.php?class=' . $row[0]; ?>" class="alert-link">more</a>
+																	echo ROOT.'/eng/mods/basic/content.php?class=' . $row[0]; ?>" class="alert-link">more</a>
 													</div>
 												</div>
 												<ul class="list-group list-group-flush mid-col">
@@ -144,10 +147,11 @@
 													while ($row2 = sql_fetch($res)) {
 														$title = $row2['title'];
 														$pid = $row2['id'];
-														$published = explode(' ', $row2['published'])[0];
+														$published = explode(' ', $row2['published']);
+														$published = $published[0];
 														echo "<li class='list-group-item d-flex flex-row post-item'>
 																<small>$published&ensp;&ensp;</small>
-															<a href='/eng/mods/basic/post.php?id=$pid' name='info' title='$title'>$title</a>
+															<a href='".ROOT."/eng/mods/basic/post.php?id=$pid' name='info' title='$title'>$title</a>
 															</li>";
 													}
 													?>
@@ -170,18 +174,18 @@
 			</div>
 		</div>
 
-		<?php include './mods/basic/footer.php'; ?>
+		<?php include ROOT.'/mods/basic/footer.php'; ?>
 		<!-- Scripts -->
-		<script src="../bootstrap-5.1.0-dist/js/popper.min.js"></script>
-		<script src="../bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
-		<script src="../assets/js/jquery.min.js"></script>
-		<script src="../assets/js/jquery.scrollex.min.js"></script>
-		<script src="../assets/js/jquery.scrolly.min.js"></script>
-		<script src="../assets/js/browser.min.js"></script>
-		<script src="../assets/js/breakpoints.min.js"></script>
-		<script src="../assets/js/util.js"></script>
-		<script src="../assets/js/main.js"></script>
-		<script src="../assets/js/common.js"></script>
+		<script src="<?php echo ROOT; ?>/bootstrap-5.1.0-dist/js/popper.min.js"></script>
+		<script src="<?php echo ROOT; ?>/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/jquery.min.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/jquery.scrollex.min.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/jquery.scrolly.min.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/browser.min.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/breakpoints.min.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/util.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/main.js"></script>
+		<script src="<?php echo ROOT; ?>/assets/js/common.js"></script>
 
 </body>
 

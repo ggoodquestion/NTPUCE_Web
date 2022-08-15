@@ -7,20 +7,21 @@ session_start();
 </header> -->
 
 <nav id="nav">
-    <ul id="nav-ul" class="links d-flex justify-content-center" align="center" valign="center" >
-        <li id="home"><a href="/eng/index.php">Home</a></li>
+    <ul id="nav-ul" class="links d-flex justify-content-center" align="center" valign="center">
+        <li id="home"><a href="<?php echo ROOT; ?>/eng/index.php">Home</a></li>
         <!-- <li class="nav-logo" style="width:10rem"><img src="/images/footer-logo.svg" class="image fit" style="height:100%; padding-left:1rem;"></li> -->
         <?php
         // include "./mods/utils.php"; // If delete top-banner need to discomment this line
         $link = sql_connect();
         $sql = "SELECT id FROM mods WHERE name='nav_eng';";
         $result = sql_query($link, $sql);
-        $mid = sql_fetch($result)['id'];
+        $row = sql_fetch($result);
+        $mid = $row['id'];
 
         $sql = "SELECT * FROM class WHERE mods='$mid';";
         $result = sql_query($link, $sql);
         while ($row = sql_fetch($result)) {
-            echo '<li><a href="/eng/mods/basic/content.php?class=' . $row['id'] . '">' . $row['title'] . '</a></li>';
+            echo '<li><a href="' . ROOT . '/eng/mods/basic/content.php?class=' . $row['id'] . '">' . $row['title'] . '</a></li>';
         }
         ?>
         <!-- <li id="home"><a href="/index.php">Home</a></li>
@@ -37,7 +38,7 @@ session_start();
     </ul>
 </nav>
 
-<script src="/assets/js/jquery.min.js"></script>
+<script src="<?php echo ROOT; ?>/assets/js/jquery.min.js"></script>
 <script>
     // $("#switch_lang").click(function(){
     //     $.post("https://cie.ntpu.edu.tw/templates/switch_lang.php",{},

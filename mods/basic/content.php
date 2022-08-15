@@ -1,3 +1,6 @@
+<?php
+define('ROOT', '../..')
+?>
 <!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -10,11 +13,11 @@
 	<title>臺北大學通訊工程學系</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link href="/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
-	<link rel="stylesheet" href="/assets/css/common.css" />
+	<link href="<?php echo ROOT ?>/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="icon" href="<?php echo ROOT ?>/images/icon.jpg" type="image/x-icon" />
+	<link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/common.css" />
 	<noscript>
-		<link rel="stylesheet" href="/assets/css/noscript.css" />
+		<link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/noscript.css" />
 	</noscript>
 </head>
 
@@ -91,22 +94,22 @@
 
 	<!-- Wrapper -->
 	<div id="wrapper" class="fade-in">
-		<?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/top_banner.php"; ?>
+		<?php include ROOT . "/mods/basic/top_banner.php"; ?>
 
-		<?php include $_SERVER['DOCUMENT_ROOT'] . ("/mods/basic/navbar.php"); ?>
+		<?php include ROOT . ("/mods/basic/navbar.php"); ?>
 
 		<!-- Main -->
 		<div id="main">
 
 			<!-- Carousel -->
-			<?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/logo_banner.php"; ?>
+			<?php include ROOT . "/mods/basic/logo_banner.php"; ?>
 
 			<!-- Block the area in 3:6:3 -->
 			<section id="main-infomation" style="padding-top: 1rem">
 				<div class="container-fluid">
 					<div class="row m-0">
 						<!-- Left -->
-						<div class="col-sm-12 col-md-3 px-md-1 px-0"><?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/intro.php"; ?></div>
+						<div class="col-sm-12 col-md-3 px-md-1 px-0"><?php include ROOT . "/mods/basic/intro.php"; ?></div>
 						<!-- Right -->
 
 						<?php
@@ -130,12 +133,12 @@
 								$href = $row['href'];
 								echo "<script>window.location.href = '$href';</script>";
 							} else {
-								echo '<link rel="stylesheet" href="/assets/css/article.css" />';
+								echo '<link rel="stylesheet" href="'.ROOT.'/assets/css/article.css" />';
 
 								echo '<div class="col-sm-12 col-md-9 pe-md-1 ps-md-3 px-0">';
 								echo '<h3 class="title">' . $row['title'] . '</h3><hr/>';
 								echo '<div id="content" class="mt-4">';
-								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row['content'] . ".php";
+								include ROOT . "/editor/doc/" . $row['content'] . ".php";
 								echo '</div>';
 							}
 						} else {
@@ -143,7 +146,7 @@
 							$totalPage = ceil($count / 8);
 							$currentPage = 1;
 							if (isset($_GET['page'])) $currentPage = $_GET['page'];
-							$main_url = "/mods/basic/content.php?class=" . $class;
+							$main_url = ROOT."/mods/basic/content.php?class=" . $class;
 							$paramName = 'page';
 
 							// 用SQL在查詢一次指定範圍的資料
@@ -156,7 +159,7 @@
 								padding-bottom: 0.5rem !important;
 							};</style>';
 
-							echo '<link rel="stylesheet" href="/assets/css/main.css" />';
+							echo '<link rel="stylesheet" href="'.ROOT.'/assets/css/main.css" />';
 							echo '<div class="col-sm-12 col-md-9 p-3" id="">';
 							echo '<div class="">
 								<table>
@@ -168,7 +171,8 @@
 									</thead>
 									<tbody class="tb">';
 							while ($row = sql_fetch($res)) {
-								$ts = explode(" ", $row['published'])[0];
+								$ts = explode(" ", $row['published']);
+								$ts = $ts[0];
 								echo "
 										<tr class=''>
 											<td><a class='link' href='/mods/basic/post.php?id=" . $row['id'] . "'>" . $row['title'] . "</a></td>
@@ -180,21 +184,21 @@
 								</div>';
 
 
-							// Generate pagination by utils function
-							echo '<div class="d-flex justify-content-center">';
-							generatePagination($totalPage, $currentPage, $main_url, $paramName);
-							echo '</div></div></div';
+							// // Generate pagination by utils function
+							// echo '<div class="d-flex justify-content-center">';
+							// generatePagination($totalPage, $currentPage, $main_url, $paramName);
+							// echo '</div></div></div';
 						}
 
-						switch ($usage) {
-							case 'nav':
-								include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/nav_item/" . $id . ".php";
-								// $url = "/editor/doc/nav_item/" . $id . ".php";
-								// echo "<iframe id='fcontent' src='$url' scrolling='auto' height='100%' frameborder='0' width='100%'></iframe>";
-								break;
-							default:
-								break;
-						}
+						// switch ($usage) {
+						// 	case 'nav':
+						// 		include ROOT . "/editor/doc/nav_item/" . $id . ".php";
+						// 		// $url = "/editor/doc/nav_item/" . $id . ".php";
+						// 		// echo "<iframe id='fcontent' src='$url' scrolling='auto' height='100%' frameborder='0' width='100%'></iframe>";
+						// 		break;
+						// 	default:
+						// 		break;
+						// }
 						?>
 
 					</div>
@@ -203,18 +207,18 @@
 		</section>
 	</div>
 
-	<?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/footer.php'; ?>
+	<?php include ROOT . '/mods/basic/footer.php'; ?>
 	<!-- Scripts -->
-	<script src="/bootstrap-5.1.0-dist/js/popper.min.js"></script>
-	<script src="/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
-	<script src="/assets/js/jquery.min.js"></script>
-	<script src="/assets/js/jquery.scrollex.min.js"></script>
-	<script src="/assets/js/jquery.scrolly.min.js"></script>
-	<script src="/assets/js/browser.min.js"></script>
-	<script src="/assets/js/breakpoints.min.js"></script>
-	<script src="/assets/js/util.js"></script>
-	<script src="/assets/js/main.js"></script>
-	<script src="/assets/js/common.js"></script>
+	<script src="<?php echo ROOT ?>/bootstrap-5.1.0-dist/js/popper.min.js"></script>
+	<script src="<?php echo ROOT ?>/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/jquery.min.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/jquery.scrollex.min.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/jquery.scrolly.min.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/browser.min.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/breakpoints.min.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/util.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/main.js"></script>
+	<script src="<?php echo ROOT ?>/assets/js/common.js"></script>
 	<script type="text/javascript">
 		// function setIframeHeight(iframe) {
 		// 	if (iframe) {

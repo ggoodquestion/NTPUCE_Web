@@ -1,3 +1,6 @@
+<?php
+define('ROOT', "../..");
+?>
 <!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -10,12 +13,12 @@
     <title>臺北大學通訊工程學系</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link href="/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/article.css" />
-    <link rel="stylesheet" href="/assets/css/common.css" />
-    <link rel="icon" href="/images/icon.jpg" type="image/x-icon" />
+    <link href="<?php echo ROOT ?>/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/article.css" />
+    <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/common.css" />
+    <link rel="icon" href="<?php echo ROOT ?>/images/icon.jpg" type="image/x-icon" />
     <noscript>
-        <link rel="stylesheet" href="/assets/css/noscript.css" />
+        <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/noscript.css" />
     </noscript>
 </head>
 
@@ -55,10 +58,10 @@
 
         #content * {
             margin: 0;
-			padding: 0;
-			/* border: 0; */
-			line-height: 1.5rem;
-			vertical-align: middle;
+            padding: 0;
+            /* border: 0; */
+            line-height: 1.5rem;
+            vertical-align: middle;
         }
 
         /* #content td {
@@ -80,9 +83,9 @@
 
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/top_banner.php"; ?>
+        <?php include ROOT . "/mods/basic/top_banner.php"; ?>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/mods/basic/navbar.php"; ?>
+        <?php include ROOT . "/mods/basic/navbar.php"; ?>
 
         <!-- Main -->
         <div id="main">
@@ -93,8 +96,8 @@
                     <div class="row m-0">
                         <!-- Left -->
                         <div class="col-sm-12 col-md-3 px-md-1 px-0">
-                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/board.php'; ?>
-                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/intro.php'; ?>
+                            <?php include ROOT . '/mods/basic/board.php'; ?>
+                            <?php include ROOT . '/mods/basic/intro.php'; ?>
 
                         </div>
                         <!-- Middle -->
@@ -112,7 +115,7 @@
                                 <div id="content" class="mt-4">
                                     <?php
                                     // echo '<div id="post">';
-                                    include $_SERVER['DOCUMENT_ROOT'] . "/editor/doc/" . $row["content"] . ".php";
+                                    include ROOT . "/editor/doc/" . $row["content"] . ".php";
                                     // echo '</div>';
                                     sql_disconnect($link);
                                     ?>
@@ -129,18 +132,18 @@
             </section>
         </div>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/mods/basic/footer.php'; ?>
+        <?php include ROOT . '/mods/basic/footer.php'; ?>
         <!-- Scripts -->
-        <script src="/bootstrap-5.1.0-dist/js/popper.min.js"></script>
-        <script src="/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
-        <script src="/assets/js/jquery.min.js"></script>
-        <script src="/assets/js/jquery.scrollex.min.js"></script>
-        <script src="/assets/js/jquery.scrolly.min.js"></script>
-        <script src="/assets/js/browser.min.js"></script>
-        <script src="/assets/js/breakpoints.min.js"></script>
-        <script src="/assets/js/util.js"></script>
-        <script src="/assets/js/main.js"></script>
-        <script src="/assets/js/common.js"></script>
+        <script src="<?php echo ROOT ?>/bootstrap-5.1.0-dist/js/popper.min.js"></script>
+        <script src="<?php echo ROOT ?>/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/jquery.min.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/jquery.scrollex.min.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/jquery.scrolly.min.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/browser.min.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/breakpoints.min.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/util.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/main.js"></script>
+        <script src="<?php echo ROOT ?>/assets/js/common.js"></script>
         <script>
             $("#content").find("img").each(function() {
                 $(this).addClass("img-fluid");

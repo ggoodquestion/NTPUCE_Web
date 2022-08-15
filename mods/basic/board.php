@@ -16,7 +16,7 @@ $result = sql_query($link, $sql);
         while($row = sql_fetch($result)){
             $cid = $row[0];
             $title = $row['title'];
-            echo "<li class='list-group-item'><a href='/mods/basic/content.php?class=$cid'>$title</a></li>";
+            echo "<li class='list-group-item'><a href='".ROOT."/mods/basic/content.php?class=$cid'>$title</a></li>";
         }
         ?>
     </ul>

@@ -11,7 +11,7 @@
     $sql = "SELECT * FROM class INNER JOIN mods ON mods.id = class.mods AND mods.name='lfcol_eng' ;";
     $result = sql_query($link, $sql);
     while ($row = sql_fetch($result)) {
-        echo '<a href="/eng/mods/basic/content.php?class=' . $row[0] . '" class="list-group-item list-group-item-action">' . $row['title'] . '</a>';
+        echo '<a href="<?php echo ROOT; ?>/eng/mods/basic/content.php?class=' . $row[0] . '" class="list-group-item list-group-item-action">' . $row['title'] . '</a>';
     }
     sql_disconnect($link);
     ?>

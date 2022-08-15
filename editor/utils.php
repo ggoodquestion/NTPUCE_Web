@@ -2,7 +2,7 @@
 // Connection
 function sql_connect(){
     $dbuser = "ntpuce";
-    $dbpassword = "Cq2FprT6 ";
+    $dbpassword = "Cq2FprT6";
     $dbname = "ntpuce";
     $host = "127.0.0.1";
 

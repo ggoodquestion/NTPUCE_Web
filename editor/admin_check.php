@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_POST['usage'])) {
     if ($_POST['usage'] == 'verify') {
-        include 'utils.php';
+        include './utils.php';
         $user = trim($_POST['user']);
         $password = trim($_POST['password']);
         $link = sql_connect();
@@ -13,23 +13,25 @@ if (isset($_POST['usage'])) {
         if(!$result) exit('error');
         
         $row = mysqli_fetch_array($result);
-        var_dump($row);
-        if(password_verify($password, $row['password'])){ //Password correct
-           $_SESSION['admin'] = true;
-           $_SESSION['user'] = $user;
-           $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? "https://" : "http://";
-           header("Location: $protocol"."ce.ntpu.edu.tw/editor/");
-           exit();
-        }else{ //Password wrong
-           echo("帳號或密碼錯誤");
+        phpinfo();
+        // var_dump($row);
+        // if(password_verify($password, $row['password'])){ //Password correct
+        //     var_dump($row);
+        // //    $_SESSION['admin'] = true;
+        // //    $_SESSION['user'] = $user;
+        // //    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? "https://" : "http://";
+        // //    header("Location: $protocol"."120.126.199.168/ntpuce/www/editor/");
+        //    exit();
+        // }else{ //Password wrong
+        //    echo("帳號或密碼錯誤");
            ?>
             <script>
-                setTimeout(function(){
-                    window.location.href = "./index.php";
-                }, 1500);
+                // setTimeout(function(){
+                //     window.location.href = "./index.php";
+                // }, 1500);
             </script>
            <?php
-        }
+        // }
     }
 } else {
     //If not admin login or available
